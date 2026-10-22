@@ -1,21 +1,21 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Team Steve Pipeline Funnel (10/21)</title><style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f6f7f9;color:#1d2330}
-header{padding:20px 24px 8px}h1{margin:0;font-size:22px}.sub{color:#667;font-size:13px;margin-top:4px}
-.ctl{padding:8px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px}select{padding:6px 8px;border-radius:6px;border:1px solid #ccd}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f1115;color:#d6dae2}
+header{padding:20px 24px 8px}h1{margin:0;font-size:22px}.sub{color:#8b93a3;font-size:13px;margin-top:4px}
+.ctl{padding:8px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px}select{padding:6px 8px;border-radius:6px;border:1px solid #2c323d;background:#171a21;color:#d6dae2}
 .legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
-main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#556;margin:22px 0 6px}
-.rep{background:#fff;border:1px solid #e3e6ec;border-radius:10px;padding:12px 14px;margin-bottom:10px}.rn{font-weight:600;margin-bottom:8px}
+main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#8b93a3;margin:22px 0 6px}
+.rep{background:#171a21;border:1px solid #262b35;border-radius:10px;padding:12px 14px;margin-bottom:10px}.rn{font-weight:600;margin-bottom:8px}
 .funnel{display:flex;flex-wrap:wrap;gap:2px 0}.ar{position:relative;width:118px;height:58px;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px 0 18px;margin-right:-6px;transition:filter .15s}
 .ar:hover,.ar.on{filter:brightness(1.12) drop-shadow(0 0 0 #000)}.ar.on{outline:none;transform:translateY(-2px)}
 .st{font-size:10.5px;opacity:.95}.n{font-size:18px;font-weight:700;line-height:1.1}.mv{font-size:10px;font-weight:600;color:#eaffea}
-.zero{color:#778}.zero .mv{color:#2a7}
-.list{margin-top:10px;padding:10px;border-top:1px dashed #dde;display:none}.list.show{display:block}.lh{font-size:12px;color:#556;margin-bottom:6px}
-.chip{display:inline-block;padding:3px 8px;margin:2px;border-radius:12px;font-size:12px;background:#eef0f4;border:1px solid #e0e3ea}.chip.g{background:#dcf5e3;border-color:#8fd3a3;color:#145c2c;font-weight:600}
+.zero{color:#7c8494}.zero .mv{color:#4ade80}
+.list{margin-top:10px;padding:10px;border-top:1px dashed #2c323d;background:#12151b;border-radius:8px;display:none}.list.show{display:block}.lh{font-size:12px;color:#9aa2b1;margin-bottom:6px}
+.chip{display:inline-block;padding:3px 8px;margin:2px;border-radius:12px;font-size:12px;background:#222733;border:1px solid #303747;color:#d6dae2}.chip.g{background:#123d25;border-color:#2f8f55;color:#86efac;font-weight:600}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
 </style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
 <div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
-<span class="legend"><span><i class="sw" style="background:#dcf5e3;border:1px solid #8fd3a3"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
+<span class="legend"><span><i class="sw" style="background:#123d25;border:1px solid #2f8f55"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
 <main id="m"></main><script>
 const RAW = `Nathan Beaver|Decision Maker Confirmed|astrochemical.com
 Nathan Beaver|Decision Maker Confirmed|tylerironandmetal.com
@@ -326,7 +326,7 @@ function render(){const only=sel.value;M.innerHTML="";pinned=null;
  GROUPS.forEach(([g,rs])=>{const v=rs.filter(r=>!only||r===only);if(!v.length)return;M.insertAdjacentHTML("beforeend",`<h2>${g}</h2>`);
  v.forEach(r=>{const d=document.createElement("div");d.className="rep";d.innerHTML=`<div class="rn">${r}</div><div class="funnel"></div><div class="list" id="l-${r}"></div>`;const F=d.querySelector(".funnel");
   STAGES.forEach((s,i)=>{const n=count(r,s),mv=(MOVED[r]||{})[s];const a=document.createElement("div");a.className="ar"+(n?"":" zero");
-   a.style.clipPath=clip(i);a.style.background=n===0?"#e4e7ed":i===7?"#c9a227":i===6?"#1f8a4c":`rgba(37,84,180,${op[i]})`;
+   a.style.clipPath=clip(i);a.style.background=n===0?"#2a2f3a":i===7?"#c9a227":i===6?"#22a05a":`rgba(66,120,230,${op[i]})`;
    a.innerHTML=`<div class="st">${s}</div><div class="n">${n}</div>${mv?`<div class="mv">▲${mv} this wk</div>`:""}`;
    a.onmouseenter=()=>{if(!pinned)showList(r,s)};a.onmouseleave=()=>{if(!pinned)showList(r,null)};
    a.onclick=()=>{document.querySelectorAll(".ar.on").forEach(x=>x.classList.remove("on"));if(pinned&&pinned.r===r&&pinned.s===s){pinned=null;showList(r,null);return}
