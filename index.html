@@ -1,0 +1,335 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team Steve Pipeline Funnel (10/21)</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f6f7f9;color:#1d2330}
+header{padding:20px 24px 8px}h1{margin:0;font-size:22px}.sub{color:#667;font-size:13px;margin-top:4px}
+.ctl{padding:8px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px}select{padding:6px 8px;border-radius:6px;border:1px solid #ccd}
+.legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#556;margin:22px 0 6px}
+.rep{background:#fff;border:1px solid #e3e6ec;border-radius:10px;padding:12px 14px;margin-bottom:10px}.rn{font-weight:600;margin-bottom:8px}
+.funnel{display:flex;flex-wrap:wrap;gap:2px 0}.ar{position:relative;width:118px;height:58px;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px 0 18px;margin-right:-6px;transition:filter .15s}
+.ar:hover,.ar.on{filter:brightness(1.12) drop-shadow(0 0 0 #000)}.ar.on{outline:none;transform:translateY(-2px)}
+.st{font-size:10.5px;opacity:.95}.n{font-size:18px;font-weight:700;line-height:1.1}.mv{font-size:10px;font-weight:600;color:#eaffea}
+.zero{color:#778}.zero .mv{color:#2a7}
+.list{margin-top:10px;padding:10px;border-top:1px dashed #dde;display:none}.list.show{display:block}.lh{font-size:12px;color:#556;margin-bottom:6px}
+.chip{display:inline-block;padding:3px 8px;margin:2px;border-radius:12px;font-size:12px;background:#eef0f4;border:1px solid #e0e3ea}.chip.g{background:#dcf5e3;border-color:#8fd3a3;color:#145c2c;font-weight:600}
+@media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
+</style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
+<div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
+<span class="legend"><span><i class="sw" style="background:#dcf5e3;border:1px solid #8fd3a3"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
+<main id="m"></main><script>
+const RAW = `Nathan Beaver|Decision Maker Confirmed|astrochemical.com
+Nathan Beaver|Decision Maker Confirmed|tylerironandmetal.com
+Nathan Beaver|Decision Maker Confirmed|signatureparty.com
+Nathan Beaver|Qualified Prospect|heartlandsheets.com
+Addison Parker|Decision Maker Confirmed|channellumber.com
+Addison Parker|Decision Maker Confirmed|bonsuisse.com
+Addison Parker|Qualified Prospect|laurand.net
+Addison Parker|Decision Maker Confirmed|siteprorentals.com
+Addison Parker|Decision Maker Confirmed|teamcertified.com
+Addison Parker|Decision Maker Confirmed|ennis.com
+Addison Parker|Decision Maker Confirmed|primematerials.com
+Addison Parker|Qualified Prospect|kingdompipeandsteel.com
+Addison Parker|Qualified Prospect|surplusmetalscorp.com
+Addison Parker|Decision Maker Confirmed|vedco.com
+Addison Parker|Decision Maker Confirmed|adfoods.com
+Addison Parker|Qualified Prospect|precisionladders.com
+Nathan Beaver|Qualified Prospect|Strait Regional Centre for Education
+Addison Parker|Decision Maker Confirmed|vantonecf.com
+Addison Parker|Decision Maker Confirmed|oceanautomotivegroup.com
+Addison Parker|Decision Maker Confirmed|sweetgrassltd.com
+Addison Parker|Decision Maker Confirmed|saladcosmo.com
+Addison Parker|Qualified Prospect|hallcoindustries.com
+Addison Parker|Decision Maker Confirmed|henrytile.com
+Addison Parker|Decision Maker Confirmed|montalvans.com
+Addison Parker|Qualified Prospect|parklandseedpotatoes.com
+Addison Parker|Decision Maker Confirmed|centurionibc.com
+Addison Parker|Decision Maker Confirmed|SnowWolf Plows
+Addison Parker|Decision Maker Confirmed|CMF Global
+Addison Parker|Qualified Prospect|MP Husky
+Addison Parker|Pitched/Solution Delivered|MISA Metal Processing
+Addison Parker|Pitched/Solution Delivered|Lodge Lumber
+Addison Parker|Decision Maker Confirmed|Great Canadian Entertainment
+Nathan Beaver|Decision Maker Confirmed|Bhate
+Mia Medjedovic|Decision Maker Confirmed|Infrastructure Solutions Group
+Mia Medjedovic|Decision Maker Confirmed|plastechtooling.com
+Mia Medjedovic|Decision Maker Confirmed|BDK
+Mia Medjedovic|Closed won|Custom Door Parts
+Nicholas McNamara|Decision Maker Confirmed|ReNew Plastics
+Addison Parker|Decision Maker Confirmed|Cascade Waterworks Manufacturing
+Nicholas McNamara|Decision Maker Confirmed|Trumbull Manufacturing
+Mia Medjedovic|Decision Maker Confirmed|AUMOVIO
+Mia Medjedovic|Decision Maker Confirmed|U.S. Axle
+Mia Medjedovic|Pitched/Solution Delivered|Saf-T-Cab
+Mia Medjedovic|Decision Maker Confirmed|Port of Memphis
+Addison Parker|Qualified Prospect|US Bag Manufacturing
+Mia Medjedovic|Decision Maker Confirmed|Bison Trailers
+Mia Medjedovic|Decision Maker Confirmed|Port Saint John
+Mia Medjedovic|Closed won|SuperClamp
+Mia Medjedovic|Closed won|C2 Commodities
+Mia Medjedovic|Closed won|RAINBOW FERTILIZER LLC
+Addison Parker|Decision Maker Confirmed|Voss Manufacturing
+Addison Parker|Decision Maker Confirmed|AVL Manufacturing
+Nicholas McNamara|Closed won|Bobcat Plus
+Nicholas McNamara|Closed won|L.F. GEORGE
+Mia Medjedovic|Closed won|Redford Building Supply
+Mia Medjedovic|Closed won|Tidal Vision
+Mia Medjedovic|Qualified Prospect|Capital Pump & Equipment
+Nathan Beaver|Qualified Prospect|CAM Industrial Solutions
+Nathan Beaver|Qualified Prospect|Grand River Dam Authority
+Addison Parker|Decision Maker Confirmed|Midwest Geothermal
+Mia Medjedovic|Closed won|BioTown Ag
+Addison Parker|Decision Maker Confirmed|Timberline Manufacturing
+Mia Medjedovic|Closed won|IMA
+Nicholas McNamara|Qualified Prospect|Epl Feed, Llc
+Mia Medjedovic|Qualified Prospect|Direct Scaffold Supply
+Addison Parker|Decision Maker Confirmed|LaGrange Products
+Addison Parker|Decision Maker Confirmed|ErgonArmor
+Steve O'Neill|Closed won|Bronco Industrial Services
+Addison Parker|Decision Maker Confirmed|Cardinal Glass - Portage
+Nicholas McNamara|Decision Maker Confirmed|Artopex
+Nathan Beaver|Decision Maker Confirmed|Efficiency Production
+Addison Parker|Qualified Prospect|Housley Communications Inc
+Nathan Beaver|Decision Maker Confirmed|Dave Steel
+Nathan Beaver|Decision Maker Confirmed|MEP Technologies
+Mia Medjedovic|Closed won|Alta Recycling
+Mia Medjedovic|Qualified Prospect|Manac
+Mia Medjedovic|Qualified Prospect|Soyventis
+Mia Medjedovic|Closed won|Varichem International
+Nathan Beaver|Decision Maker Confirmed|Purilum
+Nicholas McNamara|Qualified Prospect|Maxon Lift Corp
+Mia Medjedovic|Closed won|Tidal Grow Agriscience
+Addison Parker|Decision Maker Confirmed|Fuller Brothers Inc
+Simran Subramanian|Decision Maker Confirmed|Fermilab
+Nathan Beaver|Qualified Prospect|Always Available Wholesale & Supply Services Corp
+Mia Medjedovic|Closed won|SBFI
+Mia Medjedovic|Closed won|Frulact
+Nathan Beaver|Decision Maker Confirmed|Citrojugo Sa De Cv
+Kahekili Barrozo|Closed won|Webstone
+Nicholas McNamara|Closed won|Indevco North America
+Steve O'Neill|Decision Maker Confirmed|Select Genetics
+Simran Subramanian|Decision Maker Confirmed|Ehresmann Engineering
+Nicholas McNamara|Closed won|Engie
+Addison Parker|Closed won|HJ Martin & Son
+Steve O'Neill|Decision Maker Confirmed|Panavid
+Simran Subramanian|Decision Maker Confirmed|Greco Aluminum Railings
+Nicholas McNamara|Decision Maker Confirmed|Gilson Graphics
+Mia Medjedovic|Contracting|MC Dean
+Mia Medjedovic|Decision Maker Confirmed|Elgin Industries, Inc.
+Nicholas McNamara|Closed won|Hickory Harvest Foods
+Nathan Beaver|Decision Maker Confirmed|Continental
+Addison Parker|Qualified Prospect|EGR
+Simran Subramanian|Decision Maker Confirmed|Imperial Tobacco Canada
+Steve O'Neill|Decision Maker Confirmed|Shop LC
+Nathan Beaver|Decision Maker Confirmed|English Construction Company
+Nicholas McNamara|Closed won|Flow Pro Products
+Mia Medjedovic|Qualified Prospect|Phinia
+Nathan Beaver|Decision Maker Confirmed|Pochteca
+Nathan Beaver|Decision Maker Confirmed|Comex
+Steve O'Neill|Qualified Prospect|fcifloors.com
+Nathan Beaver|Decision Maker Confirmed|Ruhrpumpen
+Nathan Beaver|Decision Maker Confirmed|Lectronics
+Mia Medjedovic|Closed won|Atkins Machinery
+Nathan Beaver|Decision Maker Confirmed|Traffic Management, Inc
+Nicholas McNamara|Decision Maker Confirmed|Stacy and Witbeck, Inc.
+Nathan Beaver|Decision Maker Confirmed|Structure Tone
+Nathan Beaver|Decision Maker Confirmed|EXP
+Mia Medjedovic|Qualified Prospect|Dutra Group
+Simran Subramanian|Decision Maker Confirmed|Anaheim Extrusion Company
+Simran Subramanian|Qualified Prospect|Canada Nickel
+Nathan Beaver|Qualified Prospect|Yerba Madre
+Simran Subramanian|Decision Maker Confirmed|Lorin
+Simran Subramanian|Qualified Prospect|Raufoss Technology
+Nathan Beaver|Qualified Prospect|Borsheim Crane Service
+Mia Medjedovic|Closed won|Black & McDonald
+Nicholas McNamara|Closed won|Times Publishing Company dba Tampa Bay Times
+Nathan Beaver|Decision Maker Confirmed|Aegle Nutrition
+Addison Parker|Decision Maker Confirmed|Midco
+Addison Parker|Decision Maker Confirmed|Rapala VMC
+Mia Medjedovic|Closed won|AgriGro
+Mia Medjedovic|Closed won|American Battery Technology Co.
+Simran Subramanian|Decision Maker Confirmed|Alumicor Limited
+Nicholas McNamara|Closed won|Wholesale Home/DJ Direct Warehousing
+Steve O'Neill|Decision Maker Confirmed|Intermodal Tank Transport
+Addison Parker|Closed won|AD Process Equipment
+Simran Subramanian|Qualified Prospect|Lite Gauge Metals,
+Addison Parker|Closed won|Republic Bag Inc
+Mia Medjedovic|Pitched/Solution Delivered|Mendocino Redwood
+Mia Medjedovic|Closed won|Universal Cement
+Kahekili Barrozo|Closed won|Kawneer
+Steve O'Neill|Decision Maker Confirmed|AMC Theatres
+Addison Parker|Decision Maker Confirmed|Rimex
+Mia Medjedovic|Closed won|Killick Aerospace
+Simran Subramanian|Decision Maker Confirmed|Corley MFG
+Nicholas McNamara|Decision Maker Confirmed|Future Transfer
+Nathan Beaver|Decision Maker Confirmed|Roberts Tire Sales
+Nathan Beaver|Decision Maker Confirmed|GIANT
+Mia Medjedovic|Closed won|Integrity Beverage/Spectrum Foods
+Addison Parker|Decision Maker Confirmed|Caruthers Raisin Packing Co., Inc.
+Addison Parker|Qualified Prospect|Hyve Solutions (TD SYNNEX)
+Nathan Beaver|Decision Maker Confirmed|Clarus
+Addison Parker|Decision Maker Confirmed|Nardone Brothers Baking Co
+Nicholas McNamara|Decision Maker Confirmed|Whitehall Products
+Addison Parker|Decision Maker Confirmed|Power/Mation
+Addison Parker|Qualified Prospect|ADVANCE TIRE
+Addison Parker|Decision Maker Confirmed|Doug Ashy Building Materials
+Mia Medjedovic|Decision Maker Confirmed|TMP Technologies
+Mia Medjedovic|Closed won|Stoughton Trailers
+Simran Subramanian|Decision Maker Confirmed|ABC ALUMINUM
+Nathan Beaver|Decision Maker Confirmed|Werfen
+Addison Parker|Closed won|Caldera Manufacturing Group
+Mia Medjedovic|Closed won|JD.com
+Addison Parker|Decision Maker Confirmed|Pavion
+Simran Subramanian|Decision Maker Confirmed|Brewer Science
+Nathan Beaver|Decision Maker Confirmed|Weldco-Beales Manufacturing
+Mia Medjedovic|Decision Maker Confirmed|Fiberon
+Nicholas McNamara|Pitched/Solution Delivered|Whirlwind Steel Buildings
+Addison Parker|Decision Maker Confirmed|PNY
+Steve O'Neill|Decision Maker Confirmed|Shari's Berries
+Mia Medjedovic|Closed won|Pulpmill Services
+Mia Medjedovic|Decision Maker Confirmed|Strategic Construction Solutions
+Nathan Beaver|Decision Maker Confirmed|BIOLASE Inc
+Simran Subramanian|Decision Maker Confirmed|Swanson Health Products
+Nathan Beaver|Qualified Prospect|Northland Power
+Simran Subramanian|Pitched/Solution Delivered|Can Art Aluminum Extrusion
+Nicholas McNamara|Closed won|ARMI
+Nathan Beaver|Decision Maker Confirmed|Woodman's Food Market
+Addison Parker|Qualified Prospect|Geiger
+Nicholas McNamara|Decision Maker Confirmed|Panel Processing
+Kahekili Barrozo|Closed won|Reliable
+Nathan Beaver|Decision Maker Confirmed|Osterman
+Nicholas McNamara|Decision Maker Confirmed|Vox Printing
+Addison Parker|Decision Maker Confirmed|Fabuwood Cabinetry
+Mia Medjedovic|Pitched/Solution Delivered|Penn Pallet
+Mia Medjedovic|Qualified Prospect|Basden Steel Corporation
+Nathan Beaver|Decision Maker Confirmed|Supreme International
+Mia Medjedovic|Qualified Prospect|Cronimet Corporation USA
+Nicholas McNamara|Closed won|Lee Storage Company
+Mia Medjedovic|Closed won|TIMAC AGRO USA
+Simran Subramanian|Decision Maker Confirmed|Con-Vey
+Mia Medjedovic|Closed won|Spectrum Food Group
+Steve O'Neill|Decision Maker Confirmed|TFH Publications
+Nathan Beaver|Decision Maker Confirmed|SMS group
+Steve O'Neill|Decision Maker Confirmed|EuroKera
+Mia Medjedovic|Decision Maker Confirmed|Dryclean USA
+Mia Medjedovic|Qualified Prospect|GMS Mine Repair & Maintenance
+Nicholas McNamara|Closed won|DSB Technologies
+Addison Parker|Decision Maker Confirmed|Canusa Wood
+Simran Subramanian|Decision Maker Confirmed|Silver Star Brands
+Nicholas McNamara|Qualified Prospect|Alpine Power Systems
+Addison Parker|Decision Maker Confirmed|Treadmaxx Tire Distributors Inc
+Nicholas McNamara|Closed won|Leaf Home
+Steve O'Neill|Decision Maker Confirmed|Invio Automation
+Kahekili Barrozo|Closed won|Basic Metals Inc
+Mia Medjedovic|Closed won|Forge Precision/Forge Die & Tool Company
+Simran Subramanian|Pitched/Solution Delivered|Hoover Treated Wood Products
+Nicholas McNamara|Decision Maker Confirmed|Exotech
+Mia Medjedovic|Closed won|QuikTrip Corporation
+Simran Subramanian|Closed won|BRT Extrusions
+Kahekili Barrozo|Closed won|Howmet Aerospace
+Addison Parker|Decision Maker Confirmed|Brady
+Nathan Beaver|Decision Maker Confirmed|Sparton
+Steve O'Neill|Decision Maker Confirmed|Daltile
+Nathan Beaver|Qualified Prospect|LAVAZZA
+Mia Medjedovic|Closed won|Ulbrich
+Simran Subramanian|Decision Maker Confirmed|Ferroglobe
+Steve O'Neill|Decision Maker Confirmed|Astenjohnson
+Simran Subramanian|Qualified Prospect|Clark Construction Group
+Simran Subramanian|Closed won|Citi Trends
+Nathan Beaver|Decision Maker Confirmed|Easterday Farms
+Mia Medjedovic|Closed won|Dix Block & Supply Company
+Mia Medjedovic|RFP Confirmed|Betafence USA
+Nathan Beaver|Decision Maker Confirmed|Sustana
+Nathan Beaver|Decision Maker Confirmed|SawStop
+Nathan Beaver|Decision Maker Confirmed|eBay
+Mia Medjedovic|Pitched/Solution Delivered|Plastics Engineering
+Nathan Beaver|Decision Maker Confirmed|Alvogen
+Nathan Beaver|Decision Maker Confirmed|Keytronic
+Simran Subramanian|Decision Maker Confirmed|Sun Country Inc
+Nathan Beaver|Decision Maker Confirmed|TAG Manufacturing
+Mia Medjedovic|Decision Maker Confirmed|ENC
+Nathan Beaver|Decision Maker Confirmed|United Malt
+Mia Medjedovic|Decision Maker Confirmed|Commercial Metals Company (CMC)
+Mia Medjedovic|Qualified Prospect|Wabtec Corporation
+Nicholas McNamara|Closed won|True Manufacturing
+Nicholas McNamara|Closed won|New Flyer
+Simran Subramanian|Qualified Prospect|Pyrotek
+Simran Subramanian|Decision Maker Confirmed|Maxim Crane Works
+Nicholas McNamara|Closed won|MSC Industrial Direct Co., Inc
+Mia Medjedovic|Closed won|NIBCO
+Nicholas McNamara|Decision Maker Confirmed|Perrigo Company
+Nathan Beaver|Decision Maker Confirmed|Pacific Coast Producers
+Nicholas McNamara|Closed won|3M Company
+Simran Subramanian|Closed won|Hanwha Aerospace
+Mia Medjedovic|Decision Maker Confirmed|Ducommun Incorporated
+Nicholas McNamara|Closed won|Florim USA
+Addison Parker|Decision Maker Confirmed|Cummins-Allison
+Simran Subramanian|Closed won|Kaiser Aluminum
+Mia Medjedovic|Qualified Prospect|Great Dane
+Nicholas McNamara|Closed won|Indevco (Group and Plastics)
+Addison Parker|Decision Maker Confirmed|AGI
+Nicholas McNamara|Closed won|Verista
+Steve O'Neill|Qualified Prospect|Alcoa
+Kahekili Barrozo|Closed won|Arconic
+Mia Medjedovic|Closed won|Day & Zimmermann
+Nathan Beaver|RFP Confirmed|Pyxus International
+Nicholas McNamara|Closed won|Boart Longyear
+Addison Parker|Pitched/Solution Delivered|MIDLAND FOODS DIST, INC
+Addison Parker|Decision Maker Confirmed|Universal Lighting Technologies
+Mia Medjedovic|Qualified Prospect|Visteon
+Nathan Beaver|Decision Maker Confirmed|Quality Bicycle Products
+Steve O'Neill|Decision Maker Confirmed|PJP
+Mia Medjedovic|Qualified Prospect|Tutor Perini
+Nicholas McNamara|Closed won|Novelis
+Mia Medjedovic|Qualified Prospect|Reliance Steel & Aluminum
+Nathan Beaver|Decision Maker Confirmed|National Beverage Corp
+Mia Medjedovic|Qualified Prospect|American Mitsuba Corp
+Mia Medjedovic|Qualified Prospect|New Enterprise Stone & Lime
+Mia Medjedovic|Qualified Prospect|Wieland
+Mia Medjedovic|Closed won|Liberty Tire
+Nicholas McNamara|Closed won|M.J Kellner Co. Inc
+Addison Parker|Decision Maker Confirmed|E. C. Barton & Co.
+Nathan Beaver|Decision Maker Confirmed|Babcock & Wilcox`;
+
+const OWNER = { "Kahekili Barrozo": "Kili", "Simran Subramanian": "Simran", "Mia Medjedovic": "Mia", "Nicholas McNamara": "Nick", "Addison Parker": "Addie", "Nathan Beaver": "Nathan", "Steve O'Neill": "Steve" };
+const STATUS = { "Decision Maker Confirmed": "DMC", "Qualified Prospect": "QP", "RFP Confirmed": "RFP", "Pitched/Solution Delivered": "PSD", "Contracting": "Contracting", "Closed won": "Closed Won" };
+const STAGES = ["Prospect", "DMC", "QP", "RFP", "PSD", "Contracting", "Closed Won", "New Ship MTD"];
+const GROUPS = [["Account Managers", ["Kili", "Simran"]], ["Account Executives", ["Mia", "Nick"]], ["New AEs", ["Addie", "Nathan"]], ["Manager", ["Steve"]]];
+const PROSPECTS = { Kili: 1, Simran: 158, Mia: 154, Nick: 200, Addie: 170, Nathan: 205, Steve: 217 };
+const NSA = { Simran: ["BRT Extrusions (1st load 10/14)", "Citi Trends (4 loads on board, uncovered)"] };
+const MOVED = {
+  Simran: { Prospect: 2, DMC: 1, QP: 1, PSD: 1, "Closed Won": 1 },
+  Mia: { Prospect: 4, PSD: 1, "Closed Won": 1 },
+  Nick: { Prospect: 2, DMC: 3 },
+  Addie: { Prospect: 2, DMC: 13, QP: 7, "Closed Won": 1 },
+  Nathan: { Prospect: 3, DMC: 7, QP: 6 },
+  Steve: { Prospect: 5, DMC: 1, "Closed Won": 1 },
+};
+
+const NEW_OCT = new Set(["astrochemical.com","tylerironandmetal.com","signatureparty.com","heartlandsheets.com","channellumber.com","bonsuisse.com","laurand.net","siteprorentals.com","teamcertified.com","ennis.com","primematerials.com","kingdompipeandsteel.com","surplusmetalscorp.com","vedco.com","adfoods.com","precisionladders.com","Strait Regional Centre for Education","vantonecf.com","oceanautomotivegroup.com","sweetgrassltd.com","saladcosmo.com","hallcoindustries.com","henrytile.com","montalvans.com","parklandseedpotatoes.com","centurionibc.com","SnowWolf Plows","MP Husky","Lodge Lumber","BDK","ReNew Plastics","Trumbull Manufacturing","AUMOVIO","Saf-T-Cab","Port of Memphis","US Bag Manufacturing","Port Saint John","Voss Manufacturing","AVL Manufacturing","CAM Industrial Solutions","Grand River Dam Authority","Midwest Geothermal","Timberline Manufacturing","ErgonArmor","Bronco Industrial Services","Housley Communications Inc","Purilum","Fuller Brothers Inc","Always Available Wholesale & Supply Services Corp","Panavid","EGR","Imperial Tobacco Canada","English Construction Company","Traffic Management, Inc","Stacy and Witbeck, Inc.","Structure Tone","EXP","Borsheim Crane Service","Rapala VMC","Mendocino Redwood","Rimex","Future Transfer","Roberts Tire Sales","Killick Aerospace","Corley MFG","Caruthers Raisin Packing Co., Inc.","Nardone Brothers Baking Co","Doug Ashy Building Materials","TMP Technologies","Caldera Manufacturing Group","Pavion","Fiberon","PNY","BIOLASE Inc","Northland Power","Can Art Aluminum Extrusion","Woodman's Food Market","Panel Processing","Vox Printing","Canusa Wood","Silver Star Brands","Invio Automation","Hoover Treated Wood Products","Exotech","BRT Extrusions","Brady","LAVAZZA","Astenjohnson","eBay","Wabtec Corporation","Pyrotek","Maxim Crane Works","Hanwha Aerospace","Cummins-Allison","Pyxus International","MIDLAND FOODS DIST, INC","Quality Bicycle Products","PJP","E. C. Barton & Co.","Babcock & Wilcox","BRT Extrusions (1st load 10/14)","Citi Trends (4 loads on board, uncovered)"]);
+
+const REV = {"AGI":1077467000,"LAVAZZA":22792000,"Supreme International":135786000,"BRT Extrusions":50570000,"ADVANCE TIRE":4677,"3M Company":25180001000,"United Malt":250000000,"heartlandsheets.com":7600000,"astrochemical.com":5100000,"E. C. Barton & Co.":173817000,"Pavion":19682000,"Hanwha Aerospace":7662237000,"Cummins-Allison":48180000,"Wabtec Corporation":10390000000,"Cronimet Corporation USA":1515508000,"Commercial Metals Company (CMC)":8850088000,"Great Canadian Entertainment":3551356000,"Mendocino Redwood":3639000,"fcifloors.com":2472,"Caruthers Raisin Packing Co., Inc.":3758,"Phinia":3615001000,"ARMI":13787000,"Betafence USA":7805000,"Cascade Waterworks Manufacturing":5881000,"Trumbull Manufacturing":7797000,"Yerba Madre":210932000,"Perrigo Company":4100000000,"Bison Trailers":11121605000,"Port Saint John":30859000,"Voss Manufacturing":24659000,"eBay":12008000000,"MSC Industrial Direct Co., Inc":3820951000,"Alta Recycling":5800000,"Leaf Home":4688000,"Werfen":2302228000,"Tidal Vision":140855000,"Capital Pump & Equipment":81476000,"Grand River Dam Authority":368335000,"Midwest Geothermal":5519000,"CAM Industrial Solutions":1024692000,"Timberline Manufacturing":27351000,"Howmet Aerospace":7975001000,"Invio Automation":135786000,"National Beverage Corp":1190000000,"Tidal Grow Agriscience":1000000,"Direct Scaffold Supply":50000000,"Epl Feed, Llc":10000000,"LaGrange Products":10000000,"ErgonArmor":10216000,"Bronco Industrial Services":50000000,"Cardinal Glass - Portage":10000000000,"Efficiency Production":50000000,"Artopex":40000000,"Housley Communications Inc":50000000,"Dave Steel":50000000,"MEP Technologies":71986000,"Manac":414541000,"Varichem International":5361000,"Purilum":5118000,"Soyventis":6536000,"Maxon Lift Corp":33247000,"Fuller Brothers Inc":1000000,"Fermilab":422671000,"SBFI":50000000,"Citrojugo Sa De Cv":79332000,"Frulact":100000000,"Webstone":4318000,"Indevco North America":28782000,"Select Genetics":5982000,"Ehresmann Engineering":8900000,"Engie":89964556350,"HJ Martin & Son":381915000,"Greco Aluminum Railings":1000000000,"Elgin Industries, Inc.":50000000,"Panavid":10000000,"MC Dean":10000000000,"Gilson Graphics":10000000,"Hickory Harvest Foods":23016000,"Continental":621090000,"EGR":178481000,"Imperial Tobacco Canada":210932000,"Shop LC":738889000,"English Construction Company":50000000,"Pochteca":478819,"Flow Pro Products":5591000,"Comex":891208,"Ruhrpumpen":350000000,"Lectronics":37992,"Atkins Machinery":4466000,"Stacy and Witbeck, Inc.":177300000,"EXP":628000000,"Dutra Group":255148000,"Structure Tone":817920000,"Traffic Management, Inc":282327000,"Anaheim Extrusion Company":3471000,"Canada Nickel":4013000,"Lorin":31855,"Raufoss Technology":24960000,"Borsheim Crane Service":16884000,"Black & McDonald":4000000000,"Times Publishing Company dba Tampa Bay Times":220622000,"Aegle Nutrition":17705000,"Midco":561709000,"Rapala VMC":237513000,"AgriGro":12000000,"American Battery Technology Co.":3226000,"Alumicor Limited":51115000,"Wholesale Home/DJ Direct Warehousing":3398000,"Intermodal Tank Transport":50000000,"AD Process Equipment":605971000,"Lite Gauge Metals,":3355000,"Republic Bag Inc":30296000,"DSB Technologies":2634000,"Universal Cement":155748000,"Kawneer":938937000,"AMC Theatres":3165300,"Rimex":26806000,"Future Transfer":8265000000,"Roberts Tire Sales":13724000,"GIANT":2239863000,"Integrity Beverage/Spectrum Foods":6359000,"Killick Aerospace":69111000,"Corley MFG":8375000,"Reliable":10000000,"Hyve Solutions (TD SYNNEX)":445235000,"Clarus":141759000,"Nardone Brothers Baking Co":48000000,"Whitehall Products":23925000,"Ferroglobe":1373244000,"Power/Mation":235549000,"Doug Ashy Building Materials":81472000,"TMP Technologies":16416,"Stoughton Trailers":296101000,"ABC ALUMINUM":53361000,"Babcock & Wilcox":653492000,"JD.com":147600000000,"Sustana":26496000,"Brewer Science":68952000,"Weldco-Beales Manufacturing":60252000,"Fiberon":259047000,"Whirlwind Steel Buildings":209000000,"PNY":271571000,"Shari's Berries":38812000,"Pulpmill Services":6888000,"Strategic Construction Solutions":33062000,"BIOLASE Inc":49725000,"Swanson Health Products":500000000,"Northland Power":1653910000,"Can Art Aluminum Extrusion":35755000,"Woodman's Food Market":300000000,"Geiger":14412,"Panel Processing":131181000,"Osterman":190100000,"Kaiser Aluminum":3427900000,"Vox Printing":20759000,"Great Dane":1628554000,"Fabuwood Cabinetry":350000000,"Penn Pallet":24313000,"Basden Steel Corporation":477393000,"Lee Storage Company":1000000,"TIMAC AGRO USA":2157537,"Con-Vey":19268000,"Spectrum Food Group":20273000,"TFH Publications":3762000,"SMS group":38966000,"Universal Lighting Technologies":58107,"Novelis":16200000000,"EuroKera":25040000,"Wieland":5770845000,"Pacific Coast Producers":364683000,"Dryclean USA":16236000,"GMS Mine Repair & Maintenance":250000000,"Canusa Wood":3306000,"Silver Star Brands":227267000,"Alpine Power Systems":150000,"Treadmaxx Tire Distributors Inc":50000000,"Basic Metals Inc":4703000,"Forge Precision/Forge Die & Tool Company":7373000,"Hoover Treated Wood Products":195803000,"Exotech":10000000,"QuikTrip Corporation":14160000000,"Brady":1541827000,"Sparton":289579000,"Daltile":2444139000,"Ulbrich":268660000,"Keytronic":435064000,"Sun Country Inc":1080000000,"ENC":12063000,"Alvogen":945190000,"TAG Manufacturing":70337000,"Plastics Engineering":72194000,"Ducommun Incorporated":806224000,"Florim USA":68349,"New Flyer":2382000000,"Pyrotek":814713000,"Indevco (Group and Plastics)":28782000,"Pyxus International":2413000000,"Astenjohnson":638000000,"Clark Construction Group":3596700000,"SawStop":22400000,"Easterday Farms":18847000,"Citi Trends":781930000,"Dix Block & Supply Company":1352000,"True Manufacturing":991234000,"Alcoa":12868000000,"Verista":20877000,"Arconic":9000000000,"MIDLAND FOODS DIST, INC":3827000,"Tutor Perini":3790755000,"Liberty Tire":721495000,"M.J Kellner Co. Inc":21000000,"Maxim Crane Works":902000000,"NIBCO":732000000,"Day & Zimmermann":2700000000,"Boart Longyear":1100000000,"Visteon":3759001000,"PJP":164900000,"Quality Bicycle Products":135786000,"American Mitsuba Corp":697000000,"New Enterprise Stone & Lime":1591310000};
+const fmtRev = (n) => { const u = [[1e9, "B"], [1e6, "M"], [1e3, "K"]]; for (const [d, s] of u) if (n >= d) return "$" + (Math.round(n / d * 10) / 10).toString() + s; return "$" + n.toString(); };
+const revOf = (c) => REV[c] ?? REV[c.split(" (")[0]];
+const withRev = (c) => { const v = revOf(c); return v === undefined ? c : `${c} (${fmtRev(v)})`; };
+const data={};for(const line of RAW.split("\n")){const[o,s,c]=line.split("|");const r=OWNER[o],st=STATUS[s];if(!r||!st)continue;((data[r]=data[r]||{})[st]=data[r][st]||[]).push(c);}
+const names=(r,s)=>s==="New Ship MTD"?(NSA[r]||[]):((data[r]||{})[s]||[]);
+const count=(r,s)=>s==="Prospect"?(PROSPECTS[r]||0):names(r,s).length;
+const op=[.45,.58,.68,.78,.88,1,1,1];const clip=i=>i===0?"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)":"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%)";
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+let pinned=null;const sel=document.getElementById("sel"),M=document.getElementById("m");
+GROUPS.forEach(([g,rs])=>rs.forEach(r=>sel.add(new Option(r,r))));
+function showList(r,s,el){const L=document.getElementById("l-"+r);if(!s){L.classList.remove("show");return}
+ if(s==="Prospect"){L.innerHTML=`<div class="lh">${r} · Prospect: ${count(r,s)} (counts only)</div>`;L.classList.add("show");return}
+ const a=[...names(r,s)].sort((x,y)=>NEW_OCT.has(x)===NEW_OCT.has(y)?x.localeCompare(y):NEW_OCT.has(x)?-1:1);
+ L.innerHTML=`<div class="lh">${r} · ${s}: ${a.length}${pinned?" · pinned (click again to unpin)":""}</div>`+(a.length?a.map(c=>`<span class="chip${NEW_OCT.has(c)?" g":""}">${esc(withRev(c))}</span>`).join(""):"<i>None</i>");L.classList.add("show");}
+function render(){const only=sel.value;M.innerHTML="";pinned=null;
+ GROUPS.forEach(([g,rs])=>{const v=rs.filter(r=>!only||r===only);if(!v.length)return;M.insertAdjacentHTML("beforeend",`<h2>${g}</h2>`);
+ v.forEach(r=>{const d=document.createElement("div");d.className="rep";d.innerHTML=`<div class="rn">${r}</div><div class="funnel"></div><div class="list" id="l-${r}"></div>`;const F=d.querySelector(".funnel");
+  STAGES.forEach((s,i)=>{const n=count(r,s),mv=(MOVED[r]||{})[s];const a=document.createElement("div");a.className="ar"+(n?"":" zero");
+   a.style.clipPath=clip(i);a.style.background=n===0?"#e4e7ed":i===7?"#c9a227":i===6?"#1f8a4c":`rgba(37,84,180,${op[i]})`;
+   a.innerHTML=`<div class="st">${s}</div><div class="n">${n}</div>${mv?`<div class="mv">▲${mv} this wk</div>`:""}`;
+   a.onmouseenter=()=>{if(!pinned)showList(r,s)};a.onmouseleave=()=>{if(!pinned)showList(r,null)};
+   a.onclick=()=>{document.querySelectorAll(".ar.on").forEach(x=>x.classList.remove("on"));if(pinned&&pinned.r===r&&pinned.s===s){pinned=null;showList(r,null);return}
+    if(pinned&&pinned.r!==r)showList(pinned.r,null);pinned={r,s};a.classList.add("on");showList(r,s)};F.appendChild(a)});M.appendChild(d)})});}
+sel.onchange=render;render();
+</script></body></html>
