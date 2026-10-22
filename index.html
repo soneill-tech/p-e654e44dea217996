@@ -12,11 +12,17 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 .zero{color:#7c8494}.zero .mv{color:#4ade80}
 .list{margin-top:10px;padding:10px;border-top:1px dashed #2c323d;background:#12151b;border-radius:8px;display:none}.list.show{display:block}.lh{font-size:12px;color:#9aa2b1;margin-bottom:6px}
 .chip{display:inline-block;padding:3px 8px;margin:2px;border-radius:12px;font-size:12px;background:#222733;border:1px solid #303747;color:#d6dae2}.chip.g{background:#123d25;border-color:#2f8f55;color:#86efac;font-weight:600}
+.tabs{display:flex;gap:4px;padding:4px 24px 0}.tab{background:#171a21;border:1px solid #262b35;color:#9aa2b1;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px}.tab.on{background:#2a3242;color:#fff;border-color:#3b4559}
+#kpi{padding:0 24px 40px;display:none}.kw{overflow-x:auto}.kt{min-width:820px;background:#171a21;border:1px solid #262b35;border-radius:10px;padding:10px 16px}
+.kr{display:grid;grid-template-columns:110px 120px 1fr 1fr 1fr;gap:18px;align-items:center;padding:8px 0}.kh{font-size:12.5px;font-weight:600;color:#c4cad6;text-align:center}.kg{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#8b93a3;font-weight:600;padding:12px 0 2px}
+.kn{font-weight:600}.kb{font-size:22px;font-weight:700;color:#e6e9ef}.ks{font-size:11px;color:#8b93a3;margin-left:6px}
+.bar{position:relative;height:18px;background:#2a2f3a;border-radius:9px}.fill{height:100%;border-radius:9px}.tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:#e6e9ef}.bl{font-size:11.5px;color:#aab1be;text-align:center;margin-top:5px}.team{border-top:1px solid #2c323d}
+.fn{font-size:11.5px;color:#8b93a3;font-style:italic;margin-top:12px;line-height:1.5}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
 </style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
-<div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
+<div class="tabs"><button class="tab on" data-v="p">Pipeline</button><button class="tab" data-v="k">KPIs</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
 <span class="legend"><span><i class="sw" style="background:#123d25;border:1px solid #2f8f55"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
-<main id="m"></main><script>
+<main id="m"></main></div><section id="kpi"></section><script>
 const RAW = `Nathan Beaver|Decision Maker Confirmed|astrochemical.com
 Nathan Beaver|Decision Maker Confirmed|tylerironandmetal.com
 Nathan Beaver|Decision Maker Confirmed|signatureparty.com
@@ -332,4 +338,19 @@ function render(){const only=sel.value;M.innerHTML="";pinned=null;
    a.onclick=()=>{document.querySelectorAll(".ar.on").forEach(x=>x.classList.remove("on"));if(pinned&&pinned.r===r&&pinned.s===s){pinned=null;showList(r,null);return}
     if(pinned&&pinned.r!==r)showList(pinned.r,null);pinned={r,s};a.classList.add("on");showList(r,s)};F.appendChild(a)});M.appendChild(d)})});}
 sel.onchange=render;render();
+
+const K=[["Account Managers",[["Kili",4,3,216440,300000,23,19,23]]],["Account Executives",[["Simran",2,1,4202,15000,94,37,100],["Mia",13,11,14136,30000,94,103,68],["Nick",11,14,91009,80000,64,25,45]]],["New AEs",[["Addie",2,0,-346,5000,143,126,136],["Nathan",0,0,0,5000,451,179,136]]],["Team Total",[["Team",32,29,325440,435000,914,489,508]]]];
+const ST=[[0,[214,72,58]],[.25,[240,128,72]],[.5,[245,200,90]],[.75,[150,205,90]],[1,[56,168,105]]];
+function pc(f){f=Math.max(0,Math.min(1,f));for(let i=1;i<ST.length;i++)if(f<=ST[i][0]){const[a,c1]=ST[i-1],[b,c2]=ST[i],t=(f-a)/(b-a);return`rgb(${c1.map((v,j)=>Math.round(v+(c2[j]-v)*t))})`}}
+const $=n=>Math.round(n).toLocaleString("en-US"),kq=q=>"$"+q/1000+"K";
+function bar(a,g,tick,pf){const w=Math.max(0,Math.min(1,a/g))*100;return`<div class="bar">${a>0?`<div class="fill" style="width:${w}%;background:${pc(pf)}"></div>`:""}${tick?`<div class="tick" style="left:${tick*100}%"></div>`:""}</div>`}
+function kpi(){let s=`<div class="kw"><div class="kt"><div class="kr"><div></div><div class="kh">Bill-Tos MTD</div><div class="kh">GP vs quota (68% of month done)</div><div class="kh">Avg emails / day vs 300</div><div class="kh">Calls wk vs wkly goal</div></div>`;
+for(const[g,rows]of K){s+=`<div class="kg">${g}</div>`;for(const[n,b,sp,gp,q,em,c,cg]of rows){const T=n==="Team",eg=T?1800:300;
+s+=`<div class="kr${T?" team":""}"><div class="kn">${n}</div><div><span class="kb">${b}</span><span class="ks">(Sep ${sp})</span></div>
+<div>${bar(gp,q,.68,gp/q/.68)}<div class="bl">${gp<0?"–$"+$(-gp):"$"+$(gp)} of ${kq(q)}${gp<0?"":` (${Math.round(gp/q*100)}%)`}</div></div>
+<div>${bar(em,eg,0,em/eg)}<div class="bl">${$(em)} avg${T?" / 1,800":""}</div></div>
+<div>${bar(c,cg,.6,c/cg/.6)}<div class="bl">${c} / ${cg}</div></div></div>`}}
+s+=`<div class="fn">Light tick = where pace should be today. Bar color is a gradient of % of pace: red 0%, yellow 50%, green 100%+.<br>Team goals = sum of the 6 reps: $435K GP, 1,800 emails/day, 508 calls/wk (monthly call goals x 5/22 workdays).</div></div></div>`;document.getElementById("kpi").innerHTML=s}
+kpi();document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));const k=t.dataset.v==="k";document.getElementById("pv").style.display=k?"none":"";document.getElementById("kpi").style.display=k?"block":"";if(location.hash!==(k?"#kpi":""))history.replaceState(null,"",k?"#kpi":location.pathname)});
+if(location.hash==="#kpi")document.querySelector('.tab[data-v="k"]').click();
 </script></body></html>
