@@ -29,6 +29,7 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 .rv2{font-variant-numeric:tabular-nums;font-weight:600;color:#e6e9ef}.pill{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 18%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
 .nt{color:#8b93a3;font-size:13px}.nt.m{display:none}.fch{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.fc{background:#12151b;border:1px solid #2c323d;color:#aab1be;border-radius:14px;padding:5px 11px;font-size:12px;cursor:pointer}.fc b{color:#e6e9ef;margin-left:3px}.fc.on{background:#2a3242;border-color:#4b5872;color:#fff}.fc:disabled{opacity:.35;cursor:default}.lr.s{grid-template-columns:34px minmax(190px,1.5fr) 150px 110px 120px 1.6fr 1.2fr}.sg{font-size:12px;color:#7c8494;font-style:italic}.grp{display:flex;align-items:center;gap:10px;padding:12px 20px;background:#1a1e26;border-top:1px solid #2c323d;font-weight:700;color:#e6e9ef}
 @media(max-width:760px){.lh2{display:none}.lr{grid-template-columns:28px 1fr auto;grid-template-areas:"k c c" "k p v" "k s s";row-gap:6px;padding:12px 14px}.rk{grid-area:k}.co{grid-area:c}.rp{grid-area:p}.rv2{grid-area:v}.sp{grid-area:s}.nt.d{display:none}.lr.s{grid-template-columns:28px 1fr auto;grid-template-areas:"k c c" "k p v" "k s s" "k g g"}.sg{grid-area:g}.nt.m{display:block;margin-top:3px}}
+.rev{font-weight:600}.rev-b{color:#D4AF37}.rev-m{color:#C0C0C0}.rev-k{color:#CD7F32}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
 </style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
 <div class="tabs"><button class="tab on" data-v="p">Pipeline</button><button class="tab" data-v="k">KPIs</button><button class="tab" data-v="a">New Accounts &amp; Closest to Close</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
@@ -334,13 +335,14 @@ const data={};for(const line of RAW.split("\n")){const[o,s,c]=line.split("|");co
 const names=(r,s)=>s==="New Ship MTD"?(NSA[r]||[]):((data[r]||{})[s]||[]);
 const count=(r,s)=>s==="Prospect"?(PROSPECTS[r]||0):names(r,s).length;
 const op=[.45,.58,.68,.78,.88,1,1,1];const clip=i=>i===0?"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)":"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%)";
+const revSpan=v=>{const t=fmtRev(v),u=t.slice(-1);return`<span class="rev rev-${u==="B"?"b":u==="M"?"m":u==="K"?"k":"x"}">${t}</span>`};
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
 let pinned=null;const sel=document.getElementById("sel"),M=document.getElementById("m");
 GROUPS.forEach(([g,rs])=>rs.forEach(r=>sel.add(new Option(r,r))));
 function showList(r,s,el){const L=document.getElementById("l-"+r);if(!s){L.classList.remove("show");return}
  if(s==="Prospect"){L.innerHTML=`<div class="lh">${r} · Prospect: ${count(r,s)} (counts only)</div>`;L.classList.add("show");return}
  const a=[...names(r,s)].sort((x,y)=>NEW_OCT.has(x)===NEW_OCT.has(y)?x.localeCompare(y):NEW_OCT.has(x)?-1:1);
- L.innerHTML=`<div class="lh">${r} · ${s}: ${a.length}${pinned?" · pinned (click again to unpin)":""}</div>`+(a.length?a.map(c=>`<span class="chip${NEW_OCT.has(c)?" g":""}">${esc(withRev(c))}</span>`).join(""):"<i>None</i>");L.classList.add("show");}
+ L.innerHTML=`<div class="lh">${r} · ${s}: ${a.length}${pinned?" · pinned (click again to unpin)":""}</div>`+(a.length?a.map(c=>`<span class="chip${NEW_OCT.has(c)?" g":""}">${esc(c)}${revOf(c)===undefined?"":` (${revSpan(revOf(c))})`}</span>`).join(""):"<i>None</i>");L.classList.add("show");}
 function render(){const only=sel.value;M.innerHTML="";pinned=null;
  GROUPS.forEach(([g,rs])=>{const v=rs.filter(r=>!only||r===only);if(!v.length)return;M.insertAdjacentHTML("beforeend",`<h2>${g}</h2>`);
  v.forEach(r=>{const d=document.createElement("div");d.className="rep";d.innerHTML=`<div class="rn">${r}</div><div class="funnel"></div><div class="list" id="l-${r}"></div>`;const F=d.querySelector(".funnel");
@@ -372,7 +374,7 @@ const stOf=k=>{if(!k)return null;for(const l of RAW.split("\n")){const[o,s,c]=l.
 function acc(){const hs=n=>HSID[n]?`https://app.hubspot.com/contacts/6029765/record/0-2/${HSID[n]}`:`https://app.hubspot.com/contacts/6029765/objects/0-2/views/all/list?query=${encodeURIComponent(n.split(" / ")[0])}`;
 let S=false;const row=(r,i,rank)=>{const[n,k,rep,note,rk,sig,so]=r,rp=rep.split(" ")[0],v=k?REV[k]:undefined,st=so||stOf(rk);
 return`<div class="lr"><div class="rk">${rank?i+1:""}</div><div class="co"><a href="${hs(n)}" target="_blank" rel="noopener" title="Open in HubSpot">${esc(n)}</a><div class="nt m">${esc(note)}</div></div>
-<div class="rp"><span class="av" style="background:${RC[rp]||"#475569"}">${rp[0]}</span><span>${esc(rep)}</span></div><div class="rv2">${v===undefined?"—":fmtRev(v)}</div>
+<div class="rp"><span class="av" style="background:${RC[rp]||"#475569"}">${rp[0]}</span><span>${esc(rep)}</span></div><div class="rv2">${v===undefined?"—":revSpan(v)}</div>
 <div class="sp">${st?`<span class="pill" style="--c:${PC[st]}">${st}</span>`:"—"}</div><div class="nt d">${esc(note)}</div>${S?`<div class="sg">${esc(sig||"")}</div>`:""}</div>`};
 const hd=`<div class="lr lh2"><div></div><div>Company</div><div>Rep</div><div class="r">Annual Revenue</div><div>HubSpot Status</div><div class="d">Notes</div></div>`,hdS=hd.replace("Notes</div></div>","Notes</div><div>Signal</div></div>").replace('class="lr lh2"','class="lr lh2 s"');
 const board=(t,sub,rows,rank)=>`<div class="lb"><div class="lbh"><h3>${t}</h3><span class="cnt">${rows.length}</span>${sub?`<div class="lt">${sub}</div>`:""}</div>${hd}${rows.map((r,i)=>row(r,i,rank)).join("")}</div>`;
