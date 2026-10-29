@@ -22,7 +22,7 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 #acc{padding:0 24px 40px;display:none}
 .lb{background:#171a21;border:1px solid #262b35;border-radius:12px;margin-bottom:22px;overflow:hidden}.lbh{padding:16px 20px 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.lbh h3{margin:0;font-size:18px;color:#f1f3f7}.lbh .lt{flex-basis:100%;font-size:12px;color:#8b93a3}
 .cnt{background:#262b35;color:#c4cad6;border-radius:10px;padding:1px 9px;font-size:12px;font-weight:600;margin-left:6px}
-.lr{display:grid;grid-template-columns:34px minmax(200px,1.6fr) 170px 120px 130px 2fr;gap:14px;align-items:center;padding:14px 20px;border-top:1px solid #20242d;font-size:14px}.lr:hover{background:#1c2029}
+.lr{display:grid;grid-template-columns:34px minmax(200px,1.6fr) 170px 120px 130px 2fr;gap:14px;align-items:center;padding:14px 20px;border-top:1px solid #20242d;font-size:14px}.lr:hover{background:#1c2029}.lr.s[data-lbl]{cursor:grab}.lr.drg{opacity:.4}.lr.dov{box-shadow:inset 0 2px 0 #3b82f6}.rk .mv{display:flex;flex-direction:column;gap:2px;align-items:center;margin-top:3px}.rk .mv button{background:#12151b;border:1px solid #2c323d;color:#aab1be;border-radius:4px;font-size:10px;line-height:1;padding:2px 5px;cursor:pointer}.rk .mv button:hover{color:#fff;border-color:#3b82f6}.obar{display:flex;gap:6px;align-items:center;flex-basis:100%;margin-top:6px}
 .lh2{position:sticky;top:0;background:#12151b;z-index:1;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#8b93a3;font-weight:600;padding:9px 20px}.lh2:hover{background:#12151b}.r,.rv2{text-align:right}
 .rk{color:#5b6475;font-weight:700;font-size:15px;text-align:center}.co a{color:#f1f3f7;font-weight:700;font-size:15.5px;text-decoration:none}.co a:hover{text-decoration:underline}
 .rp{display:flex;align-items:center;gap:8px;color:#d6dae2}.av{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex:none}
@@ -514,7 +514,7 @@ return`<div class="lr"><div class="rk">${rank?i+1:""}</div><div class="co"><a hr
 <div class="sp">${st?`<span class="pill" style="--c:${PC[st]}">${st}</span>`:"—"}</div><div class="nt d" data-co="${esc(n)}">${esc(note)}</div>${S?`<div class="sg">${esc(sig||"")}</div>`:""}</div>`};
 const hd=`<div class="lr lh2"><div></div><div>Company</div><div>Rep</div><div class="r">Annual Revenue</div><div>HubSpot Status</div><div class="d">Notes</div></div>`,hdS=hd.replace("Notes</div></div>","Notes</div><div>Signal</div></div>").replace('class="lr lh2"','class="lr lh2 s"');
 const board=(t,sub,rows,rank,ed)=>`<div class="lb${ed?" ed":""}"><div class="lbh"><h3>${t}</h3><span class="cnt">${rows.length}</span>${sub?`<div class="lt">${sub}</div>`:""}</div>${hd}${rows.map((r,i)=>row(r,i,rank)).join("")}</div>`;
-const stc=r=>r[6]||stOf(r[4])||"Unknown";S=true;const cc=AC.c.map((r,i)=>row(r,i,true).replace('class="lr"',`class="lr s" data-st="${stc(r)}"`)).join("");S=false;
+const stc=r=>r[6]||stOf(r[4])||"Unknown";S=true;const cc=AC.c.map((r,i)=>row(r,i,true).replace('class="lr"',`class="lr s" data-st="${stc(r)}" data-lbl="${esc(r[0])}"`)).join("");S=false;
 const FS=["All","Closed Won","Contracting","PSD","RFP","QP","DMC","Prospect","Unknown"],fc=s=>s==="All"?AC.c.length:AC.c.filter(r=>stc(r)===s).length;
 const chips=`<div class="fch">${FS.map(s=>`<button class="fc${s==="All"?" on":""}" data-s="${s}" ${s!=="All"&&!fc(s)?"disabled":""}>${s} <b>${fc(s)}</b></button>`).join("")}</div>`;
 document.getElementById("acc").innerHTML=board("New Shipping Accounts (MTD)","New to Circle in October (never shipped with us before)",AC.n,true,true)+board("Reactivations (not counted as new)","Shipped with Circle before",AC.r,true)+`<div class="lb ed"><div class="lbh"><h3>Closest to Close</h3><span class="cnt">${AC.c.length}</span><div class="lt">Potential new business only (no first load yet). Ranked by HubSpot status (Closed Won → Prospect → unknown), then two-way engagement, then recent activity; leads with a booked meeting can rank above their status tier. Company names open HubSpot (login required).</div>${chips}</div>${hdS}${cc}</div>`}
@@ -530,6 +530,24 @@ const msg=t=>{const m=document.getElementById("ntm");m.textContent=t;setTimeout(
 document.getElementById("ntx").onclick=async()=>{const s=JSON.stringify(N,null,2);try{await navigator.clipboard.writeText(s);msg(`Copied ${Object.keys(N).length} edited note(s)`)}catch(e){prompt("Copy edited notes JSON:",s)}};
 document.getElementById("ntr").onclick=()=>{if(!Object.keys(N).length){msg("No edits to reset");return}if(confirm("Reset all edited notes to the original text?")){N={};localStorage.removeItem(KEY);apply();msg("Notes reset")}};
 apply()})();document.querySelectorAll(".fc:not(.nb)").forEach(b=>b.onclick=()=>{document.querySelectorAll(".fc:not(.nb)").forEach(x=>x.classList.toggle("on",x===b));const s=b.dataset.s;document.querySelectorAll(".lr.s[data-st]").forEach(r=>r.style.display=s==="All"||r.dataset.st===s?"":"none")});
+(function(){const KEY="ctc_order_v1",rows=[...document.querySelectorAll(".lr.s[data-lbl]")];if(!rows.length)return;const box=rows[0].parentElement,def=rows.map(r=>r.dataset.lbl);
+const fch=box.querySelector(".fch");fch.insertAdjacentHTML("afterend",`<div class="obar"><span class="ntm" style="margin:0">Drag rows or use ▲▼ to reorder (saved in this browser).</span><button id="ocp" class="fc nb">Copy order</button><button id="ors" class="fc nb">Reset order</button><span id="om" class="ntm"></span></div>`);
+const cur=()=>[...box.querySelectorAll(".lr.s[data-lbl]")];
+const num=()=>{cur().forEach((r,i)=>{r.querySelector(".rk .n").textContent=i+1})};
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(cur().map(r=>r.dataset.lbl)));num()};
+const place=ord=>{const m=new Map(rows.map(r=>[r.dataset.lbl,r]));const seen=new Set(ord);const fresh=def.filter(l=>!seen.has(l));[...fresh,...ord.filter(l=>m.has(l))].forEach(l=>box.appendChild(m.get(l)));num()};
+rows.forEach(r=>{const k=r.querySelector(".rk");k.innerHTML=`<div class="n"></div><div class="mv"><button class="up" title="Move up" aria-label="Move up">▲</button><button class="dn" title="Move down" aria-label="Move down">▼</button></div>`;
+ k.querySelector(".up").onclick=e=>{e.stopPropagation();const p=r.previousElementSibling;if(p&&p.matches(".lr.s[data-lbl]")){box.insertBefore(r,p);save()}};
+ k.querySelector(".dn").onclick=e=>{e.stopPropagation();const n=r.nextElementSibling;if(n&&n.matches(".lr.s[data-lbl]")){box.insertBefore(n,r);save()}};
+ r.draggable=true;r.addEventListener("dragstart",e=>{if(e.target.closest&&e.target.closest("[contenteditable=true]")){e.preventDefault();return}r.classList.add("drg");e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",r.dataset.lbl)});
+ r.addEventListener("dragend",()=>{r.classList.remove("drg");cur().forEach(x=>x.classList.remove("dov"))});
+ r.addEventListener("dragover",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r)return;e.preventDefault();cur().forEach(x=>x.classList.toggle("dov",x===r))});
+ r.addEventListener("drop",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r)return;e.preventDefault();const a=cur();box.insertBefore(d,a.indexOf(d)<a.indexOf(r)?r.nextSibling:r);r.classList.remove("dov");save()})});
+let sv=null;try{sv=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){}place(Array.isArray(sv)?sv:def);
+const msg=t=>{const m=document.getElementById("om");m.textContent=t;setTimeout(()=>m.textContent="",2500)};
+document.getElementById("ors").onclick=()=>{localStorage.removeItem(KEY);place(def);msg("Order reset")};
+document.getElementById("ocp").onclick=async()=>{const t=cur().map(r=>r.dataset.lbl).join(" | ");try{await navigator.clipboard.writeText(t);msg("Order copied")}catch(e){prompt("Copy order:",t)}};})();
+
 const V={p:"pv",k:"kpi",a:"acc"},H={p:"#pipeline",a:"#accounts"};
 function show(v){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.v===v));for(const k in V)document.getElementById(V[k]).style.display=k===v?(k==="p"?"":"block"):"none";history.replaceState(null,"",H[v]||location.pathname)}
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
