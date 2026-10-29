@@ -37,7 +37,7 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 .lb.ed .nt.d.edited::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;margin-right:6px;vertical-align:middle}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
 </style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
-<div class="tabs"><button class="tab on" data-v="p">Pipeline</button><button class="tab" data-v="k">KPIs</button><button class="tab" data-v="a">New Accounts &amp; Closest to Close</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
+<div class="tabs"><button class="tab on" data-v="k">KPIs</button><button class="tab" data-v="p">Pipeline</button><button class="tab" data-v="a">New Accounts &amp; Closest to Close</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
 <span class="legend"><span><i class="sw" style="background:#123d25;border:1px solid #2f8f55"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
 <main id="m"></main></div><section id="kpi"></section><section id="acc"></section><script>
 const RAW = `Nathan Beaver|Decision Maker Confirmed|astrochemical.com
@@ -401,8 +401,8 @@ const msg=t=>{const m=document.getElementById("ntm");m.textContent=t;setTimeout(
 document.getElementById("ntx").onclick=async()=>{const s=JSON.stringify(N,null,2);try{await navigator.clipboard.writeText(s);msg(`Copied ${Object.keys(N).length} edited note(s)`)}catch(e){prompt("Copy edited notes JSON:",s)}};
 document.getElementById("ntr").onclick=()=>{if(!Object.keys(N).length){msg("No edits to reset");return}if(confirm("Reset all edited notes to the original text?")){N={};localStorage.removeItem(KEY);apply();msg("Notes reset")}};
 apply()})();document.querySelectorAll(".fc:not(.nb)").forEach(b=>b.onclick=()=>{document.querySelectorAll(".fc:not(.nb)").forEach(x=>x.classList.toggle("on",x===b));const s=b.dataset.s;document.querySelectorAll(".lr.s[data-st]").forEach(r=>r.style.display=s==="All"||r.dataset.st===s?"":"none")});
-const V={p:"pv",k:"kpi",a:"acc"},H={k:"#kpi",a:"#accounts"};
+const V={p:"pv",k:"kpi",a:"acc"},H={p:"#pipeline",a:"#accounts"};
 function show(v){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.v===v));for(const k in V)document.getElementById(V[k]).style.display=k===v?(k==="p"?"":"block"):"none";history.replaceState(null,"",H[v]||location.pathname)}
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
-if(location.hash==="#kpi")show("k");else if(location.hash==="#accounts")show("a");
+if(location.hash==="#pipeline")show("p");else if(location.hash==="#accounts")show("a");else show("k");
 </script></body></html>
