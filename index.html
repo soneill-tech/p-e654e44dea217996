@@ -36,56 +36,84 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 .lb.ed .nt.d[contenteditable]:focus{border-color:#4b5872;background:#12151b;color:#e6e9ef}
 .lb.ed .nt.d.edited::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;margin-right:6px;vertical-align:middle}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
-</style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 21, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
+</style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Oct 29, 2026 · hover an arrow to see companies, click to pin · ▲ = moved into stage this week</div></header>
 <div class="tabs"><button class="tab on" data-v="k">KPIs</button><button class="tab" data-v="p">Pipeline</button><button class="tab" data-v="a">New Accounts &amp; Closest to Close</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
 <span class="legend"><span><i class="sw" style="background:#123d25;border:1px solid #2f8f55"></i>Entered status in October</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
 <main id="m"></main></div><section id="kpi"></section><section id="acc"></section><script>
-const RAW = `Nathan Beaver|Decision Maker Confirmed|Mid-South Food Bank
+const RAW = `Steve O'Neill|Decision Maker Confirmed|Tooling Tech Group
+Nathan Beaver|Qualified Prospect|Wiese USA
+Addison Parker|Decision Maker Confirmed|Summit Refrigerants
+Addison Parker|Qualified Prospect|UAC
+Addison Parker|Qualified Prospect|The Kraft Group
+Nathan Beaver|Decision Maker Confirmed|Mid-South Food Bank
 Nathan Beaver|Pitched/Solution Delivered|Corporate eWaste Solutions
-Nathan Beaver|Decision Maker Confirmed|astrochemical.com
-Nathan Beaver|Decision Maker Confirmed|tylerironandmetal.com
-Nathan Beaver|Decision Maker Confirmed|signatureparty.com
-Nathan Beaver|Qualified Prospect|heartlandsheets.com
-Addison Parker|Decision Maker Confirmed|channellumber.com
-Addison Parker|Decision Maker Confirmed|bonsuisse.com
-Addison Parker|Qualified Prospect|laurand.net
-Addison Parker|Decision Maker Confirmed|siteprorentals.com
+Nathan Beaver|Qualified Prospect|Tego Systems
+Addison Parker|Decision Maker Confirmed|RobertKarpContainer
+Addison Parker|Decision Maker Confirmed|AGI
+Nathan Beaver|Qualified Prospect|LAVAZZA
+Nathan Beaver|Decision Maker Confirmed|Supreme International
+Simran Subramanian|Closed won|BRT Extrusions
+Nicholas McNamara|Closed won|3M Company
+Nicholas McNamara|Closed won|L.F. GEORGE
+Addison Parker|Closed won|Caldera Manufacturing Group
+Mia Medjedovic|Qualified Prospect|Reliance Steel & Aluminum
 Addison Parker|Decision Maker Confirmed|teamcertified.com
-Addison Parker|Decision Maker Confirmed|ennis.com
-Addison Parker|Decision Maker Confirmed|primematerials.com
-Addison Parker|Qualified Prospect|kingdompipeandsteel.com
-Addison Parker|Qualified Prospect|surplusmetalscorp.com
-Addison Parker|Decision Maker Confirmed|vedco.com
-Addison Parker|Decision Maker Confirmed|adfoods.com
 Addison Parker|Qualified Prospect|precisionladders.com
+Addison Parker|Qualified Prospect|ennis.com
+Addison Parker|Decision Maker Confirmed|vedco.com
+Addison Parker|Decision Maker Confirmed|primematerials.com
+Addison Parker|Decision Maker Confirmed|bonsuisse.com
+Addison Parker|Qualified Prospect|olddutchmustard.com
+Nathan Beaver|Qualified Prospect|heartlandsheets.com
+Addison Parker|Decision Maker Confirmed|diversifiedauto.com
+Nathan Beaver|Decision Maker Confirmed|tylerironandmetal.com
+Addison Parker|Qualified Prospect|surplusmetalscorp.com
+Nathan Beaver|Decision Maker Confirmed|signatureparty.com
+Addison Parker|Qualified Prospect|laurand.net
+Addison Parker|Decision Maker Confirmed|channellumber.com
+Addison Parker|Decision Maker Confirmed|adfoods.com
+Addison Parker|Decision Maker Confirmed|siteprorentals.com
+Addison Parker|Qualified Prospect|kingdompipeandsteel.com
+Addison Parker|Decision Maker Confirmed|E. C. Barton & Co.
 Nathan Beaver|Qualified Prospect|Strait Regional Centre for Education
-Addison Parker|Decision Maker Confirmed|vantonecf.com
-Addison Parker|Decision Maker Confirmed|oceanautomotivegroup.com
+Addison Parker|Decision Maker Confirmed|Pavion
+Simran Subramanian|Closed won|Hanwha Aerospace
+Addison Parker|Decision Maker Confirmed|centurionibc.com
 Addison Parker|Decision Maker Confirmed|sweetgrassltd.com
-Addison Parker|Decision Maker Confirmed|saladcosmo.com
-Addison Parker|Qualified Prospect|hallcoindustries.com
+Addison Parker|Decision Maker Confirmed|vantonecf.com
 Addison Parker|Decision Maker Confirmed|henrytile.com
 Addison Parker|Decision Maker Confirmed|montalvans.com
 Addison Parker|Qualified Prospect|parklandseedpotatoes.com
-Addison Parker|Decision Maker Confirmed|centurionibc.com
+Addison Parker|Qualified Prospect|hallcoindustries.com
+Addison Parker|Decision Maker Confirmed|saladcosmo.com
+Addison Parker|Decision Maker Confirmed|oceanautomotivegroup.com
+Addison Parker|Decision Maker Confirmed|Cummins-Allison
+Mia Medjedovic|Qualified Prospect|Wabtec Corporation
 Addison Parker|Decision Maker Confirmed|SnowWolf Plows
+Addison Parker|Pitched/Solution Delivered|Lodge Lumber
+Addison Parker|Pitched/Solution Delivered|MISA Metal Processing
+Mia Medjedovic|Decision Maker Confirmed|Commercial Metals Company (CMC)
 Addison Parker|Decision Maker Confirmed|CMF Global
 Addison Parker|Qualified Prospect|MP Husky
-Addison Parker|Pitched/Solution Delivered|MISA Metal Processing
-Addison Parker|Pitched/Solution Delivered|Lodge Lumber
 Addison Parker|Decision Maker Confirmed|Great Canadian Entertainment
 Nathan Beaver|Decision Maker Confirmed|Bhate
-Mia Medjedovic|Decision Maker Confirmed|Infrastructure Solutions Group
 Mia Medjedovic|Decision Maker Confirmed|plastechtooling.com
 Mia Medjedovic|Decision Maker Confirmed|BDK
 Mia Medjedovic|Closed won|Custom Door Parts
+Mia Medjedovic|Pitched/Solution Delivered|Mendocino Redwood
+Steve O'Neill|Qualified Prospect|fcifloors.com
 Nicholas McNamara|Decision Maker Confirmed|ReNew Plastics
+Mia Medjedovic|Qualified Prospect|Phinia
+Nicholas McNamara|Closed won|ARMI
+Mia Medjedovic|RFP Confirmed|Betafence USA
 Addison Parker|Decision Maker Confirmed|Cascade Waterworks Manufacturing
 Nicholas McNamara|Decision Maker Confirmed|Trumbull Manufacturing
 Mia Medjedovic|Decision Maker Confirmed|AUMOVIO
-Mia Medjedovic|Decision Maker Confirmed|U.S. Axle
 Mia Medjedovic|Pitched/Solution Delivered|Saf-T-Cab
+Mia Medjedovic|Decision Maker Confirmed|U.S. Axle
 Mia Medjedovic|Decision Maker Confirmed|Port of Memphis
+Nathan Beaver|Qualified Prospect|Yerba Madre
+Nicholas McNamara|Decision Maker Confirmed|Perrigo Company
 Addison Parker|Qualified Prospect|US Bag Manufacturing
 Mia Medjedovic|Decision Maker Confirmed|Bison Trailers
 Mia Medjedovic|Decision Maker Confirmed|Port Saint John
@@ -95,115 +123,134 @@ Mia Medjedovic|Closed won|RAINBOW FERTILIZER LLC
 Addison Parker|Decision Maker Confirmed|Voss Manufacturing
 Addison Parker|Decision Maker Confirmed|AVL Manufacturing
 Nicholas McNamara|Closed won|Bobcat Plus
-Nicholas McNamara|Closed won|L.F. GEORGE
+Nathan Beaver|Decision Maker Confirmed|eBay
+Nicholas McNamara|Closed won|MSC Industrial Direct Co., Inc
+Nicholas McNamara|Decision Maker Confirmed|Image Craft
+Mia Medjedovic|Closed won|Alta Recycling
+Nicholas McNamara|Closed won|Leaf Home
 Mia Medjedovic|Closed won|Redford Building Supply
 Mia Medjedovic|Closed won|Tidal Vision
 Mia Medjedovic|Qualified Prospect|Capital Pump & Equipment
-Nathan Beaver|Qualified Prospect|CAM Industrial Solutions
 Nathan Beaver|Qualified Prospect|Grand River Dam Authority
 Addison Parker|Decision Maker Confirmed|Midwest Geothermal
+Nathan Beaver|Qualified Prospect|CAM Industrial Solutions
 Mia Medjedovic|Closed won|BioTown Ag
 Addison Parker|Decision Maker Confirmed|Timberline Manufacturing
+Kahekili Barrozo|Closed won|Howmet Aerospace
+Steve O'Neill|Decision Maker Confirmed|Invio Automation
+Mia Medjedovic|Closed won|Tidal Grow Agriscience
 Mia Medjedovic|Closed won|IMA
-Nicholas McNamara|Qualified Prospect|Epl Feed, Llc
 Mia Medjedovic|Qualified Prospect|Direct Scaffold Supply
+Nicholas McNamara|Qualified Prospect|Epl Feed, Llc
 Addison Parker|Decision Maker Confirmed|LaGrange Products
 Addison Parker|Decision Maker Confirmed|ErgonArmor
 Addison Parker|Decision Maker Confirmed|Cardinal Glass - Portage
-Nicholas McNamara|Decision Maker Confirmed|Artopex
 Nathan Beaver|Decision Maker Confirmed|Efficiency Production
+Nicholas McNamara|Decision Maker Confirmed|Artopex
 Addison Parker|Qualified Prospect|Housley Communications Inc
 Nathan Beaver|Decision Maker Confirmed|Dave Steel
 Nathan Beaver|Decision Maker Confirmed|MEP Technologies
-Mia Medjedovic|Closed won|Alta Recycling
 Mia Medjedovic|Qualified Prospect|Manac
-Mia Medjedovic|Qualified Prospect|Soyventis
+Nicholas McNamara|Decision Maker Confirmed|McAsphalt Industries
 Mia Medjedovic|Closed won|Varichem International
 Nathan Beaver|Decision Maker Confirmed|Purilum
-Nicholas McNamara|Qualified Prospect|Maxon Lift Corp
-Mia Medjedovic|Closed won|Tidal Grow Agriscience
+Mia Medjedovic|Qualified Prospect|Soyventis
+Nicholas McNamara|Pitched/Solution Delivered|Maxon Lift Corp
 Addison Parker|Decision Maker Confirmed|Fuller Brothers Inc
+Addison Parker|Decision Maker Confirmed|Missouri Petroleum Products Co.
 Simran Subramanian|Decision Maker Confirmed|Fermilab
 Nathan Beaver|Qualified Prospect|Always Available Wholesale & Supply Services Corp
 Mia Medjedovic|Closed won|SBFI
 Mia Medjedovic|Closed won|Frulact
-Nathan Beaver|Decision Maker Confirmed|Citrojugo Sa De Cv
+Addison Parker|Decision Maker Confirmed|RESMART
+Simran Subramanian|Decision Maker Confirmed|Elgiloy
 Kahekili Barrozo|Closed won|Webstone
 Nicholas McNamara|Closed won|Indevco North America
+Mia Medjedovic|Decision Maker Confirmed|Specialty Rolled Metals
 Steve O'Neill|Decision Maker Confirmed|Select Genetics
-Simran Subramanian|Decision Maker Confirmed|Ehresmann Engineering
+Mia Medjedovic|Decision Maker Confirmed|Tube Supply
 Nicholas McNamara|Closed won|Engie
 Addison Parker|Closed won|HJ Martin & Son
-Steve O'Neill|Decision Maker Confirmed|Panavid
+Mia Medjedovic|Decision Maker Confirmed|IHI Turbo America
 Simran Subramanian|Decision Maker Confirmed|Greco Aluminum Railings
-Nicholas McNamara|Decision Maker Confirmed|Gilson Graphics
-Mia Medjedovic|Contracting|MC Dean
 Mia Medjedovic|Decision Maker Confirmed|Elgin Industries, Inc.
+Steve O'Neill|Decision Maker Confirmed|Panavid
+Mia Medjedovic|Contracting|MC Dean
+Nicholas McNamara|Decision Maker Confirmed|Gilson Graphics
 Nicholas McNamara|Closed won|Hickory Harvest Foods
 Nathan Beaver|Decision Maker Confirmed|Continental
 Addison Parker|Qualified Prospect|EGR
 Simran Subramanian|Decision Maker Confirmed|Imperial Tobacco Canada
 Steve O'Neill|Decision Maker Confirmed|Shop LC
 Nathan Beaver|Decision Maker Confirmed|English Construction Company
-Nicholas McNamara|Closed won|Flow Pro Products
-Mia Medjedovic|Qualified Prospect|Phinia
 Nathan Beaver|Decision Maker Confirmed|Pochteca
-Nathan Beaver|Decision Maker Confirmed|Comex
-Steve O'Neill|Qualified Prospect|fcifloors.com
+Nicholas McNamara|Closed won|Flow Pro Products
+Nicholas McNamara|Decision Maker Confirmed|Finley Asphalt
+Nathan Beaver|Decision Maker Confirmed|Hoyer
 Nathan Beaver|Decision Maker Confirmed|Ruhrpumpen
+Nicholas McNamara|Decision Maker Confirmed|Dart Advantage Warehousing
 Nathan Beaver|Decision Maker Confirmed|Lectronics
 Mia Medjedovic|Closed won|Atkins Machinery
-Nathan Beaver|Decision Maker Confirmed|Traffic Management, Inc
 Nicholas McNamara|Decision Maker Confirmed|Stacy and Witbeck, Inc.
-Nathan Beaver|Decision Maker Confirmed|Structure Tone
 Nathan Beaver|Decision Maker Confirmed|EXP
 Mia Medjedovic|Qualified Prospect|Dutra Group
+Nathan Beaver|Decision Maker Confirmed|Structure Tone
+Nathan Beaver|Decision Maker Confirmed|Traffic Management, Inc
+Steve O'Neill|Decision Maker Confirmed|Dillmeier Glass
 Simran Subramanian|Decision Maker Confirmed|Anaheim Extrusion Company
 Simran Subramanian|Qualified Prospect|Canada Nickel
-Nathan Beaver|Qualified Prospect|Yerba Madre
 Simran Subramanian|Decision Maker Confirmed|Lorin
 Simran Subramanian|Qualified Prospect|Raufoss Technology
 Nathan Beaver|Qualified Prospect|Borsheim Crane Service
 Mia Medjedovic|Closed won|Black & McDonald
 Nicholas McNamara|Closed won|Times Publishing Company dba Tampa Bay Times
-Nathan Beaver|Decision Maker Confirmed|Aegle Nutrition
-Addison Parker|Decision Maker Confirmed|Midco
 Addison Parker|Decision Maker Confirmed|Rapala VMC
+Mia Medjedovic|Decision Maker Confirmed|Transnet Inc.
 Mia Medjedovic|Closed won|AgriGro
 Mia Medjedovic|Closed won|American Battery Technology Co.
 Simran Subramanian|Decision Maker Confirmed|Alumicor Limited
 Nicholas McNamara|Closed won|Wholesale Home/DJ Direct Warehousing
+Addison Parker|Decision Maker Confirmed|Silikal America
+Addison Parker|Decision Maker Confirmed|ASM Modular Systems (Kingspan)
 Steve O'Neill|Decision Maker Confirmed|Intermodal Tank Transport
 Addison Parker|Closed won|AD Process Equipment
 Simran Subramanian|Qualified Prospect|Lite Gauge Metals,
+Nicholas McNamara|Decision Maker Confirmed|Cummings Printing
+Steve O'Neill|Decision Maker Confirmed|Bri-Steel Manufacturing
 Addison Parker|Closed won|Republic Bag Inc
-Mia Medjedovic|Pitched/Solution Delivered|Mendocino Redwood
+Mia Medjedovic|Decision Maker Confirmed|Rukert Terminals
+Nicholas McNamara|Closed won|DSB Technologies
 Mia Medjedovic|Closed won|Universal Cement
 Kahekili Barrozo|Closed won|Kawneer
 Steve O'Neill|Decision Maker Confirmed|AMC Theatres
 Addison Parker|Decision Maker Confirmed|Rimex
-Mia Medjedovic|Closed won|Killick Aerospace
-Simran Subramanian|Decision Maker Confirmed|Corley MFG
 Nicholas McNamara|Decision Maker Confirmed|Future Transfer
 Nathan Beaver|Decision Maker Confirmed|Roberts Tire Sales
 Nathan Beaver|Decision Maker Confirmed|GIANT
+Nicholas McNamara|Decision Maker Confirmed|Korex
 Mia Medjedovic|Closed won|Integrity Beverage/Spectrum Foods
-Addison Parker|Decision Maker Confirmed|Caruthers Raisin Packing Co., Inc.
+Mia Medjedovic|Decision Maker Confirmed|McCue Corporation
+Mia Medjedovic|Closed won|Killick Aerospace
+Simran Subramanian|Decision Maker Confirmed|Corley MFG
+Kahekili Barrozo|Closed won|Reliable
 Addison Parker|Qualified Prospect|Hyve Solutions (TD SYNNEX)
-Nathan Beaver|Decision Maker Confirmed|Clarus
+Nathan Beaver|Decision Maker Confirmed|SimpleTire
 Addison Parker|Decision Maker Confirmed|Nardone Brothers Baking Co
 Nicholas McNamara|Decision Maker Confirmed|Whitehall Products
+Addison Parker|Decision Maker Confirmed|Lane Press
+Simran Subramanian|Decision Maker Confirmed|Ferroglobe
 Addison Parker|Decision Maker Confirmed|Power/Mation
-Addison Parker|Qualified Prospect|ADVANCE TIRE
+Mia Medjedovic|Decision Maker Confirmed|GreenPoint Ag
 Addison Parker|Decision Maker Confirmed|Doug Ashy Building Materials
+Nicholas McNamara|Decision Maker Confirmed|TransAlta
 Mia Medjedovic|Decision Maker Confirmed|TMP Technologies
 Mia Medjedovic|Closed won|Stoughton Trailers
 Simran Subramanian|Decision Maker Confirmed|ABC ALUMINUM
-Nathan Beaver|Decision Maker Confirmed|Werfen
-Addison Parker|Closed won|Caldera Manufacturing Group
+Addison Parker|Decision Maker Confirmed|HPC Foodservice
+Nathan Beaver|Decision Maker Confirmed|Babcock & Wilcox
 Mia Medjedovic|Closed won|JD.com
-Addison Parker|Decision Maker Confirmed|Pavion
 Simran Subramanian|Decision Maker Confirmed|Brewer Science
+Mia Medjedovic|Decision Maker Confirmed|Glantz
 Nathan Beaver|Decision Maker Confirmed|Weldco-Beales Manufacturing
 Mia Medjedovic|Decision Maker Confirmed|Fiberon
 Nicholas McNamara|Pitched/Solution Delivered|Whirlwind Steel Buildings
@@ -215,103 +262,79 @@ Nathan Beaver|Decision Maker Confirmed|BIOLASE Inc
 Simran Subramanian|Decision Maker Confirmed|Swanson Health Products
 Nathan Beaver|Qualified Prospect|Northland Power
 Simran Subramanian|Pitched/Solution Delivered|Can Art Aluminum Extrusion
-Nicholas McNamara|Closed won|ARMI
 Nathan Beaver|Decision Maker Confirmed|Woodman's Food Market
 Addison Parker|Qualified Prospect|Geiger
 Nicholas McNamara|Decision Maker Confirmed|Panel Processing
-Kahekili Barrozo|Closed won|Reliable
-Nathan Beaver|Decision Maker Confirmed|Osterman
+Nathan Beaver|Decision Maker Confirmed|Orkin LLC
+Mia Medjedovic|Decision Maker Confirmed|Motor Components
+Simran Subramanian|Closed won|Kaiser Aluminum
 Nicholas McNamara|Decision Maker Confirmed|Vox Printing
+Mia Medjedovic|Qualified Prospect|Great Dane
 Addison Parker|Decision Maker Confirmed|Fabuwood Cabinetry
 Mia Medjedovic|Pitched/Solution Delivered|Penn Pallet
 Mia Medjedovic|Qualified Prospect|Basden Steel Corporation
-Nathan Beaver|Decision Maker Confirmed|Supreme International
 Nicholas McNamara|Closed won|Lee Storage Company
 Mia Medjedovic|Closed won|TIMAC AGRO USA
 Simran Subramanian|Decision Maker Confirmed|Con-Vey
 Mia Medjedovic|Closed won|Spectrum Food Group
 Steve O'Neill|Decision Maker Confirmed|TFH Publications
-Nathan Beaver|Decision Maker Confirmed|SMS group
+Mia Medjedovic|Decision Maker Confirmed|Heidelberg
+Simran Subramanian|Decision Maker Confirmed|Consolidated Metal Products
+Addison Parker|Decision Maker Confirmed|Universal Lighting Technologies
+Nicholas McNamara|Closed won|Novelis
 Steve O'Neill|Decision Maker Confirmed|EuroKera
 Mia Medjedovic|Decision Maker Confirmed|Dryclean USA
 Mia Medjedovic|Qualified Prospect|GMS Mine Repair & Maintenance
-Nicholas McNamara|Closed won|DSB Technologies
 Addison Parker|Decision Maker Confirmed|Canusa Wood
 Simran Subramanian|Decision Maker Confirmed|Silver Star Brands
 Nicholas McNamara|Qualified Prospect|Alpine Power Systems
 Addison Parker|Decision Maker Confirmed|Treadmaxx Tire Distributors Inc
-Nicholas McNamara|Closed won|Leaf Home
-Steve O'Neill|Decision Maker Confirmed|Invio Automation
+Nicholas McNamara|Decision Maker Confirmed|American Litho
 Kahekili Barrozo|Closed won|Basic Metals Inc
 Mia Medjedovic|Closed won|Forge Precision/Forge Die & Tool Company
 Simran Subramanian|Pitched/Solution Delivered|Hoover Treated Wood Products
 Nicholas McNamara|Decision Maker Confirmed|Exotech
 Mia Medjedovic|Closed won|QuikTrip Corporation
-Simran Subramanian|Closed won|BRT Extrusions
-Kahekili Barrozo|Closed won|Howmet Aerospace
+Simran Subramanian|Decision Maker Confirmed|Coenen Mechanical
+Mia Medjedovic|Decision Maker Confirmed|Seedway
 Addison Parker|Decision Maker Confirmed|Brady
 Nathan Beaver|Decision Maker Confirmed|Sparton
+Steve O'Neill|Decision Maker Confirmed|PENCO
+Mia Medjedovic|Decision Maker Confirmed|Hurst Boiler & Welding
 Steve O'Neill|Decision Maker Confirmed|Daltile
-Nathan Beaver|Qualified Prospect|LAVAZZA
 Mia Medjedovic|Closed won|Ulbrich
-Simran Subramanian|Decision Maker Confirmed|Ferroglobe
-Steve O'Neill|Decision Maker Confirmed|Astenjohnson
-Simran Subramanian|Qualified Prospect|Clark Construction Group
-Simran Subramanian|Closed won|Citi Trends
-Nathan Beaver|Decision Maker Confirmed|Easterday Farms
-Mia Medjedovic|Closed won|Dix Block & Supply Company
-Mia Medjedovic|RFP Confirmed|Betafence USA
-Nathan Beaver|Decision Maker Confirmed|Sustana
-Nathan Beaver|Decision Maker Confirmed|SawStop
-Nathan Beaver|Decision Maker Confirmed|eBay
-Mia Medjedovic|Pitched/Solution Delivered|Plastics Engineering
-Nathan Beaver|Decision Maker Confirmed|Alvogen
-Nathan Beaver|Decision Maker Confirmed|Keytronic
 Simran Subramanian|Decision Maker Confirmed|Sun Country Inc
-Nathan Beaver|Decision Maker Confirmed|TAG Manufacturing
 Mia Medjedovic|Decision Maker Confirmed|ENC
-Nathan Beaver|Decision Maker Confirmed|United Malt
-Mia Medjedovic|Decision Maker Confirmed|Commercial Metals Company (CMC)
-Mia Medjedovic|Qualified Prospect|Wabtec Corporation
-Nicholas McNamara|Closed won|True Manufacturing
+Nathan Beaver|Decision Maker Confirmed|Alvogen
+Nathan Beaver|Decision Maker Confirmed|TAG Manufacturing
+Mia Medjedovic|Pitched/Solution Delivered|Plastics Engineering
+Mia Medjedovic|Decision Maker Confirmed|Steel of West Virginia
+Nicholas McNamara|Closed won|Florim USA
 Nicholas McNamara|Closed won|New Flyer
 Simran Subramanian|Qualified Prospect|Pyrotek
-Simran Subramanian|Decision Maker Confirmed|Maxim Crane Works
-Nicholas McNamara|Closed won|MSC Industrial Direct Co., Inc
-Mia Medjedovic|Closed won|NIBCO
-Nicholas McNamara|Decision Maker Confirmed|Perrigo Company
-Nathan Beaver|Decision Maker Confirmed|Pacific Coast Producers
-Nicholas McNamara|Closed won|3M Company
-Simran Subramanian|Closed won|Hanwha Aerospace
-Mia Medjedovic|Decision Maker Confirmed|Ducommun Incorporated
-Nicholas McNamara|Closed won|Florim USA
-Addison Parker|Decision Maker Confirmed|Cummins-Allison
-Simran Subramanian|Closed won|Kaiser Aluminum
-Mia Medjedovic|Qualified Prospect|Great Dane
 Nicholas McNamara|Closed won|Indevco (Group and Plastics)
-Addison Parker|Decision Maker Confirmed|AGI
-Nicholas McNamara|Closed won|Verista
-Steve O'Neill|Qualified Prospect|Alcoa
-Kahekili Barrozo|Closed won|Arconic
-Mia Medjedovic|Closed won|Day & Zimmermann
 Nathan Beaver|RFP Confirmed|Pyxus International
-Nicholas McNamara|Closed won|Boart Longyear
+Steve O'Neill|Decision Maker Confirmed|Astenjohnson
+Simran Subramanian|Qualified Prospect|Clark Construction Group
+Nathan Beaver|Decision Maker Confirmed|SawStop
+Simran Subramanian|Closed won|Citi Trends
+Nathan Beaver|Decision Maker Confirmed|The Solberg
+Mia Medjedovic|Closed won|Dix Block & Supply Company
+Nicholas McNamara|Closed won|True Manufacturing
+Steve O'Neill|Qualified Prospect|Alcoa
+Nicholas McNamara|Closed won|Verista
+Kahekili Barrozo|Closed won|Arconic
 Addison Parker|Pitched/Solution Delivered|MIDLAND FOODS DIST, INC
-Addison Parker|Decision Maker Confirmed|Universal Lighting Technologies
-Mia Medjedovic|Qualified Prospect|Visteon
-Nathan Beaver|Decision Maker Confirmed|Quality Bicycle Products
-Steve O'Neill|Decision Maker Confirmed|PJP
-Mia Medjedovic|Qualified Prospect|Tutor Perini
-Nicholas McNamara|Closed won|Novelis
-Mia Medjedovic|Qualified Prospect|Reliance Steel & Aluminum
-Nathan Beaver|Decision Maker Confirmed|National Beverage Corp
-Mia Medjedovic|Qualified Prospect|American Mitsuba Corp
-Mia Medjedovic|Qualified Prospect|New Enterprise Stone & Lime
-Mia Medjedovic|Qualified Prospect|Wieland
 Mia Medjedovic|Closed won|Liberty Tire
 Nicholas McNamara|Closed won|M.J Kellner Co. Inc
-Addison Parker|Decision Maker Confirmed|E. C. Barton & Co.
-Nathan Beaver|Decision Maker Confirmed|Babcock & Wilcox`;
+Simran Subramanian|Decision Maker Confirmed|Maxim Crane Works
+Mia Medjedovic|Closed won|NIBCO
+Mia Medjedovic|Closed won|Day & Zimmermann
+Nicholas McNamara|Closed won|Boart Longyear
+Simran Subramanian|Decision Maker Confirmed|Valmet
+Steve O'Neill|Decision Maker Confirmed|PJP
+Nathan Beaver|Decision Maker Confirmed|Quality Bicycle Products
+Mia Medjedovic|Qualified Prospect|New Enterprise Stone & Lime`;
 
 const OWNER = { "Kahekili Barrozo": "Kili", "Simran Subramanian": "Simran", "Mia Medjedovic": "Mia", "Nicholas McNamara": "Nick", "Addison Parker": "Addie", "Nathan Beaver": "Nathan", "Steve O'Neill": "Steve" };
 const STATUS = { "Decision Maker Confirmed": "DMC", "Qualified Prospect": "QP", "RFP Confirmed": "RFP", "Pitched/Solution Delivered": "PSD", "Contracting": "Contracting", "Closed won": "Closed Won" };
