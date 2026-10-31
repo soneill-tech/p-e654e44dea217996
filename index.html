@@ -488,7 +488,7 @@ function render(){const only=sel.value;M.innerHTML="";pinned=null;
     if(pinned&&pinned.r!==r)showList(pinned.r,null);pinned={r,s};a.classList.add("on");showList(r,s)};F.appendChild(a)});M.appendChild(d)})});}
 sel.onchange=render;render();
 
-const K=[["Account Managers",[["Kili",4,3,357236,300000,23,19,23,0,0,78,206]]],["Account Executives",[["Simran",4,1,6785,15000,94,37,100,2,1,159,260],["Mia",15,11,20935,30000,94,103,68,4,0,588,700],["Nick",11,14,112708,80000,64,25,45,2,0,153,209]]],["New AEs",[["Addie",3,0,-271,5000,143,126,136,0,12,788,1065],["Nathan",0,0,0,5000,451,179,136,5,13,883,1379]]],["Team Total",[["Team",37,29,507917,435000,914,489,508,13,26,2681,3870]]]];
+const K=[["Account Managers",[["Kili",4,3,358094,300000,23,19,23,0,0,78,206]]],["Account Executives",[["Simran",4,1,6785,15000,94,37,100,2,1,159,260],["Mia",15,11,20935,30000,94,103,68,4,0,588,700],["Nick",11,14,112929,80000,64,25,45,2,0,153,209]]],["New AEs",[["Addie",3,0,-271,5000,143,126,136,0,12,788,1065],["Nathan",0,0,0,5000,451,179,136,5,13,883,1379]]],["Team Total",[["Team",37,29,508996,435000,914,489,508,13,26,2681,3870]]]];
 const ST=[[0,[214,72,58]],[.25,[240,128,72]],[.5,[245,200,90]],[.75,[150,205,90]],[1,[56,168,105]]];
 function pc(f){f=Math.max(0,Math.min(1,f));for(let i=1;i<ST.length;i++)if(f<=ST[i][0]){const[a,c1]=ST[i-1],[b,c2]=ST[i],t=(f-a)/(b-a);return`rgb(${c1.map((v,j)=>Math.round(v+(c2[j]-v)*t))})`}}
 const $=n=>Math.round(n).toLocaleString("en-US"),kq=q=>"$"+q/1000+"K";
