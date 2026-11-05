@@ -603,25 +603,27 @@ cells().forEach(c=>{c.contentEditable="true";c.spellcheck=false;c.title="Click t
 const msg=t=>{const m=document.getElementById("ntm");m.textContent=t;setTimeout(()=>m.textContent="",2500)};
 document.getElementById("ntx").onclick=async()=>{const s=JSON.stringify(N,null,2);try{await navigator.clipboard.writeText(s);msg(`Copied ${Object.keys(N).length} edited note(s)`)}catch(e){prompt("Copy edited notes JSON:",s)}};
 document.getElementById("ntr").onclick=()=>{if(!Object.keys(N).length){msg("No edits to reset");return}if(confirm("Reset all edited notes to the original text?")){N={};localStorage.removeItem(KEY);apply();msg("Notes reset")}};
-apply()})();(function(){let FS_="All",FR="All";const run=()=>{document.querySelectorAll(".fc[data-s]").forEach(x=>x.classList.toggle("on",x.dataset.s===FS_));document.querySelectorAll(".fc.rc").forEach(x=>x.classList.toggle("on",x.dataset.rp===FR));document.querySelectorAll("#acc .lb .lr[data-rep]").forEach(r=>{const okR=FR==="All"||r.dataset.rep===FR,okS=!r.dataset.st||FS_==="All"||r.dataset.st===FS_;r.style.display=okR&&okS?"":"none"});document.querySelectorAll("#acc .lb").forEach(b=>{const c=b.querySelector(".cnt");if(c)c.textContent=[...b.querySelectorAll(".lr[data-rep]")].filter(r=>r.style.display!=="none").length})};
+apply()})();(function(){let FS_="All",FR="All";const run=()=>{document.querySelectorAll(".fc[data-s]").forEach(x=>x.classList.toggle("on",x.dataset.s===FS_));document.querySelectorAll(".fc.rc").forEach(x=>x.classList.toggle("on",x.dataset.rp===FR));document.querySelectorAll("#acc .lb .lr[data-rep]").forEach(r=>{const okR=FR==="All"||r.dataset.rep===FR,okS=!r.dataset.st||FS_==="All"||r.dataset.st===FS_;r.style.display=okR&&okS?"":"none"});document.querySelectorAll("#acc .lb").forEach(b=>{const c=b.querySelector(".cnt");if(c)c.textContent=[...b.querySelectorAll(".lr[data-rep]")].filter(r=>r.style.display!=="none").length});if(window.__ctcNum)window.__ctcNum()};
 document.querySelectorAll(".fc[data-s]").forEach(b=>b.onclick=()=>{FS_=b.dataset.s;run()});document.querySelectorAll(".fc.rc").forEach(b=>b.onclick=()=>{FR=b.dataset.rp;run()})})();
 (function(){const KEY="ctc_order_v1",rows=[...document.querySelectorAll(".lr.s[data-lbl]")];if(!rows.length)return;const box=rows[0].parentElement,def=rows.map(r=>r.dataset.lbl);
-const fch=box.querySelector(".fch");fch.insertAdjacentHTML("afterend",`<div class="obar"><span class="ntm" style="margin:0">Drag rows or use ▲▼ to reorder (saved in this browser).</span><button id="ocp" class="fc nb">Copy order</button><button id="ors" class="fc nb">Reset order</button><span id="om" class="ntm"></span></div>`);
+const fch=box.querySelector(".fch");fch.insertAdjacentHTML("afterend",`<div class="obar"><span class="ntm" style="margin:0">Drag rows or use ▲▼ to reorder among what's showing (saved in this browser).</span><button id="ocp" class="fc nb">Copy order</button><button id="ors" class="fc nb">Reset order</button><span id="om" class="ntm"></span></div>`);
 const cur=()=>[...box.querySelectorAll(".lr.s[data-lbl]")];
-const num=()=>{cur().forEach((r,i)=>{r.querySelector(".rk .n").textContent=i+1})};
+const vis=()=>cur().filter(r=>r.style.display!=="none");
+const num=()=>{let i=0;cur().forEach(r=>{const n=r.querySelector(".rk .n");if(!n)return;if(r.style.display==="none"){n.textContent="";return}n.textContent=++i})};
+window.__ctcNum=num;
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(cur().map(r=>r.dataset.lbl)));num()};
 const place=ord=>{const m=new Map(rows.map(r=>[r.dataset.lbl,r]));const seen=new Set(ord);const fresh=def.filter(l=>!seen.has(l));[...fresh,...ord.filter(l=>m.has(l))].forEach(l=>box.appendChild(m.get(l)));num()};
 rows.forEach(r=>{const k=r.querySelector(".rk");k.innerHTML=`<div class="n"></div><div class="mv"><button class="up" title="Move up" aria-label="Move up">▲</button><button class="dn" title="Move down" aria-label="Move down">▼</button></div>`;
- k.querySelector(".up").onclick=e=>{e.stopPropagation();const p=r.previousElementSibling;if(p&&p.matches(".lr.s[data-lbl]")){box.insertBefore(r,p);save()}};
- k.querySelector(".dn").onclick=e=>{e.stopPropagation();const n=r.nextElementSibling;if(n&&n.matches(".lr.s[data-lbl]")){box.insertBefore(n,r);save()}};
+ k.querySelector(".up").onclick=e=>{e.stopPropagation();const v=vis(),i=v.indexOf(r);if(i>0){box.insertBefore(r,v[i-1]);save()}};
+ k.querySelector(".dn").onclick=e=>{e.stopPropagation();const v=vis(),i=v.indexOf(r);if(i>=0&&i<v.length-1){box.insertBefore(v[i+1],r);save()}};
  r.draggable=true;r.addEventListener("dragstart",e=>{if(e.target.closest&&e.target.closest("[contenteditable=true]")){e.preventDefault();return}r.classList.add("drg");e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",r.dataset.lbl)});
  r.addEventListener("dragend",()=>{r.classList.remove("drg");cur().forEach(x=>x.classList.remove("dov"))});
- r.addEventListener("dragover",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r)return;e.preventDefault();cur().forEach(x=>x.classList.toggle("dov",x===r))});
- r.addEventListener("drop",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r)return;e.preventDefault();const a=cur();box.insertBefore(d,a.indexOf(d)<a.indexOf(r)?r.nextSibling:r);r.classList.remove("dov");save()})});
+ r.addEventListener("dragover",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r||r.style.display==="none")return;e.preventDefault();vis().forEach(x=>x.classList.toggle("dov",x===r))});
+ r.addEventListener("drop",e=>{const d=box.querySelector(".lr.drg");if(!d||d===r||r.style.display==="none")return;e.preventDefault();const v=vis(),di=v.indexOf(d),ri=v.indexOf(r);if(di<0||ri<0)return;if(di<ri){const next=v[ri+1];if(next)box.insertBefore(d,next);else box.appendChild(d)}else box.insertBefore(d,r);r.classList.remove("dov");save()})});
 let sv=null;try{sv=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){}place(Array.isArray(sv)?sv:def);
 const msg=t=>{const m=document.getElementById("om");m.textContent=t;setTimeout(()=>m.textContent="",2500)};
 document.getElementById("ors").onclick=()=>{localStorage.removeItem(KEY);place(def);msg("Order reset")};
-document.getElementById("ocp").onclick=async()=>{const t=cur().map(r=>r.dataset.lbl).join(" | ");try{await navigator.clipboard.writeText(t);msg("Order copied")}catch(e){prompt("Copy order:",t)}};})();
+document.getElementById("ocp").onclick=async()=>{const t=vis().map(r=>r.dataset.lbl).join(" | ");try{await navigator.clipboard.writeText(t);msg("Order copied")}catch(e){prompt("Copy order:",t)}};})();
 
 const V={p:"pv",k:"kpi",a:"acc"},H={p:"#pipeline",a:"#accounts"};
 function show(v){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.v===v));for(const k in V)document.getElementById(V[k]).style.display=k===v?(k==="p"?"":"block"):"none";history.replaceState(null,"",H[v]||location.pathname)}
