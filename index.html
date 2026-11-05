@@ -37,480 +37,379 @@ main{padding:0 24px 40px}h2{font-size:13px;text-transform:uppercase;letter-spaci
 .lb.ed .nt.d.edited::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;margin-right:6px;vertical-align:middle}
 @media(max-width:600px){.ar{width:96px;height:52px}.n{font-size:16px}main,header,.ctl{padding-left:12px;padding-right:12px}}
 .la{font-size:12px;color:#c4cad6;line-height:1.3}.blurb{font-size:12px;color:#aab1be;line-height:1.35}
-</style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Nov 5, 2026, 8 AM CT · hover an arrow to see companies, click to pin · green / ▲ = achieved that status in the last 7 days</div></header>
+</style></head><body><header><h1>Team Steve Pipeline Funnel</h1><div class="sub">As of Nov 5, 2026, 4 PM CT · hover an arrow to see companies, click to pin · green / ▲ = achieved that status in the last 7 days</div></header>
 <div class="tabs"><button class="tab on" data-v="k">KPIs</button><button class="tab" data-v="p">Pipeline</button><button class="tab" data-v="a">New Accounts &amp; Closest to Close</button></div><div id="pv"><div class="ctl"><label>Rep: <select id="sel"><option value="">All reps</option></select></label>
 <span class="legend"><span><i class="sw" style="background:#123d25;border:1px solid #2f8f55"></i>Entered status in November</span><span><i class="sw" style="background:#c9a227"></i>New Ship MTD</span></span></div>
 <main id="m"></main></div><section id="kpi"></section><section id="acc"></section><script>
-const RAW = `Addison Parker|Closed won|AD Process Equipment
-Addison Parker|Decision Maker Confirmed|adfoods.com
-Addison Parker|Decision Maker Confirmed|American Dawn Inc
-Addison Parker|Decision Maker Confirmed|Apac Chemical
-Addison Parker|Decision Maker Confirmed|ASM Modular Systems (Kingspan)
-Addison Parker|Decision Maker Confirmed|Assembled Products
-Addison Parker|Decision Maker Confirmed|AVL Manufacturing
-Addison Parker|Decision Maker Confirmed|Bogen Communications
-Addison Parker|Decision Maker Confirmed|bonsuisse.com
-Addison Parker|Decision Maker Confirmed|Brady
-Addison Parker|Closed won|Bronco Industrial Services
-Addison Parker|Closed won|Caldera Manufacturing Group
-Addison Parker|Decision Maker Confirmed|Canusa Wood
-Addison Parker|Decision Maker Confirmed|Cardinal Glass - Portage
-Addison Parker|Decision Maker Confirmed|Cascade Waterworks Manufacturing
-Addison Parker|Decision Maker Confirmed|centurionibc.com
-Addison Parker|Decision Maker Confirmed|CMF Global
-Addison Parker|Verified Unqualified|Colorado Department Of Education
-Addison Parker|Decision Maker Confirmed|Creative Door Services
-Addison Parker|Decision Maker Confirmed|Cummins-Allison
-Addison Parker|Decision Maker Confirmed|diversifiedauto.com
-Addison Parker|Decision Maker Confirmed|Doug Ashy Building Materials
-Addison Parker|Decision Maker Confirmed|E. C. Barton & Co.
-Addison Parker|Qualified Prospect|EGR
-Addison Parker|Decision Maker Confirmed|Electrical Power Products
-Addison Parker|Qualified Prospect|ennis.com
-Addison Parker|Decision Maker Confirmed|ErgonArmor
-Addison Parker|Decision Maker Confirmed|Esmark
-Addison Parker|Decision Maker Confirmed|Eurecat US
-Addison Parker|Decision Maker Confirmed|Fabuwood Cabinetry
-Addison Parker|Decision Maker Confirmed|Fuller Brothers Inc
-Addison Parker|Pitched/Solution Delivered|Geiger
-Addison Parker|Decision Maker Confirmed|Great Canadian Entertainment
-Addison Parker|Closed lost|GRU
-Addison Parker|Qualified Prospect|hallcoindustries.com
-Addison Parker|Decision Maker Confirmed|henrytile.com
-Addison Parker|Closed won|HJ Martin & Son
-Addison Parker|Qualified Prospect|Housley Communications Inc
-Addison Parker|Decision Maker Confirmed|HPC Foodservice
-Addison Parker|Qualified Prospect|Hyve Solutions (TD SYNNEX)
-Addison Parker|Qualified Prospect|kingdompipeandsteel.com
-Addison Parker|Decision Maker Confirmed|Kohl Wholesale
-Addison Parker|Decision Maker Confirmed|LaGrange Products
-Addison Parker|Decision Maker Confirmed|Lane Press
-Addison Parker|Qualified Prospect|laurand.net
-Addison Parker|Decision Maker Confirmed|LEONI
-Addison Parker|Pitched/Solution Delivered|Lodge Lumber
-Addison Parker|Decision Maker Confirmed|Marglen Industries
-Addison Parker|Pitched/Solution Delivered|MIDLAND FOODS DIST, INC
-Addison Parker|Decision Maker Confirmed|Midwest Geothermal
-Addison Parker|Pitched/Solution Delivered|MISA Metal Processing
-Addison Parker|Decision Maker Confirmed|Missouri Petroleum Products Co.
-Addison Parker|Decision Maker Confirmed|montalvans.com
-Addison Parker|Qualified Prospect|MP Husky
-Addison Parker|Decision Maker Confirmed|Murdochs
-Addison Parker|Decision Maker Confirmed|Nardone Brothers Baking Co
-Addison Parker|Qualified Prospect|Nextera Packaging
-Addison Parker|Decision Maker Confirmed|oceanautomotivegroup.com
-Addison Parker|Qualified Prospect|olddutchmustard.com
-Addison Parker|Verified Unqualified|One Communications Ltd
-Addison Parker|Qualified Prospect|parklandseedpotatoes.com
-Addison Parker|Decision Maker Confirmed|Pavion
-Addison Parker|Decision Maker Confirmed|PNY
-Addison Parker|Qualified Prospect|precisionladders.com
-Addison Parker|Decision Maker Confirmed|primematerials.com
-Addison Parker|Pitched/Solution Delivered|Rapala VMC
-Addison Parker|Closed won|Republic Bag Inc
-Addison Parker|Decision Maker Confirmed|RESMART
-Addison Parker|Decision Maker Confirmed|Rimex
-Addison Parker|Decision Maker Confirmed|RobertKarpContainer
-Addison Parker|Decision Maker Confirmed|SAGE Publications
-Addison Parker|Decision Maker Confirmed|saladcosmo.com
-Addison Parker|Decision Maker Confirmed|Silikal America
-Addison Parker|Decision Maker Confirmed|siteprorentals.com
-Addison Parker|Closed lost|SNF U.S.A.
-Addison Parker|Decision Maker Confirmed|SnowWolf Plows
-Addison Parker|Qualified Prospect|SparTek Industries
-Addison Parker|Decision Maker Confirmed|Summit Refrigerants
-Addison Parker|Decision Maker Confirmed|Sunco Foods
-Addison Parker|Qualified Prospect|Sunshine Metals Inc
-Addison Parker|Qualified Prospect|surplusmetalscorp.com
-Addison Parker|Decision Maker Confirmed|SWD Urethane
-Addison Parker|Decision Maker Confirmed|sweetgrassltd.com
-Addison Parker|Qualified Prospect|T. J. Snow Company
-Addison Parker|Decision Maker Confirmed|Tacoma Screw Products Inc
-Addison Parker|Decision Maker Confirmed|Talley Inc
-Addison Parker|Decision Maker Confirmed|teamcertified.com
-Addison Parker|Pitched/Solution Delivered|Texas Liquidation
-Addison Parker|Decision Maker Confirmed|The Fountainhead Group
-Addison Parker|Qualified Prospect|The Kraft Group
-Addison Parker|Decision Maker Confirmed|Timberline Manufacturing
-Addison Parker|Qualified Prospect|Totten Tubes
-Addison Parker|Decision Maker Confirmed|Treadmaxx Tire Distributors Inc
-Addison Parker|Qualified Prospect|UAC
-Addison Parker|Closed lost|Ulterra
-Addison Parker|Decision Maker Confirmed|Union Supply Group Inc
-Addison Parker|Closed lost|United Forming
-Addison Parker|Qualified Prospect|US Bag Manufacturing
-Addison Parker|Decision Maker Confirmed|US Med-Equip Inc
-Addison Parker|Qualified Prospect|US Stove
-Addison Parker|Qualified Prospect|US Titanium Industry Inc.
-Addison Parker|Decision Maker Confirmed|Vander-Bend Manufacturing
-Addison Parker|Decision Maker Confirmed|vantonecf.com
-Addison Parker|Closed lost|Varel International Ind.
-Addison Parker|Decision Maker Confirmed|vedco.com
-Addison Parker|Pitched/Solution Delivered|Verdeco Plastics
-Addison Parker|Decision Maker Confirmed|Volm Companies
-Addison Parker|Decision Maker Confirmed|Voss Manufacturing
-Addison Parker|Qualified Prospect|Whelen Engineering
-Addison Parker|Decision Maker Confirmed|Wholesale Electric Supply
-Addison Parker|Closed lost|Wilcor
-Addison Parker|Closed lost|Wildwood Trading Group
-Addison Parker|Closed lost|YESCO Administration LLC
-Kahekili Barrozo|Closed won|Arconic
-Kahekili Barrozo|Closed won|Basic Metals Inc
-Kahekili Barrozo|Closed won|Howmet Aerospace
-Kahekili Barrozo|Closed won|Kawneer
-Kahekili Barrozo|Closed won|Reliable
-Kahekili Barrozo|Closed won|Webstone
-Mia Medjedovic|Closed won|AgriGro
-Mia Medjedovic|Closed won|Alta Recycling
-Mia Medjedovic|Closed lost|Alter Trading
-Mia Medjedovic|Closed won|American Battery Technology Co.
-Mia Medjedovic|Closed lost|Ashmus Belting
-Mia Medjedovic|Closed won|Atkins Machinery
-Mia Medjedovic|Decision Maker Confirmed|AUMOVIO
-Mia Medjedovic|Decision Maker Confirmed|Bailey International, LLC
-Mia Medjedovic|Closed lost|Barry-Wehmiller Group, Inc.
-Mia Medjedovic|Qualified Prospect|Basden Steel Corporation
-Mia Medjedovic|Decision Maker Confirmed|BDK
-Mia Medjedovic|RFP Confirmed|Betafence USA
-Mia Medjedovic|Closed won|BioTown Ag
-Mia Medjedovic|Decision Maker Confirmed|Bison Trailers
-Mia Medjedovic|Closed won|Black & McDonald
-Mia Medjedovic|Closed won|C2 Commodities
-Mia Medjedovic|Qualified Prospect|Capital Pump & Equipment
-Mia Medjedovic|Closed lost|Carcoustics
-Mia Medjedovic|Closed lost|Carroll Construction Supply
-Mia Medjedovic|Decision Maker Confirmed|Commercial Metals Company (CMC)
-Mia Medjedovic|Decision Maker Confirmed|Continental Cement
-Mia Medjedovic|Closed won|Cronimet Corporation USA
-Mia Medjedovic|Closed won|Custom Door Parts
-Mia Medjedovic|Closed won|Day & Zimmermann
-Mia Medjedovic|Qualified Prospect|Direct Scaffold Supply
-Mia Medjedovic|Closed won|Dix Block & Supply Company
-Mia Medjedovic|Qualified Prospect|Dutra Group
-Mia Medjedovic|Decision Maker Confirmed|Elgin Industries, Inc.
-Mia Medjedovic|Decision Maker Confirmed|ENC
-Mia Medjedovic|Decision Maker Confirmed|Fiberon
-Mia Medjedovic|Closed won|Forge Precision/Forge Die & Tool Company
-Mia Medjedovic|Closed lost|Fred Jones Enterprises
-Mia Medjedovic|Closed won|Frulact
-Mia Medjedovic|Decision Maker Confirmed|Glantz
-Mia Medjedovic|Decision Maker Confirmed|GLT
-Mia Medjedovic|Qualified Prospect|GMS Mine Repair & Maintenance
-Mia Medjedovic|Qualified Prospect|Great Dane
-Mia Medjedovic|Decision Maker Confirmed|GreenPoint Ag
-Mia Medjedovic|Decision Maker Confirmed|Heidelberg
-Mia Medjedovic|Decision Maker Confirmed|Hurst Boiler & Welding
-Mia Medjedovic|Decision Maker Confirmed|IHI Turbo America
-Mia Medjedovic|Closed won|IMA
-Mia Medjedovic|Closed won|Integrity Beverage/Spectrum Foods
-Mia Medjedovic|Closed won|JD.com
-Mia Medjedovic|Closed won|Killick Aerospace
-Mia Medjedovic|Closed won|Liberty Tire
-Mia Medjedovic|Qualified Prospect|Manac
-Mia Medjedovic|Decision Maker Confirmed|Manroland Goss
-Mia Medjedovic|Closed won|MC Dean
-Mia Medjedovic|Decision Maker Confirmed|McCue Corporation
-Mia Medjedovic|Pitched/Solution Delivered|Mendocino Redwood
-Mia Medjedovic|Decision Maker Confirmed|MJC
-Mia Medjedovic|Decision Maker Confirmed|Motor Components
-Mia Medjedovic|Decision Maker Confirmed|National Air Cargo
-Mia Medjedovic|Qualified Prospect|New Enterprise Stone & Lime
-Mia Medjedovic|Closed won|NIBCO
-Mia Medjedovic|Decision Maker Confirmed|OSW Equipment & Repair LLC
-Mia Medjedovic|Pitched/Solution Delivered|Penn Pallet
-Mia Medjedovic|Qualified Prospect|Phinia
-Mia Medjedovic|Decision Maker Confirmed|plastechtooling.com
-Mia Medjedovic|Pitched/Solution Delivered|Plastics Engineering
-Mia Medjedovic|Decision Maker Confirmed|Port of Memphis
-Mia Medjedovic|Decision Maker Confirmed|Port Saint John
-Mia Medjedovic|Closed won|Pulpmill Services
-Mia Medjedovic|Closed won|QuikTrip Corporation
-Mia Medjedovic|Closed won|RAINBOW FERTILIZER LLC
-Mia Medjedovic|Closed won|Redford Building Supply
-Mia Medjedovic|Qualified Prospect|Reliance Steel & Aluminum
-Mia Medjedovic|Decision Maker Confirmed|Rukert Terminals
-Mia Medjedovic|Pitched/Solution Delivered|Saf-T-Cab
-Mia Medjedovic|Closed won|SBFI
-Mia Medjedovic|Decision Maker Confirmed|Seedway
-Mia Medjedovic|Decision Maker Confirmed|Seymour Midwest
-Mia Medjedovic|Qualified Prospect|Soyventis
-Mia Medjedovic|Decision Maker Confirmed|Specialty Rolled Metals
-Mia Medjedovic|Closed won|Spectrum Food Group
-Mia Medjedovic|Decision Maker Confirmed|Steel of West Virginia
-Mia Medjedovic|Closed won|Stoughton Trailers
-Mia Medjedovic|Closed won|SuperClamp
-Mia Medjedovic|Decision Maker Confirmed|Thirdcoast
-Mia Medjedovic|Closed won|Tidal Grow Agriscience
-Mia Medjedovic|Closed won|Tidal Vision
-Mia Medjedovic|Closed won|TIMAC AGRO USA
-Mia Medjedovic|Decision Maker Confirmed|TMP Technologies
-Mia Medjedovic|Decision Maker Confirmed|Transnet Inc.
-Mia Medjedovic|Decision Maker Confirmed|Tube Supply
-Mia Medjedovic|Decision Maker Confirmed|U.S. Axle
-Mia Medjedovic|Closed won|Ulbrich
-Mia Medjedovic|Closed won|Universal Cement
-Mia Medjedovic|Closed won|Varichem International
-Mia Medjedovic|Qualified Prospect|Wabtec Corporation
+const RAW = `Nathan Beaver|Qualified Prospect|Yerba Madre
 Mia Medjedovic|Decision Maker Confirmed|Yankee Equipment Systems
-Nathan Beaver|Decision Maker Confirmed|Alvogen
-Nathan Beaver|Decision Maker Confirmed|APR Supply Co
-Nathan Beaver|Decision Maker Confirmed|Babcock & Wilcox
-Nathan Beaver|Decision Maker Confirmed|BIOLASE Inc
-Nathan Beaver|Qualified Prospect|Borsheim Crane Service
-Nathan Beaver|Qualified Prospect|CAM Industrial Solutions
-Nathan Beaver|Decision Maker Confirmed|City Rent A Truck
-Nathan Beaver|Decision Maker Confirmed|Clark Testing
-Nathan Beaver|Decision Maker Confirmed|Colortech
-Nathan Beaver|Decision Maker Confirmed|Constellation Home
-Nathan Beaver|Decision Maker Confirmed|Continental
-Nathan Beaver|Qualified Prospect|Contractors Wardrobe CW Doors
-Nathan Beaver|Closed lost|CoreWeave
-Nathan Beaver|Pitched/Solution Delivered|Corporate eWaste Solutions
-Nathan Beaver|Qualified Prospect|Crane Tech
-Nathan Beaver|Closed won|Culpeper Wood Preservers
-Nathan Beaver|Decision Maker Confirmed|Cycle Link USA
-Nathan Beaver|Closed lost|Dahmes Stainless
-Nathan Beaver|Decision Maker Confirmed|Dave Steel
-Nathan Beaver|Decision Maker Confirmed|Desktop Metal
-Nathan Beaver|Closed won|Dorel Juvenile
-Nathan Beaver|Decision Maker Confirmed|EDGE Homes
-Nathan Beaver|Decision Maker Confirmed|Eldon C. Stutsman
-Nathan Beaver|Qualified Prospect|Ellicott Dredges
-Nathan Beaver|Decision Maker Confirmed|EPC USA
-Nathan Beaver|Decision Maker Confirmed|ESP International
-Nathan Beaver|Decision Maker Confirmed|EXP
-Nathan Beaver|Unqualified|Eyemart Express LLC
-Nathan Beaver|Decision Maker Confirmed|Flexi-Van Leasing
-Nathan Beaver|Closed lost|Garvey
-Nathan Beaver|Decision Maker Confirmed|GIANT
-Nathan Beaver|Decision Maker Confirmed|Grakon
-Nathan Beaver|Qualified Prospect|Grand River Dam Authority
-Nathan Beaver|Qualified Prospect|heartlandsheets.com
-Nathan Beaver|Decision Maker Confirmed|Hoyer
-Nathan Beaver|Unqualified|Lamborghini
-Nathan Beaver|Decision Maker Confirmed|LandMark Implement
-Nathan Beaver|Qualified Prospect|LAVAZZA
-Nathan Beaver|Decision Maker Confirmed|Lectronics
-Nathan Beaver|Unqualified|McClain & Associates
-Nathan Beaver|Decision Maker Confirmed|MEP Technologies
-Nathan Beaver|Qualified Prospect|Mid-South Food Bank
-Nathan Beaver|Qualified Prospect|Northland Power
-Nathan Beaver|Decision Maker Confirmed|Orkin LLC
-Nathan Beaver|Decision Maker Confirmed|primarypackaging.com
-Nathan Beaver|Decision Maker Confirmed|Purilum
-Nathan Beaver|RFP Confirmed|Pyxus International
-Nathan Beaver|Decision Maker Confirmed|Quality Bicycle Products
-Nathan Beaver|Decision Maker Confirmed|Ricola
-Nathan Beaver|Decision Maker Confirmed|Roberts Tire Sales
-Nathan Beaver|Decision Maker Confirmed|signatureparty.com
-Nathan Beaver|Closed won|SilPro
-Nathan Beaver|Decision Maker Confirmed|SimpleTire
-Nathan Beaver|Decision Maker Confirmed|Sims Crane
-Nathan Beaver|Decision Maker Confirmed|Sparton
-Nathan Beaver|Qualified Prospect|Strait Regional Centre for Education
-Nathan Beaver|RFP Confirmed|Sunnyside Egg Co.
-Nathan Beaver|Decision Maker Confirmed|Supreme International
-Nathan Beaver|Decision Maker Confirmed|TAG Manufacturing
-Nathan Beaver|Qualified Prospect|Tego Systems
-Nathan Beaver|Decision Maker Confirmed|The Solberg
-Nathan Beaver|Decision Maker Confirmed|The Walman Optical
-Nathan Beaver|Decision Maker Confirmed|Traffic Management, Inc
-Nathan Beaver|Unqualified|VANGUARD LOGISTICS SERVICES
-Nathan Beaver|Decision Maker Confirmed|Weldco-Beales Manufacturing
-Nathan Beaver|Qualified Prospect|Wiese USA
 Nathan Beaver|Decision Maker Confirmed|Woodman's Food Market
-Nathan Beaver|Qualified Prospect|Yerba Madre
-Nathan Beaver|Unqualified|ZIX
-Nicholas McNamara|Closed won|3M Company
-Nicholas McNamara|Qualified Prospect|Alpine Power Systems
-Nicholas McNamara|Decision Maker Confirmed|American Litho
-Nicholas McNamara|Closed won|ARMI
-Nicholas McNamara|Decision Maker Confirmed|Artopex
-Nicholas McNamara|Closed won|Boart Longyear
-Nicholas McNamara|Closed won|Bobcat Plus
-Nicholas McNamara|Decision Maker Confirmed|Cummings Printing
-Nicholas McNamara|Decision Maker Confirmed|Dart Advantage Warehousing
-Nicholas McNamara|Closed won|DSB Technologies
-Nicholas McNamara|Closed won|Engie
-Nicholas McNamara|Qualified Prospect|Epl Feed, Llc
-Nicholas McNamara|Decision Maker Confirmed|Exotech
-Nicholas McNamara|Decision Maker Confirmed|Finley Asphalt
-Nicholas McNamara|Closed won|Florim USA
-Nicholas McNamara|Closed won|Flow Pro Products
-Nicholas McNamara|Decision Maker Confirmed|Fort Valley State University
-Nicholas McNamara|Closed lost|Fort� Products
-Nicholas McNamara|Decision Maker Confirmed|Future Transfer
-Nicholas McNamara|Decision Maker Confirmed|Gilson Graphics
-Nicholas McNamara|Closed lost|Group Dekko
-Nicholas McNamara|Closed lost|Hach
-Nicholas McNamara|Closed lost|Herringtons
-Nicholas McNamara|Closed won|Hickory Harvest Foods
-Nicholas McNamara|Decision Maker Confirmed|Image Craft
-Nicholas McNamara|Closed won|Indevco (Group and Plastics)
-Nicholas McNamara|Closed won|Indevco North America
-Nicholas McNamara|Decision Maker Confirmed|Korex
-Nicholas McNamara|Closed won|L.F. GEORGE
-Nicholas McNamara|Closed won|Leaf Home
-Nicholas McNamara|Closed won|Lee Storage Company
-Nicholas McNamara|Closed lost|LEWA
-Nicholas McNamara|Closed won|M.J Kellner Co. Inc
-Nicholas McNamara|Pitched/Solution Delivered|Maxon Lift Corp
-Nicholas McNamara|Decision Maker Confirmed|McAsphalt Industries
-Nicholas McNamara|Verified Unqualified|Mossberg & Company
-Nicholas McNamara|Closed won|MSC Industrial Direct Co., Inc
-Nicholas McNamara|Closed won|New Flyer
-Nicholas McNamara|Closed won|Novelis
-Nicholas McNamara|Decision Maker Confirmed|Panel Processing
-Nicholas McNamara|Decision Maker Confirmed|Plasticade
-Nicholas McNamara|Closed lost|Public Storage
-Nicholas McNamara|Verified Unqualified|Punch Graphix
-Nicholas McNamara|Decision Maker Confirmed|Red Stag Fulfillment
-Nicholas McNamara|Decision Maker Confirmed|ReNew Plastics
-Nicholas McNamara|Decision Maker Confirmed|Spartan
-Nicholas McNamara|Decision Maker Confirmed|Stacy and Witbeck, Inc.
-Nicholas McNamara|Closed lost|TForce Freight,
-Nicholas McNamara|Closed won|Times Publishing Company dba Tampa Bay Times
-Nicholas McNamara|Decision Maker Confirmed|TransAlta
-Nicholas McNamara|Closed won|True Manufacturing
-Nicholas McNamara|Decision Maker Confirmed|Trumbull Manufacturing
-Nicholas McNamara|Closed won|Verista
-Nicholas McNamara|Decision Maker Confirmed|Vox Printing
-Nicholas McNamara|Pitched/Solution Delivered|Whirlwind Steel Buildings
-Nicholas McNamara|Decision Maker Confirmed|Whitehall Products
+Nathan Beaver|Qualified Prospect|Wiese USA
 Nicholas McNamara|Closed won|Wholesale Home/DJ Direct Warehousing
-Nicholas McNamara|Closed lost|WillScot
-Simran Subramanian|Decision Maker Confirmed|ABC ALUMINUM
-Simran Subramanian|Closed lost|All Foils
-Simran Subramanian|Closed lost|Alro
-Simran Subramanian|Closed lost|Alufoil Products
-Simran Subramanian|Decision Maker Confirmed|Alumicor Limited
-Simran Subramanian|Decision Maker Confirmed|Anaheim Extrusion Company
-Simran Subramanian|Closed lost|Aperam
-Simran Subramanian|Closed lost|ATLANTIC COAST RESTAURANT AND MECHANICAL SERVICES
-Simran Subramanian|Closed lost|Axjo
-Simran Subramanian|Closed lost|AZ Polymers
-Simran Subramanian|Closed lost|Bachman's
-Simran Subramanian|Closed lost|Badger Paperboard
-Simran Subramanian|Closed lost|Bandit Industries
-Simran Subramanian|Closed lost|Bonnell Aluminum (incl AACOA)
-Simran Subramanian|Decision Maker Confirmed|Brewer Science
-Simran Subramanian|Closed lost|Bristol Aluminum
-Simran Subramanian|Closed won|BRT Extrusions
-Simran Subramanian|Pitched/Solution Delivered|Can Art Aluminum Extrusion
-Simran Subramanian|Qualified Prospect|Canada Nickel
-Simran Subramanian|Closed lost|CB&I
-Simran Subramanian|Closed lost|Ceco Concrete
-Simran Subramanian|Closed won|Citi Trends
-Simran Subramanian|Closed lost|Clark Construction
-Simran Subramanian|Qualified Prospect|Clark Construction Group
-Simran Subramanian|Decision Maker Confirmed|Coenen Mechanical
-Simran Subramanian|Decision Maker Confirmed|Con-Vey
-Simran Subramanian|Decision Maker Confirmed|Consolidated Metal Products
-Simran Subramanian|Decision Maker Confirmed|Corley MFG
-Simran Subramanian|Closed lost|Country Pure Foods
-Simran Subramanian|Closed lost|Cunova Service USA
-Simran Subramanian|Closed lost|D&L Wood Products
-Simran Subramanian|Closed lost|D1 Resources
-Simran Subramanian|Closed lost|Dakota Provisions
-Simran Subramanian|Closed lost|Danimer Scientific
-Simran Subramanian|Closed lost|Ditch Witch
-Simran Subramanian|Closed lost|DMC Global
-Simran Subramanian|Closed lost|Double H Plastics
-Simran Subramanian|Closed lost|Eagle One Construction
-Simran Subramanian|Decision Maker Confirmed|Elgiloy
-Simran Subramanian|Closed lost|Enerfab
-Simran Subramanian|Closed lost|Environmental Solutions Group
-Simran Subramanian|Closed lost|Fashion Nova
-Simran Subramanian|Decision Maker Confirmed|Fermilab
-Simran Subramanian|Decision Maker Confirmed|Ferroglobe
-Simran Subramanian|Verified Unqualified|Florida Department Of Agriculture And Consumer Services
-Simran Subramanian|Closed lost|Frost Contracting Services
-Simran Subramanian|Decision Maker Confirmed|Greco Aluminum Railings
-Simran Subramanian|Closed won|Hanwha Aerospace
-Simran Subramanian|Closed lost|Hawkins Construction
-Simran Subramanian|Pitched/Solution Delivered|Hoover Treated Wood Products
-Simran Subramanian|Closed lost|Imperial Brands PLC
-Simran Subramanian|Decision Maker Confirmed|Imperial Tobacco Canada
-Simran Subramanian|Closed lost|Jackson Paper Manufacturing
-Simran Subramanian|Closed lost|JVC Enterprises LLC
-Simran Subramanian|Closed lost|Kaeser Compressors
-Simran Subramanian|Closed won|Kaiser Aluminum
-Simran Subramanian|Closed lost|Kendrion
-Simran Subramanian|Closed lost|Koenig & Bauer
-Simran Subramanian|Closed lost|Landis+Gyr-C/O TI
-Simran Subramanian|Qualified Prospect|Lite Gauge Metals,
-Simran Subramanian|Decision Maker Confirmed|Lorin
-Simran Subramanian|Closed lost|Lyness Construction
-Simran Subramanian|Closed lost|Mason Construction
-Simran Subramanian|Decision Maker Confirmed|Maxim Crane Works
-Simran Subramanian|Closed lost|Metalwest
-Simran Subramanian|Closed lost|Mid-States Aluminum
-Simran Subramanian|Closed lost|Newman Technology
-Simran Subramanian|Closed lost|Normet
-Simran Subramanian|Closed lost|Nortera
-Simran Subramanian|Closed lost|Parrish Construction Group
-Simran Subramanian|Closed lost|Petra Construction
-Simran Subramanian|Closed lost|PGP Glass
-Simran Subramanian|Pitched/Solution Delivered|Pyrotek
-Simran Subramanian|Qualified Prospect|Raufoss Technology
-Simran Subramanian|Closed lost|Shea Concrete Products
-Simran Subramanian|Decision Maker Confirmed|Silver Star Brands
-Simran Subramanian|Closed lost|SteelMart, Inc.
-Simran Subramanian|Closed lost|Stressbar Systems
-Simran Subramanian|Decision Maker Confirmed|Sun Country Inc
-Simran Subramanian|Decision Maker Confirmed|Swanson Health Products
-Simran Subramanian|Closed lost|The Whayland
-Simran Subramanian|Decision Maker Confirmed|TwinsBridge
-Simran Subramanian|Closed lost|Utcras
+Addison Parker|Decision Maker Confirmed|Wholesale Electric Supply
+Nicholas McNamara|Decision Maker Confirmed|Whitehall Products
+Nicholas McNamara|Pitched/Solution Delivered|Whirlwind Steel Buildings
+Addison Parker|Qualified Prospect|Whelen Engineering
+Nathan Beaver|Decision Maker Confirmed|Weldco-Beales Manufacturing
+Kahekili Barrozo|Closed won|Webstone
+Mia Medjedovic|Qualified Prospect|Wabtec Corporation
+Nicholas McNamara|Decision Maker Confirmed|Vox Printing
+Addison Parker|Decision Maker Confirmed|Voss Manufacturing
+Addison Parker|Decision Maker Confirmed|Volm Companies
+Steve O'Neill|Pitched/Solution Delivered|Virnig Manufacturing
+Nicholas McNamara|Closed won|Verista
+Addison Parker|Pitched/Solution Delivered|Verdeco Plastics
+Addison Parker|Decision Maker Confirmed|vedco.com
+Mia Medjedovic|Closed won|Varichem International
+Addison Parker|Decision Maker Confirmed|vantonecf.com
+Addison Parker|Decision Maker Confirmed|Vander-Bend Manufacturing
 Simran Subramanian|Decision Maker Confirmed|Valmet
-Simran Subramanian|Closed lost|Veeco
-Simran Subramanian|Closed lost|VFP Fire Systems, Inc.
-Simran Subramanian|Closed lost|Vitro AutoGlass
-Steve O'Neill|Decision Maker Confirmed|A. Zahner
-Steve O'Neill|Qualified Prospect|Alcoa
-Steve O'Neill|Decision Maker Confirmed|Alliance Plastics Corp
-Steve O'Neill|Decision Maker Confirmed|AMC Theatres
-Steve O'Neill|Closed lost|American Bolt & Screw Mfg. Corp.
-Steve O'Neill|Decision Maker Confirmed|Apto Solutions
-Steve O'Neill|Decision Maker Confirmed|Astenjohnson
-Steve O'Neill|Verified Unqualified|Author Solutions
-Steve O'Neill|Closed lost|Autolite
-Steve O'Neill|Decision Maker Confirmed|Bri-Steel Manufacturing
-Steve O'Neill|Decision Maker Confirmed|CDI custom curb adapters
-Steve O'Neill|Decision Maker Confirmed|Daltile
-Steve O'Neill|Closed lost|DeCrescente Distributing Company
-Steve O'Neill|Decision Maker Confirmed|Dillmeier Glass
-Steve O'Neill|Decision Maker Confirmed|Dowty Propellers
-Steve O'Neill|Decision Maker Confirmed|EuroKera
-Steve O'Neill|Qualified Prospect|fcifloors.com
-Steve O'Neill|Closed lost|Fram
-Steve O'Neill|Decision Maker Confirmed|GE Aerospace
-Steve O'Neill|Decision Maker Confirmed|GOMACO
-Steve O'Neill|Closed lost|Halstead
-Steve O'Neill|Decision Maker Confirmed|Inline Filling Systems
-Steve O'Neill|Decision Maker Confirmed|Intermodal Tank Transport
-Steve O'Neill|Decision Maker Confirmed|Invio Automation
-Steve O'Neill|Decision Maker Confirmed|Mario Camacho Foods
-Steve O'Neill|Closed lost|Market Basket Food Stores
-Steve O'Neill|Decision Maker Confirmed|Musco Family Olive
-Steve O'Neill|Verified Unqualified|National Amusements
-Steve O'Neill|Decision Maker Confirmed|Olivet International
-Steve O'Neill|Decision Maker Confirmed|Panavid
-Steve O'Neill|Verified Unqualified|Pavilions
-Steve O'Neill|Decision Maker Confirmed|PENCO
-Steve O'Neill|Decision Maker Confirmed|PJP
-Steve O'Neill|Closed lost|Purcell Tire
-Steve O'Neill|Decision Maker Confirmed|Select Genetics
-Steve O'Neill|Decision Maker Confirmed|Shari's Berries
-Steve O'Neill|Decision Maker Confirmed|Shop LC
-Steve O'Neill|Verified Unqualified|TEGNA Inc.
-Steve O'Neill|Decision Maker Confirmed|TFH Publications
-Steve O'Neill|Decision Maker Confirmed|Tooling Tech Group
-Steve O'Neill|Closed lost|Trico-Group
-Steve O'Neill|Decision Maker Confirmed|UCL Swift NA
 Steve O'Neill|Decision Maker Confirmed|Valley Forge Flag Company
-Steve O'Neill|Verified Unqualified|Vendors Exchange International, Inc.
-Steve O'Neill|Pitched/Solution Delivered|Virnig Manufacturing`;
+Addison Parker|Qualified Prospect|US Titanium Industry Inc.
+Addison Parker|Qualified Prospect|US Stove
+Addison Parker|Decision Maker Confirmed|US Med-Equip Inc
+Addison Parker|Qualified Prospect|US Bag Manufacturing
+Mia Medjedovic|Closed won|Universal Cement
+Mia Medjedovic|Closed won|Ulbrich
+Steve O'Neill|Decision Maker Confirmed|UCL Swift NA
+Addison Parker|Qualified Prospect|UAC
+Mia Medjedovic|Decision Maker Confirmed|U.S. Axle
+Simran Subramanian|Decision Maker Confirmed|TwinsBridge
+Mia Medjedovic|Decision Maker Confirmed|Tube Supply
+Nicholas McNamara|Decision Maker Confirmed|Trumbull Manufacturing
+Nicholas McNamara|Closed won|True Manufacturing
+Addison Parker|Decision Maker Confirmed|Treadmaxx Tire Distributors Inc
+Mia Medjedovic|Decision Maker Confirmed|Transnet Inc.
+Nicholas McNamara|Decision Maker Confirmed|TransAlta
+Nathan Beaver|Decision Maker Confirmed|Traffic Management, Inc
+Addison Parker|Qualified Prospect|Totten Tubes
+Steve O'Neill|Decision Maker Confirmed|Tooling Tech Group
+Mia Medjedovic|Decision Maker Confirmed|TMP Technologies
+Nicholas McNamara|Closed won|Times Publishing Company dba Tampa Bay Times
+Addison Parker|Decision Maker Confirmed|Timberline Manufacturing
+Mia Medjedovic|Closed won|TIMAC AGRO USA
+Mia Medjedovic|Closed won|Tidal Vision
+Mia Medjedovic|Closed won|Tidal Grow Agriscience
+Mia Medjedovic|Decision Maker Confirmed|Thirdcoast
+Nathan Beaver|Decision Maker Confirmed|The Walman Optical
+Nathan Beaver|Decision Maker Confirmed|The Solberg
+Addison Parker|Qualified Prospect|The Kraft Group
+Addison Parker|Decision Maker Confirmed|The Fountainhead Group
+Steve O'Neill|Decision Maker Confirmed|TFH Publications
+Addison Parker|Pitched/Solution Delivered|Texas Liquidation
+Nathan Beaver|Qualified Prospect|Tego Systems
+Addison Parker|Decision Maker Confirmed|teamcertified.com
+Addison Parker|Decision Maker Confirmed|Talley Inc
+Nathan Beaver|Decision Maker Confirmed|TAG Manufacturing
+Addison Parker|Decision Maker Confirmed|Tacoma Screw Products Inc
+Addison Parker|Qualified Prospect|T. J. Snow Company
+Addison Parker|Decision Maker Confirmed|sweetgrassltd.com
+Addison Parker|Decision Maker Confirmed|SWD Urethane
+Simran Subramanian|Decision Maker Confirmed|Swanson Health Products
+Addison Parker|Qualified Prospect|surplusmetalscorp.com
+Nathan Beaver|Decision Maker Confirmed|Supreme International
+Mia Medjedovic|Closed won|SuperClamp
+Addison Parker|Qualified Prospect|Sunshine Metals Inc
+Nathan Beaver|Qualified Prospect|Sunnyside Egg Co.
+Addison Parker|Decision Maker Confirmed|Sunco Foods
+Simran Subramanian|Decision Maker Confirmed|Sun Country Inc
+Addison Parker|Decision Maker Confirmed|Summit Refrigerants
+Nathan Beaver|Qualified Prospect|Strait Regional Centre for Education
+Mia Medjedovic|Closed won|Stoughton Trailers
+Mia Medjedovic|Decision Maker Confirmed|Steel of West Virginia
+Nicholas McNamara|Decision Maker Confirmed|Stacy and Witbeck, Inc.
+Mia Medjedovic|Closed won|Spectrum Food Group
+Mia Medjedovic|Decision Maker Confirmed|Specialty Rolled Metals
+Nathan Beaver|Decision Maker Confirmed|Sparton
+Addison Parker|Qualified Prospect|SparTek Industries
+Nicholas McNamara|Decision Maker Confirmed|Spartan
+Mia Medjedovic|Qualified Prospect|Soyventis
+Addison Parker|Decision Maker Confirmed|Solomon Colors
+Addison Parker|Decision Maker Confirmed|SnowWolf Plows
+Addison Parker|Decision Maker Confirmed|siteprorentals.com
+Nathan Beaver|Decision Maker Confirmed|Sims Crane
+Nathan Beaver|Decision Maker Confirmed|SimpleTire
+Simran Subramanian|Decision Maker Confirmed|Silver Star Brands
+Nathan Beaver|Closed won|SilPro
+Addison Parker|Decision Maker Confirmed|Silikal America
+Nathan Beaver|Decision Maker Confirmed|signatureparty.com
+Steve O'Neill|Decision Maker Confirmed|Shop LC
+Steve O'Neill|Decision Maker Confirmed|Shari's Berries
+Mia Medjedovic|Decision Maker Confirmed|Seymour Midwest
+Steve O'Neill|Decision Maker Confirmed|Select Genetics
+Mia Medjedovic|Decision Maker Confirmed|Seedway
+Mia Medjedovic|Closed won|SBFI
+Addison Parker|Decision Maker Confirmed|saladcosmo.com
+Addison Parker|Decision Maker Confirmed|SAGE Publications
+Mia Medjedovic|Pitched/Solution Delivered|Saf-T-Cab
+Mia Medjedovic|Decision Maker Confirmed|Rukert Terminals
+Nathan Beaver|Decision Maker Confirmed|Roberts Tire Sales
+Addison Parker|Decision Maker Confirmed|RobertKarpContainer
+Addison Parker|Decision Maker Confirmed|Rimex
+Nathan Beaver|Decision Maker Confirmed|Ricola
+Addison Parker|Decision Maker Confirmed|RESMART
+Addison Parker|Closed won|Republic Bag Inc
+Nicholas McNamara|Decision Maker Confirmed|ReNew Plastics
+Mia Medjedovic|Qualified Prospect|Reliance Steel & Aluminum
+Kahekili Barrozo|Closed won|Reliable
+Mia Medjedovic|Closed won|Redford Building Supply
+Nathan Beaver|Qualified Prospect|Red-D-Arc
+Nicholas McNamara|Decision Maker Confirmed|Red Stag Fulfillment
+Simran Subramanian|Qualified Prospect|Raufoss Technology
+Addison Parker|Pitched/Solution Delivered|Rapala VMC
+Mia Medjedovic|Closed won|RAINBOW FERTILIZER LLC
+Mia Medjedovic|Closed won|QuikTrip Corporation
+Nathan Beaver|Decision Maker Confirmed|Quality Bicycle Products
+Nathan Beaver|RFP Confirmed|Pyxus International
+Simran Subramanian|Pitched/Solution Delivered|Pyrotek
+Nathan Beaver|Decision Maker Confirmed|Purilum
+Mia Medjedovic|Closed won|Pulpmill Services
+Addison Parker|Decision Maker Confirmed|primematerials.com
+Nathan Beaver|Decision Maker Confirmed|primarypackaging.com
+Addison Parker|Qualified Prospect|precisionladders.com
+Mia Medjedovic|Decision Maker Confirmed|Port Saint John
+Mia Medjedovic|Decision Maker Confirmed|Port of Memphis
+Addison Parker|Decision Maker Confirmed|PNY
+Mia Medjedovic|Pitched/Solution Delivered|Plastics Engineering
+Nicholas McNamara|Decision Maker Confirmed|Plasticade
+Mia Medjedovic|Decision Maker Confirmed|plastechtooling.com
+Steve O'Neill|Decision Maker Confirmed|PJP
+Mia Medjedovic|Qualified Prospect|Phinia
+Mia Medjedovic|Pitched/Solution Delivered|Penn Pallet
+Steve O'Neill|Decision Maker Confirmed|PENCO
+Addison Parker|Decision Maker Confirmed|Pavion
+Addison Parker|Qualified Prospect|parklandseedpotatoes.com
+Nicholas McNamara|Decision Maker Confirmed|Panel Processing
+Steve O'Neill|Decision Maker Confirmed|Panavid
+Mia Medjedovic|Decision Maker Confirmed|OSW Equipment & Repair LLC
+Nathan Beaver|Decision Maker Confirmed|Orkin LLC
+Steve O'Neill|Decision Maker Confirmed|Olivet International
+Addison Parker|Qualified Prospect|olddutchmustard.com
+Addison Parker|Decision Maker Confirmed|oceanautomotivegroup.com
+Nicholas McNamara|Closed won|Novelis
+Nathan Beaver|Qualified Prospect|Northland Power
+Mia Medjedovic|Closed won|NIBCO
+Addison Parker|Qualified Prospect|Nextera Packaging
+Nicholas McNamara|Closed won|New Flyer
+Mia Medjedovic|Qualified Prospect|New Enterprise Stone & Lime
+Mia Medjedovic|Decision Maker Confirmed|National Air Cargo
+Addison Parker|Decision Maker Confirmed|Nardone Brothers Baking Co
+Steve O'Neill|Decision Maker Confirmed|Musco Family Olive
+Addison Parker|Decision Maker Confirmed|Murdochs
+Nicholas McNamara|Closed won|MSC Industrial Direct Co., Inc
+Addison Parker|Qualified Prospect|MP Husky
+Mia Medjedovic|Decision Maker Confirmed|Motor Components
+Addison Parker|Decision Maker Confirmed|montalvans.com
+Mia Medjedovic|Decision Maker Confirmed|MJC
+Addison Parker|Decision Maker Confirmed|Missouri Petroleum Products Co.
+Addison Parker|Pitched/Solution Delivered|MISA Metal Processing
+Addison Parker|Decision Maker Confirmed|Midwest Geothermal
+Addison Parker|Pitched/Solution Delivered|MIDLAND FOODS DIST, INC
+Nathan Beaver|Qualified Prospect|Mid-South Food Bank
+Mia Medjedovic|Pitched/Solution Delivered|Mendocino Redwood
+Mia Medjedovic|Decision Maker Confirmed|McCue Corporation
+Nicholas McNamara|Decision Maker Confirmed|McAsphalt Industries
+Mia Medjedovic|Closed won|MC Dean
+Nicholas McNamara|Pitched/Solution Delivered|Maxon Lift Corp
+Simran Subramanian|Decision Maker Confirmed|Maxim Crane Works
+Addison Parker|Decision Maker Confirmed|Mario Camacho Foods
+Addison Parker|Pitched/Solution Delivered|Marglen Industries
+Mia Medjedovic|Decision Maker Confirmed|Manroland Goss
+Mia Medjedovic|Qualified Prospect|Manac
+Nicholas McNamara|Closed won|M.J Kellner Co. Inc
+Simran Subramanian|Decision Maker Confirmed|Lorin
+Addison Parker|Pitched/Solution Delivered|Lodge Lumber
+Simran Subramanian|Qualified Prospect|Lite Gauge Metals,
+Mia Medjedovic|Closed won|Liberty Tire
+Addison Parker|Decision Maker Confirmed|LEONI
+Nicholas McNamara|Closed won|Lee Storage Company
+Nathan Beaver|Decision Maker Confirmed|Lectronics
+Nicholas McNamara|Closed won|Leaf Home
+Nathan Beaver|Qualified Prospect|LAVAZZA
+Addison Parker|Qualified Prospect|laurand.net
+Addison Parker|Decision Maker Confirmed|Lane Press
+Nathan Beaver|Decision Maker Confirmed|LandMark Implement
+Nicholas McNamara|Closed won|L.F. GEORGE
+Nicholas McNamara|Decision Maker Confirmed|Korex
+Addison Parker|Decision Maker Confirmed|Kohl Wholesale
+Addison Parker|Qualified Prospect|kingdompipeandsteel.com
+Mia Medjedovic|Closed won|Killick Aerospace
+Kahekili Barrozo|Closed won|Kawneer
+Simran Subramanian|Closed won|Kaiser Aluminum
+Mia Medjedovic|Closed won|JD.com
+Steve O'Neill|Decision Maker Confirmed|Invio Automation
+Steve O'Neill|Decision Maker Confirmed|Intermodal Tank Transport
+Steve O'Neill|Decision Maker Confirmed|Intercity Packers
+Mia Medjedovic|Closed won|Integrity Beverage/Spectrum Foods
+Steve O'Neill|Decision Maker Confirmed|Inline Filling Systems
+Nicholas McNamara|Closed won|Indevco North America
+Nicholas McNamara|Closed won|Indevco (Group and Plastics)
+Simran Subramanian|Decision Maker Confirmed|Imperial Tobacco Canada
+Nicholas McNamara|Decision Maker Confirmed|Image Craft
+Mia Medjedovic|Closed won|IMA
+Mia Medjedovic|Decision Maker Confirmed|IHI Turbo America
+Addison Parker|Qualified Prospect|Hyve Solutions (TD SYNNEX)
+Mia Medjedovic|Decision Maker Confirmed|Hurst Boiler & Welding
+Addison Parker|Decision Maker Confirmed|HPC Foodservice
+Nathan Beaver|Decision Maker Confirmed|Hoyer
+Kahekili Barrozo|Closed won|Howmet Aerospace
+Addison Parker|Qualified Prospect|Housley Communications Inc
+Simran Subramanian|Pitched/Solution Delivered|Hoover Treated Wood Products
+Addison Parker|Closed won|HJ Martin & Son
+Nicholas McNamara|Closed won|Hickory Harvest Foods
+Addison Parker|Decision Maker Confirmed|henrytile.com
+Mia Medjedovic|Decision Maker Confirmed|Heidelberg
+Nathan Beaver|Qualified Prospect|heartlandsheets.com
+Simran Subramanian|Closed won|Hanwha Aerospace
+Addison Parker|Qualified Prospect|hallcoindustries.com
+Mia Medjedovic|Decision Maker Confirmed|GreenPoint Ag
+Simran Subramanian|Decision Maker Confirmed|Greco Aluminum Railings
+Mia Medjedovic|Qualified Prospect|Great Dane
+Addison Parker|Decision Maker Confirmed|Great Canadian Entertainment
+Nathan Beaver|Qualified Prospect|Grand River Dam Authority
+Nathan Beaver|Decision Maker Confirmed|Grakon
+Steve O'Neill|Decision Maker Confirmed|GOMACO
+Mia Medjedovic|Qualified Prospect|GMS Mine Repair & Maintenance
+Mia Medjedovic|Decision Maker Confirmed|GLT
+Mia Medjedovic|Decision Maker Confirmed|Glantz
+Nicholas McNamara|Decision Maker Confirmed|Gilson Graphics
+Nathan Beaver|Decision Maker Confirmed|GIANT
+Addison Parker|Pitched/Solution Delivered|Geiger
+Steve O'Neill|Decision Maker Confirmed|GE Aerospace
+Nicholas McNamara|Decision Maker Confirmed|Future Transfer
+Addison Parker|Decision Maker Confirmed|Fuller Brothers Inc
+Mia Medjedovic|Closed won|Frulact
+Nicholas McNamara|Decision Maker Confirmed|Fort Valley State University
+Mia Medjedovic|Closed won|Forge Precision/Forge Die & Tool Company
+Nicholas McNamara|Closed won|Flow Pro Products
+Nicholas McNamara|Closed won|Florim USA
+Nathan Beaver|Decision Maker Confirmed|Flexi-Van Leasing
+Nicholas McNamara|Decision Maker Confirmed|Finley Asphalt
+Mia Medjedovic|Decision Maker Confirmed|Fiberon
+Simran Subramanian|Decision Maker Confirmed|Ferroglobe
+Simran Subramanian|Decision Maker Confirmed|Fermilab
+Steve O'Neill|Qualified Prospect|fcifloors.com
+Addison Parker|Decision Maker Confirmed|Fabuwood Cabinetry
+Nathan Beaver|Decision Maker Confirmed|EXP
+Nicholas McNamara|Decision Maker Confirmed|Exotech
+Steve O'Neill|Decision Maker Confirmed|EuroKera
+Addison Parker|Decision Maker Confirmed|Eurecat US
+Nathan Beaver|Decision Maker Confirmed|ESP International
+Addison Parker|Decision Maker Confirmed|Esmark
+Addison Parker|Decision Maker Confirmed|ErgonArmor
+Nicholas McNamara|Qualified Prospect|Epl Feed, Llc
+Nathan Beaver|Decision Maker Confirmed|EPC USA
+Addison Parker|Qualified Prospect|ennis.com
+Nicholas McNamara|Closed won|Engie
+Mia Medjedovic|Decision Maker Confirmed|ENC
+Nathan Beaver|Qualified Prospect|Ellicott Dredges
+Mia Medjedovic|Decision Maker Confirmed|Elgin Industries, Inc.
+Simran Subramanian|Decision Maker Confirmed|Elgiloy
+Addison Parker|Decision Maker Confirmed|Electrical Power Products
+Nathan Beaver|Decision Maker Confirmed|Eldon C. Stutsman
+Addison Parker|Qualified Prospect|EGR
+Nathan Beaver|Decision Maker Confirmed|EDGE Homes
+Addison Parker|Decision Maker Confirmed|E. C. Barton & Co.
+Mia Medjedovic|Qualified Prospect|Dutra Group
+Nicholas McNamara|Closed won|DSB Technologies
+Steve O'Neill|Decision Maker Confirmed|Dowty Propellers
+Addison Parker|Decision Maker Confirmed|Doug Ashy Building Materials
+Nathan Beaver|Closed won|Dorel Juvenile
+Mia Medjedovic|Closed won|Dix Block & Supply Company
+Addison Parker|Decision Maker Confirmed|diversifiedauto.com
+Mia Medjedovic|Qualified Prospect|Direct Scaffold Supply
+Steve O'Neill|Decision Maker Confirmed|Dillmeier Glass
+Nathan Beaver|Decision Maker Confirmed|Desktop Metal
+Mia Medjedovic|Closed won|Day & Zimmermann
+Nathan Beaver|Decision Maker Confirmed|Dave Steel
+Nicholas McNamara|Decision Maker Confirmed|Dart Advantage Warehousing
+Steve O'Neill|Decision Maker Confirmed|Daltile
+Nathan Beaver|Decision Maker Confirmed|Cycle Link USA
+Mia Medjedovic|Closed won|Custom Door Parts
+Addison Parker|Decision Maker Confirmed|Cummins-Allison
+Nicholas McNamara|Decision Maker Confirmed|Cummings Printing
+Nathan Beaver|Closed won|Culpeper Wood Preservers
+Mia Medjedovic|Closed won|Cronimet Corporation USA
+Addison Parker|Decision Maker Confirmed|Creative Door Services
+Nathan Beaver|Qualified Prospect|Crane Tech
+Nathan Beaver|Pitched/Solution Delivered|Corporate eWaste Solutions
+Simran Subramanian|Decision Maker Confirmed|Corley MFG
+Nathan Beaver|Qualified Prospect|Contractors Wardrobe CW Doors
+Mia Medjedovic|Decision Maker Confirmed|Continental Cement
+Nathan Beaver|Decision Maker Confirmed|Continental
+Nathan Beaver|Decision Maker Confirmed|Constellation Home
+Simran Subramanian|Decision Maker Confirmed|Consolidated Metal Products
+Simran Subramanian|Decision Maker Confirmed|Con-Vey
+Mia Medjedovic|Decision Maker Confirmed|Commercial Metals Company (CMC)
+Nathan Beaver|Decision Maker Confirmed|Colortech
+Simran Subramanian|Decision Maker Confirmed|Coenen Mechanical
+Addison Parker|Decision Maker Confirmed|CMF Global
+Nathan Beaver|Decision Maker Confirmed|Clark Testing
+Simran Subramanian|Qualified Prospect|Clark Construction Group
+Nathan Beaver|Decision Maker Confirmed|City Rent A Truck
+Simran Subramanian|Closed won|Citi Trends
+Addison Parker|Decision Maker Confirmed|centurionibc.com
+Addison Parker|Decision Maker Confirmed|CDI custom curb adapters
+Addison Parker|Decision Maker Confirmed|Cascade Waterworks Manufacturing
+Addison Parker|Decision Maker Confirmed|Cardinal Glass - Portage
+Mia Medjedovic|Qualified Prospect|Capital Pump & Equipment
+Addison Parker|Decision Maker Confirmed|Canusa Wood
+Steve O'Neill|Decision Maker Confirmed|Canplas
+Simran Subramanian|Qualified Prospect|Canada Nickel
+Simran Subramanian|Pitched/Solution Delivered|Can Art Aluminum Extrusion
+Nathan Beaver|Qualified Prospect|CAM Industrial Solutions
+Addison Parker|Closed won|Caldera Manufacturing Group
+Mia Medjedovic|Closed won|C2 Commodities
+Simran Subramanian|Closed won|BRT Extrusions
+Addison Parker|Closed won|Bronco Industrial Services
+Steve O'Neill|Decision Maker Confirmed|Bri-Steel Manufacturing
+Simran Subramanian|Decision Maker Confirmed|Brewer Science
+Addison Parker|Decision Maker Confirmed|Brady
+Nathan Beaver|Qualified Prospect|Borsheim Crane Service
+Addison Parker|Decision Maker Confirmed|bonsuisse.com
+Addison Parker|Decision Maker Confirmed|Bogen Communications
+Nicholas McNamara|Closed won|Bobcat Plus
+Nicholas McNamara|Closed won|Boart Longyear
+Mia Medjedovic|Closed won|Black & McDonald
+Mia Medjedovic|Decision Maker Confirmed|Bison Trailers
+Mia Medjedovic|Closed won|BioTown Ag
+Nathan Beaver|Decision Maker Confirmed|BIOLASE Inc
+Mia Medjedovic|RFP Confirmed|Betafence USA
+Mia Medjedovic|Decision Maker Confirmed|BDK
+Kahekili Barrozo|Closed won|Basic Metals Inc
+Mia Medjedovic|Decision Maker Confirmed|Bailey International, LLC
+Nathan Beaver|Decision Maker Confirmed|Babcock & Wilcox
+Addison Parker|Decision Maker Confirmed|AVL Manufacturing
+Mia Medjedovic|Decision Maker Confirmed|AUMOVIO
+Mia Medjedovic|Closed won|Atkins Machinery
+Steve O'Neill|Decision Maker Confirmed|Astenjohnson
+Addison Parker|Decision Maker Confirmed|Associated Packaging
+Addison Parker|Decision Maker Confirmed|Assembled Products
+Addison Parker|Decision Maker Confirmed|ASM Modular Systems (Kingspan)
+Nicholas McNamara|Decision Maker Confirmed|Artopex
+Nicholas McNamara|Closed won|ARMI
+Kahekili Barrozo|Closed won|Arconic
+Steve O'Neill|Decision Maker Confirmed|Apto Solutions
+Nathan Beaver|Decision Maker Confirmed|APR Supply Co
+Addison Parker|Decision Maker Confirmed|Apac Chemical
+Simran Subramanian|Decision Maker Confirmed|Anaheim Extrusion Company
+Nicholas McNamara|Decision Maker Confirmed|American Litho
+Addison Parker|Decision Maker Confirmed|American Dawn Inc
+Mia Medjedovic|Closed won|American Battery Technology Co.
+Steve O'Neill|Decision Maker Confirmed|AMC Theatres
+Nathan Beaver|Decision Maker Confirmed|Alvogen
+Simran Subramanian|Decision Maker Confirmed|Alumicor Limited
+Nicholas McNamara|Qualified Prospect|Alpine Power Systems
+Steve O'Neill|Decision Maker Confirmed|Alliance Plastics Corp
+Steve O'Neill|Qualified Prospect|Alcoa
+Mia Medjedovic|Closed won|AgriGro
+Steve O'Neill|Decision Maker Confirmed|Aerzen USA
+Addison Parker|Decision Maker Confirmed|adfoods.com
+Addison Parker|Closed won|AD Process Equipment
+Simran Subramanian|Decision Maker Confirmed|ABC ALUMINUM
+Addison Parker|Decision Maker Confirmed|A. Zahner
+Nicholas McNamara|Closed won|3M Company
+Mia Medjedovic|Closed won|Alta Recycling`;
 
 const OWNER = { "Kahekili Barrozo": "Kili", "Simran Subramanian": "Simran", "Mia Medjedovic": "Mia", "Nicholas McNamara": "Nick", "Addison Parker": "Addie", "Nathan Beaver": "Nathan", "Steve O'Neill": "Steve" };
 const STATUS = { "Decision Maker Confirmed": "DMC", "Qualified Prospect": "QP", "RFP Confirmed": "RFP", "Pitched/Solution Delivered": "PSD", "Contracting": "Contracting", "Closed won": "Closed Won" };
@@ -527,7 +426,7 @@ const MOVED = {
   Steve: { DMC: 13, PSD: 1 },
 };
 
-const RECENT_7D = {"American Dawn Inc": "DMC", "Apac Chemical": "DMC", "Assembled Products": "DMC", "Bogen Communications": "DMC", "Bronco Industrial Services": "Closed Won", "Creative Door Services": "DMC", "Electrical Power Products": "DMC", "Esmark": "DMC", "Eurecat US": "DMC", "Geiger": "PSD", "Kohl Wholesale": "DMC", "LEONI": "DMC", "Marglen Industries": "DMC", "Murdochs": "DMC", "Nextera Packaging": "QP", "Rapala VMC": "PSD", "SAGE Publications": "DMC", "SparTek Industries": "QP", "Sunco Foods": "DMC", "Sunshine Metals Inc": "QP", "SWD Urethane": "DMC", "T. J. Snow Company": "QP", "Tacoma Screw Products Inc": "DMC", "Talley Inc": "DMC", "Texas Liquidation": "PSD", "The Fountainhead Group": "DMC", "Totten Tubes": "QP", "Union Supply Group Inc": "DMC", "US Med-Equip Inc": "DMC", "US Stove": "QP", "US Titanium Industry Inc.": "QP", "Vander-Bend Manufacturing": "DMC", "Verdeco Plastics": "PSD", "Volm Companies": "DMC", "Whelen Engineering": "QP", "Wholesale Electric Supply": "DMC", "Bailey International, LLC": "DMC", "Continental Cement": "DMC", "Cronimet Corporation USA": "Closed Won", "GLT": "DMC", "Manroland Goss": "DMC", "MC Dean": "Closed Won", "MJC": "DMC", "National Air Cargo": "DMC", "OSW Equipment & Repair LLC": "DMC", "Seymour Midwest": "DMC", "Thirdcoast": "DMC", "Yankee Equipment Systems": "DMC", "APR Supply Co": "DMC", "City Rent A Truck": "DMC", "Clark Testing": "DMC", "Colortech": "DMC", "Constellation Home": "DMC", "Contractors Wardrobe CW Doors": "QP", "Crane Tech": "QP", "Culpeper Wood Preservers": "Closed Won", "Cycle Link USA": "DMC", "Desktop Metal": "DMC", "Dorel Juvenile": "Closed Won", "EDGE Homes": "DMC", "Eldon C. Stutsman": "DMC", "Ellicott Dredges": "QP", "EPC USA": "DMC", "ESP International": "DMC", "Flexi-Van Leasing": "DMC", "Grakon": "DMC", "LandMark Implement": "DMC", "Mid-South Food Bank": "QP", "primarypackaging.com": "DMC", "Ricola": "DMC", "SilPro": "Closed Won", "Sims Crane": "DMC", "Sunnyside Egg Co.": "QP", "The Walman Optical": "DMC", "Fort Valley State University": "DMC", "Plasticade": "DMC", "Red Stag Fulfillment": "DMC", "Spartan": "DMC", "Pyrotek": "PSD", "TwinsBridge": "DMC", "A. Zahner": "DMC", "Alliance Plastics Corp": "DMC", "Apto Solutions": "DMC", "CDI custom curb adapters": "DMC", "Dowty Propellers": "DMC", "GE Aerospace": "DMC", "GOMACO": "DMC", "Inline Filling Systems": "DMC", "Mario Camacho Foods": "DMC", "Musco Family Olive": "DMC", "Olivet International": "DMC", "UCL Swift NA": "DMC", "Valley Forge Flag Company": "DMC", "Virnig Manufacturing": "PSD"}; // company -> status achieved in last 7 days (vs HubSpot RAW 10/29)
+const RECENT_7D = {"American Dawn Inc": "DMC", "Apac Chemical": "DMC", "Assembled Products": "DMC", "Bogen Communications": "DMC", "Bronco Industrial Services": "Closed Won", "Creative Door Services": "DMC", "Electrical Power Products": "DMC", "Esmark": "DMC", "Eurecat US": "DMC", "Geiger": "PSD", "Kohl Wholesale": "DMC", "LEONI": "DMC", "Marglen Industries": "PSD", "Murdochs": "DMC", "Nextera Packaging": "QP", "Rapala VMC": "PSD", "SAGE Publications": "DMC", "SparTek Industries": "QP", "Sunco Foods": "DMC", "Sunshine Metals Inc": "QP", "SWD Urethane": "DMC", "T. J. Snow Company": "QP", "Tacoma Screw Products Inc": "DMC", "Talley Inc": "DMC", "Texas Liquidation": "PSD", "The Fountainhead Group": "DMC", "Totten Tubes": "QP", "US Med-Equip Inc": "DMC", "US Stove": "QP", "US Titanium Industry Inc.": "QP", "Vander-Bend Manufacturing": "DMC", "Verdeco Plastics": "PSD", "Volm Companies": "DMC", "Whelen Engineering": "QP", "Wholesale Electric Supply": "DMC", "Bailey International, LLC": "DMC", "Continental Cement": "DMC", "Cronimet Corporation USA": "Closed Won", "GLT": "DMC", "Manroland Goss": "DMC", "MC Dean": "Closed Won", "MJC": "DMC", "National Air Cargo": "DMC", "OSW Equipment & Repair LLC": "DMC", "Seymour Midwest": "DMC", "Thirdcoast": "DMC", "Yankee Equipment Systems": "DMC", "APR Supply Co": "DMC", "City Rent A Truck": "DMC", "Clark Testing": "DMC", "Colortech": "DMC", "Constellation Home": "DMC", "Contractors Wardrobe CW Doors": "QP", "Crane Tech": "QP", "Culpeper Wood Preservers": "Closed Won", "Cycle Link USA": "DMC", "Desktop Metal": "DMC", "Dorel Juvenile": "Closed Won", "EDGE Homes": "DMC", "Eldon C. Stutsman": "DMC", "Ellicott Dredges": "QP", "EPC USA": "DMC", "ESP International": "DMC", "Flexi-Van Leasing": "DMC", "Grakon": "DMC", "LandMark Implement": "DMC", "Mid-South Food Bank": "QP", "primarypackaging.com": "DMC", "Ricola": "DMC", "SilPro": "Closed Won", "Sims Crane": "DMC", "Sunnyside Egg Co.": "QP", "The Walman Optical": "DMC", "Fort Valley State University": "DMC", "Plasticade": "DMC", "Red Stag Fulfillment": "DMC", "Spartan": "DMC", "Pyrotek": "PSD", "TwinsBridge": "DMC", "A. Zahner": "DMC", "Alliance Plastics Corp": "DMC", "Apto Solutions": "DMC", "CDI custom curb adapters": "DMC", "Dowty Propellers": "DMC", "GE Aerospace": "DMC", "GOMACO": "DMC", "Inline Filling Systems": "DMC", "Mario Camacho Foods": "DMC", "Musco Family Olive": "DMC", "Olivet International": "DMC", "UCL Swift NA": "DMC", "Valley Forge Flag Company": "DMC", "Virnig Manufacturing": "PSD", "Solomon Colors": "DMC", "Red-D-Arc": "QP", "Intercity Packers": "DMC", "Canplas": "DMC", "Associated Packaging": "DMC", "Aerzen USA": "DMC"}; // company -> status achieved in last 7 days (vs HubSpot RAW 10/29)
 
 const REV = {"AGI":1077467000,"LAVAZZA":22792000,"Supreme International":135786000,"BRT Extrusions":50570000,"ADVANCE TIRE":4677,"3M Company":25180001000,"United Malt":250000000,"heartlandsheets.com":7600000,"astrochemical.com":5100000,"E. C. Barton & Co.":173817000,"Pavion":19682000,"Hanwha Aerospace":7662237000,"Cummins-Allison":48180000,"Wabtec Corporation":10390000000,"Cronimet Corporation USA":1515508000,"Commercial Metals Company (CMC)":8850088000,"Great Canadian Entertainment":3551356000,"Mendocino Redwood":3639000,"fcifloors.com":2472,"Caruthers Raisin Packing Co., Inc.":3758,"Phinia":3615001000,"ARMI":13787000,"Betafence USA":7805000,"Cascade Waterworks Manufacturing":5881000,"Trumbull Manufacturing":7797000,"Yerba Madre":210932000,"Perrigo Company":4100000000,"Bison Trailers":11121605000,"Port Saint John":30859000,"Voss Manufacturing":24659000,"eBay":12008000000,"MSC Industrial Direct Co., Inc":3820951000,"Alta Recycling":5800000,"Leaf Home":4688000,"Werfen":2302228000,"Tidal Vision":140855000,"Capital Pump & Equipment":81476000,"Grand River Dam Authority":368335000,"Midwest Geothermal":5519000,"CAM Industrial Solutions":1024692000,"Timberline Manufacturing":27351000,"Howmet Aerospace":7975001000,"Invio Automation":135786000,"National Beverage Corp":1190000000,"Tidal Grow Agriscience":1000000,"Direct Scaffold Supply":50000000,"Epl Feed, Llc":10000000,"LaGrange Products":10000000,"ErgonArmor":10216000,"Bronco Industrial Services":50000000,"Cardinal Glass - Portage":10000000000,"Efficiency Production":50000000,"Artopex":40000000,"Housley Communications Inc":50000000,"Dave Steel":50000000,"MEP Technologies":71986000,"Manac":414541000,"Varichem International":5361000,"Purilum":5118000,"Soyventis":6536000,"Maxon Lift Corp":33247000,"Fuller Brothers Inc":1000000,"Fermilab":422671000,"SBFI":50000000,"Citrojugo Sa De Cv":79332000,"Frulact":100000000,"Webstone":4318000,"Indevco North America":28782000,"Select Genetics":5982000,"Ehresmann Engineering":8900000,"Engie":89964556350,"HJ Martin & Son":381915000,"Greco Aluminum Railings":1000000000,"Elgin Industries, Inc.":50000000,"Panavid":10000000,"MC Dean":10000000000,"Gilson Graphics":10000000,"Hickory Harvest Foods":23016000,"Continental":621090000,"EGR":178481000,"Imperial Tobacco Canada":210932000,"Shop LC":738889000,"English Construction Company":50000000,"Pochteca":478819,"Flow Pro Products":5591000,"Comex":891208,"Ruhrpumpen":350000000,"Lectronics":37992,"Atkins Machinery":4466000,"Stacy and Witbeck, Inc.":177300000,"EXP":628000000,"Dutra Group":255148000,"Structure Tone":817920000,"Traffic Management, Inc":282327000,"Anaheim Extrusion Company":3471000,"Canada Nickel":4013000,"Lorin":31855,"Raufoss Technology":24960000,"Borsheim Crane Service":16884000,"Black & McDonald":4000000000,"Times Publishing Company dba Tampa Bay Times":220622000,"Aegle Nutrition":17705000,"Midco":561709000,"Rapala VMC":237513000,"AgriGro":12000000,"American Battery Technology Co.":3226000,"Alumicor Limited":51115000,"Wholesale Home/DJ Direct Warehousing":3398000,"Intermodal Tank Transport":50000000,"AD Process Equipment":605971000,"Lite Gauge Metals,":3355000,"Republic Bag Inc":30296000,"DSB Technologies":2634000,"Universal Cement":155748000,"Kawneer":938937000,"AMC Theatres":3165300,"Rimex":26806000,"Future Transfer":8265000000,"Roberts Tire Sales":13724000,"GIANT":2239863000,"Integrity Beverage/Spectrum Foods":6359000,"Killick Aerospace":69111000,"Corley MFG":8375000,"Reliable":10000000,"Hyve Solutions (TD SYNNEX)":445235000,"Clarus":141759000,"Nardone Brothers Baking Co":48000000,"Whitehall Products":23925000,"Ferroglobe":1373244000,"Power/Mation":235549000,"Doug Ashy Building Materials":81472000,"TMP Technologies":16416,"Stoughton Trailers":296101000,"ABC ALUMINUM":53361000,"Babcock & Wilcox":653492000,"JD.com":147600000000,"Sustana":26496000,"Brewer Science":68952000,"Weldco-Beales Manufacturing":60252000,"Fiberon":259047000,"Whirlwind Steel Buildings":209000000,"PNY":271571000,"Shari's Berries":38812000,"Pulpmill Services":6888000,"Strategic Construction Solutions":33062000,"BIOLASE Inc":49725000,"Swanson Health Products":500000000,"Northland Power":1653910000,"Can Art Aluminum Extrusion":35755000,"Woodman's Food Market":300000000,"Geiger":14412,"Panel Processing":131181000,"Osterman":190100000,"Kaiser Aluminum":3427900000,"Vox Printing":20759000,"Great Dane":1628554000,"Fabuwood Cabinetry":350000000,"Penn Pallet":24313000,"Basden Steel Corporation":477393000,"Lee Storage Company":1000000,"TIMAC AGRO USA":2157537,"Con-Vey":19268000,"Spectrum Food Group":20273000,"TFH Publications":3762000,"SMS group":38966000,"Universal Lighting Technologies":58107,"Novelis":16200000000,"EuroKera":25040000,"Wieland":5770845000,"Pacific Coast Producers":364683000,"Dryclean USA":16236000,"GMS Mine Repair & Maintenance":250000000,"Canusa Wood":3306000,"Silver Star Brands":227267000,"Alpine Power Systems":150000,"Treadmaxx Tire Distributors Inc":50000000,"Basic Metals Inc":4703000,"Forge Precision/Forge Die & Tool Company":7373000,"Hoover Treated Wood Products":195803000,"Exotech":10000000,"QuikTrip Corporation":14160000000,"Brady":1541827000,"Sparton":289579000,"Daltile":2444139000,"Ulbrich":268660000,"Keytronic":435064000,"Sun Country Inc":1080000000,"ENC":12063000,"Alvogen":945190000,"TAG Manufacturing":70337000,"Plastics Engineering":72194000,"Ducommun Incorporated":806224000,"Florim USA":68349,"New Flyer":2382000000,"Pyrotek":814713000,"Indevco (Group and Plastics)":28782000,"Pyxus International":2413000000,"Astenjohnson":638000000,"Clark Construction Group":3596700000,"SawStop":22400000,"Easterday Farms":18847000,"Citi Trends":781930000,"Dix Block & Supply Company":1352000,"True Manufacturing":991234000,"Alcoa":12868000000,"Verista":20877000,"Arconic":9000000000,"MIDLAND FOODS DIST, INC":3827000,"Tutor Perini":3790755000,"Liberty Tire":721495000,"M.J Kellner Co. Inc":21000000,"Maxim Crane Works":902000000,"NIBCO":732000000,"Day & Zimmermann":2700000000,"Boart Longyear":1100000000,"Visteon":3759001000,"PJP":164900000,"Quality Bicycle Products":135786000,"American Mitsuba Corp":697000000,"New Enterprise Stone & Lime":1591310000};
 const REV_ZI = {"channellumber.com": 6931000, "bonsuisse.com": 4601000, "laurand.net": 1587000, "siteprorentals.com": 3856000, "teamcertified.com": 10735000, "ennis.com": 397151000, "primematerials.com": 1611000, "kingdompipeandsteel.com": 2211000, "surplusmetalscorp.com": 1742000, "vedco.com": 21532000, "adfoods.com": 4788000, "precisionladders.com": 6269000, "vantonecf.com": 1286000, "oceanautomotivegroup.com": 2054000, "sweetgrassltd.com": 1140000, "saladcosmo.com": 3487000, "hallcoindustries.com": 8929000, "henrytile.com": 20872000, "montalvans.com": 10659000, "parklandseedpotatoes.com": 6788000, "centurionibc.com": 14439000, "tylerironandmetal.com": 3683000, "signatureparty.com": 21010000, "plastechtooling.com": 3313000, "Hanwha Materials": 44120000, "SnowWolf Plows": 4454000, "CMF Global": 5643000, "MP Husky": 20341000, "MISA Metal Processing": 5747000, "Lodge Lumber": 5944000, "AVL Manufacturing": 36934000, "Caldera Manufacturing Group": 32317000, "Strait Regional Centre for Education": 21341000, "AUMOVIO": 20346147000, "Saf-T-Cab": 23764000, "Port of Memphis": 3842000, "SuperClamp": 1897000, "Bobcat Plus": 3431000, "L.F. GEORGE": 24040000, "BioTown Ag": 9565000, "Group Dekko": 355188000, "ReNew Plastics": 12120000, "U.S. Axle": 19561000, "Internationalmulch": 1849000, "Reliance Steel & Aluminum": 15805801000}; // source: ZoomInfo (company-level revenue, 10/21)
@@ -537,7 +436,7 @@ const revOf = (c) => REV[c] ?? REV[c.split(" (")[0]];
 const withRev = (c) => { const v = revOf(c); return v === undefined ? c : `${c} (${fmtRev(v)})`; };
 const data={};for(const line of RAW.split("\n")){const[o,s,c]=line.split("|");const r=OWNER[o],st=STATUS[s];if(!r||!st)continue;((data[r]=data[r]||{})[st]=data[r][st]||[]).push(c);}
 const names=(r,s)=>s==="New Ship MTD"?(NSA[r]||[]):((data[r]||{})[s]||[]);
-const TOTALS={Kili:191,Simran:241,Mia:225,Nick:248,Addie:276,Nathan:178,Steve:247};const count=(r,s)=>s==="Prospect"?(TOTALS[r]!=null?Math.max(0,TOTALS[r]-["DMC","QP","RFP","PSD","Contracting","Closed Won"].reduce((a,x)=>a+names(r,x).length,0)):(PROSPECTS[r]||0)):names(r,s).length;
+const TOTALS={Kili:189,Simran:240,Mia:224,Nick:248,Addie:278,Nathan:167,Steve:247};const count=(r,s)=>s==="Prospect"?(TOTALS[r]!=null?Math.max(0,TOTALS[r]-["DMC","QP","RFP","PSD","Contracting","Closed Won"].reduce((a,x)=>a+names(r,x).length,0)):(PROSPECTS[r]||0)):names(r,s).length;
 const op=[.45,.58,.68,.78,.88,1,1,1];const clip=i=>i===0?"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)":"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%)";
 const revSpan=v=>{const t=fmtRev(v),u=t.slice(-1);return`<span class="rev rev-${u==="B"?"b":u==="M"?"m":u==="K"?"k":"x"}">${t}</span>`};
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
@@ -558,12 +457,12 @@ function render(){const only=sel.value;M.innerHTML="";pinned=null;
     if(pinned&&pinned.r!==r)showList(pinned.r,null);pinned={r,s};a.classList.add("on");showList(r,s)};F.appendChild(a)});M.appendChild(d)})});}
 sel.onchange=render;render();
 
-const K=[["Account Managers",[["Kili",3,4,53057,300000,31,17,0,0,9]]],["Account Executives",[["Simran",2,4,3450,15000,210,8,0,0,5],["Mia",8,15,5788,30000,224,21,1,0,17],["Nick",8,11,21174,80000,286,11,0,0,11]]],["New AEs",[["Addie",1,3,2225,5000,279,74,2,1,57],["Nathan",1,0,-850,5000,1410,85,1,3,42]]],["Team Total",[["Team",23,37,84845,435000,3470,220,4,4,142]]]];
+const K=[["Account Managers",[["Kili",3,4,53057,300000,31,17,0,0,9]]],["Account Executives",[["Simran",2,4,3450,15000,210,8,0,0,5],["Mia",8,15,5788,30000,224,21,1,0,17],["Nick",8,11,21174,80000,286,11,0,0,11]]],["New AEs",[["Addie",1,3,2225,5000,279,74,2,1,57],["Nathan",1,0,-850,5000,1410,85,1,4,42]]],["Team Total",[["Team",23,37,84845,435000,3470,220,4,5,142]]]];
 const ST=[[0,[214,72,58]],[.25,[240,128,72]],[.5,[245,200,90]],[.75,[150,205,90]],[1,[56,168,105]]];
 function pc(f){f=Math.max(0,Math.min(1,f));for(let i=1;i<ST.length;i++)if(f<=ST[i][0]){const[a,c1]=ST[i-1],[b,c2]=ST[i],t=(f-a)/(b-a);return`rgb(${c1.map((v,j)=>Math.round(v+(c2[j]-v)*t))})`}}
 const $=n=>Math.round(n).toLocaleString("en-US"),kq=q=>"$"+q/1000+"K";
 function bar(a,g,tick,pf){const w=Math.max(0,Math.min(1,a/g))*100;return`<div class="bar">${a>0?`<div class="fill" style="width:${w}%;background:${pc(pf)}"></div>`:""}${tick?`<div class="tick" style="left:${tick*100}%"></div>`:""}</div>`}
-const WD=2,MW=21,PF=WD/MW;
+const WD=4,MW=21,PF=WD/MW;
 const BT={"Kili": {"n": [], "m": ["Reliable Silver Corporation"]}, "Simran": {"n": [], "m": ["BRT Extrusions", "Hanwha Materials Savannah LLC"]}, "Mia": {"n": ["United Alloys & Metals"], "m": ["Alta Recycling LLC", "Atkins Machinery, LLC", "Killick Aerospace Limited", "Nibco c/o US Bank", "Rainbow Fertilizer LLC", "TIMAC AGRO USA Inc", "Universal White Cement", "VariChem International Inc"]}, "Nick": {"n": [], "m": ["Boart Longyear c/o Software Solution", "DJ Direct Inc", "DSB Technologies", "Indevco Plastics - Longview"]}, "Addie": {"n": ["Bronco Industrial Services"], "m": ["H.J. Martin & Son, Inc", "Sigma Commercial Bag dba Republic Manufacturing Group Inc"]}, "Nathan": {"n": ["Silpro, LLC"], "m": []}, "Team": {"n": ["Silpro, LLC", "United Alloys & Metals", "Bronco Industrial Services"], "m": ["Alta Recycling LLC", "Atkins Machinery, LLC", "BRT Extrusions", "Boart Longyear c/o Software Solution", "DJ Direct Inc", "DSB Technologies", "H.J. Martin & Son, Inc", "Hanwha Materials Savannah LLC", "Indevco Plastics - Longview", "Killick Aerospace Limited", "Nibco c/o US Bank", "Rainbow Fertilizer LLC", "Reliable Silver Corporation", "Sigma Commercial Bag dba Republic Manufacturing Group Inc", "TIMAC AGRO USA Inc", "Universal White Cement", "VariChem International Inc"]}};
 const btTip=n=>{const d=BT[n];if(!d)return"";const li=(a,c,s)=>a.length?a.map(x=>`<div class="${c}">${s} ${esc(x)}</div>`).join(""):`<div class="bn">none</div>`;return`<div class="tip btip${n==="Kili"||n==="Simran"?" dn":""}"><div class="bh">New vs Oct (${d.n.length})</div>${li(d.n,"bup","▲")}<div class="bh">Not yet shipped vs Oct (${d.m.length})</div>${li(d.m,"bdn","▼")}<div class="bs">Nov: TPRO Bill To export 11/5 (Nov MTD). Oct: TPRO Bill To 10/30. Rep = TPRO sales rep.</div></div>`};
 function kpi(){const KREPS=["Kili","Simran","Mia","Nick","Addie","Nathan"];const kchips=`<div class="lb rbar" style="margin:0 0 12px"><div class="lbh"><h3>Filter by rep</h3><div class="fch rch krc">${["All",...KREPS].map(p=>`<button class="fc krc${p==="All"?" on":""}" data-krp="${p}">${p==="All"?"All reps":p}</button>`).join("")}</div></div></div>`;let s=kchips+`<div class="kw"><div class="kt"><div class="kr"><div></div><div class="kh">Bill-Tos MTD<br><span style="font-weight:400;color:#8b93a3">Nov vs Oct</span></div><div class="kh">GP vs quota (${Math.round(PF*100)}% of month done)</div><div class="kh">Avg emails / day vs 300</div><div class="kh">MTD calls vs monthly goal</div><div class="kh">Meetings Booked MTD</div><div class="kh">Discovery Calls MTD</div><div class="kh">CQR %<br><span style="font-weight:400;color:#8b93a3">calls &lt;1 min</span></div></div>`;
@@ -573,8 +472,8 @@ s+=`<div class="kr${T?" team":""}" data-rep="${n}"><div class="kn">${n}</div><di
 <div>${bar(gp,q,PF,gp/q/PF)}<div class="bl">${gp<0?"–$"+$(-gp):"$"+$(gp)} of ${kq(q)}${gp<0?"":` (${Math.round(gp/q*100)}%)`}</div></div>
 ${(()=>{const ea=Math.round(et/WD);return`<div class="tt" tabindex="0">${bar(ea,eg,0,ea/eg)}<div class="bl">${$(ea)} avg${T?" / 1,800":""}</div><div class="tip">MTD emails: <b>${$(et)}</b> over ${WD} workdays${T?" (incl. Steve 1,030)":""}<br><span>HubSpot outgoing emails, Nov 1–3 (as of Nov 3, 2:30 PM CT)</span></div></div>`})()}
 <div class="tt" tabindex="0">${(()=>{const MG={Kili:101,Simran:600,Mia:900,Nick:200,Addie:1200,Nathan:1200,Team:4201};const mg=MG[n],ex=Math.round(mg*PF);return`${bar(cm,mg,PF,cm/mg/PF)}<div class="bl">${$(cm)} / ${$(mg)} monthly</div><div class="tip">Expected by now (${WD} of ${MW} workdays): <b>${$(ex)}</b><br>Monthly goal: <b>${$(mg)}</b> (${Math.round(cm/mg*100)}% done)${T?"; MTD incl. Steve 4":""}<br><span>HubSpot calls by rep, Nov 1–3 (as of Nov 3, 2:30 PM CT)</span></div>`})()}</div><div class="kc tt" tabindex="0">${mt}<div class="tip">${T?"Addie 2 (Nextera, LEONI) · Mia 1 (M.C. Dean) · Nathan 1 (Dave Steel)":n==="Addie"?"Nextera 11/2; LEONI 11/10":n==="Mia"?"M.C. Dean 11/3":n==="Nathan"?"Dave Steel / Rusty Faulkner 11/6":mt?`${mt} booked`:"None yet"}<br><span>Steve Google Calendar — customer meetings with an external invitee, Nov MTD (as of Nov 5 ~9:10 AM CT)</span></div></div><div class="kc tt" tabindex="0">${dc}<div class="tip">${n==="Nathan"?"Nathan: Silpro, Contractors Wardrobe CW Doors, Sunnyside Egg Co. (form completions; cold Call-type tags not counted)":n==="Addie"||T?"Addie: US Stove 11/3"+(T?"; Nathan: 3":""):"None yet"}<br><span>Discovery Call Completed forms Nov 1–5 (Gmail/HubSpot)</span></div></div>${(()=>{const p=qd?Math.round(qn/qd*100):0,cl=p<50?"g":p<=70?"y":"r";return`<div class="cq cq-${cl}"><b>${p}%</b><span>${$(qn)} / ${$(qd)}</span></div>`})()}</div>`}}
-s+=`<div class="fn">Data: Nov 1–3 (as of Nov 3, 2:30 PM CT). Light tick = where pace should be today (2 of 21 November workdays done; 21 = Nov 2–30 weekdays, Thanksgiving 11/26 not excluded). Bar color is a gradient of % of pace: red 0%, yellow 50%, green 100%+.<br>Bill-Tos MTD and GP vs quota: TPRO Bill To export, Nov MTD as of 11/5 (23 bill-tos, 258 loads, $84,845 GP on $554,884 billed); rep = TPRO sales rep, plus Steve's 11/4 assignments (Silpro → Nathan; Bronco Industrial Services → Addie (HubSpot owner); United Alloys → Mia; Cass/True Mfg → Nick; Stoughton, MAI, Ulbrich → Mia). Team GP = all 23 bill-tos (incl. Addie's Bronco $2,225); Team Bill-Tos = sum of the 6 reps (23). Bill-To expectations: Kili 4, Simran 5, Mia 15, Nick 15, Addie 3, Nathan 1 (Team 43).<br>Team goals = sum of the 6 reps: $435K GP, 1,800 emails/day, 4,201 calls/month (Addie 1,200, Nathan 1,200, Mia 900, Simran 600, Nick 200, Kili 101). Avg emails/day = Nov outgoing emails / 2 workdays.<br>Meetings Booked = Steve Google Calendar customer meetings with an external invitee, Nov MTD (Addie 2, Mia 1, Nathan 1; as of Nov 5 ~9:10 AM CT). HubSpot Meetings index still shows 0 created-in-Nov for Team Steve. Discovery Calls = Discovery Call Completed forms Nov 1–5 (Nathan 3, Addie 1; cold Call-type tags not counted).<br>CQR % = share of calls under 1 min (HubSpot calls Nov 1–3); lower is better. Green &lt;50%, yellow 50–70%, red &gt;70%. Team totals include Steve (4 calls, 1 under 1 min, 1,030 emails).</div></div></div>`;document.getElementById("kpi").innerHTML=s;(function(){let FR="All";const run=()=>{document.querySelectorAll("#kpi .fc.krc").forEach(x=>x.classList.toggle("on",x.dataset.krp===FR));document.querySelectorAll("#kpi .kr[data-rep]").forEach(r=>{r.style.display=(FR==="All"||r.dataset.rep===FR)?"":"none"});document.querySelectorAll("#kpi .kg").forEach(g=>{let any=false,el=g.nextElementSibling;while(el&&!el.classList.contains("kg")&&!el.classList.contains("fn")){if(el.classList.contains("kr")&&el.style.display!=="none")any=true;el=el.nextElementSibling}g.style.display=any?"":"none"})};document.querySelectorAll("#kpi .fc.krc").forEach(b=>b.onclick=()=>{FR=b.dataset.krp;run()})})()}
-const AC={"n": [["Silpro", "SilPro", "Nathan", "New ship Nov MTD (TPRO Silpro, LLC); Closed Won — credited to Nathan", "SilPro", "First load confirmed (Steve 11/5)", "Closed Won", "11/05/2026 8:19 AM CST", "Nathan email thread \"quote intermodal and dry van\" w/ SilPro (23 msgs), latest Nov 5 8:19a"], ["United Alloys & Metals", "United Alloys & Metals", "Mia", "New ship Nov MTD; Closed Won — credited to Mia", "United Alloys & Metals", "First load confirmed (Steve 11/5)", "Closed Won", "—", "No Team Steve HubSpot company matching that name in search"]], "r": [], "c": [["Pyxus / Alliance One", "Pyxus International", "Nathan", "RFP; RFP releases in December", "Pyxus International", "Pricing review held 10/15; RFP in Dec", "RFP", "10/30/2026 2:35 PM CDT", "Incoming email from Kevin Matthews re Circle Logistics RFP Partnership (19-msg thread)"], ["Betafence", "Betafence USA", "Mia", "RFP; stale (last reply 171 days ago)", "Betafence USA", "Last reply 171 days ago", "RFP", "10/23/2026 12:00 PM CDT", "RFP Confirmed; last activity Oct 23 (empty activity feed)"], ["Sunnyside Egg Co.", "Sunnyside Egg Co.", "Nathan", "RFP Confirmed as of 11/5 HubSpot scrub — add to Closest", "Sunnyside Egg Co.", "Was QP; upgraded to RFP", "RFP", "11/03/2026 7:53 PM CST", "Nathan — now RFP Confirmed in HubSpot (was QP); last activity Nov 3"], ["Texas Liquidation", "Texas Liquidation", "Addie", "PSD; quoted 11/4", "Texas Liquidation", "Quoted yesterday; status → PSD", "PSD", "11/05/2026 8:48 AM CST", "Addison call Nov 5 8:48a; emailed Mayra Alia Nov 4 Plainfield IN→Arlington TX rate"], ["Virnig Manufacturing", "Virnig Manufacturing", "Steve", "PSD; upgraded from DMC 11/5", "Virnig Manufacturing", "Fresh status upgrade", "PSD", "11/03/2026 1:01 PM CST", "Steve email to Jessica Durkee Re: Virnig Freight Contact (6 msgs)"], ["Corporate eWaste Solutions", "Corporate eWaste Solutions", "Nathan", "PSD; discovery 10/26, need feedback", "Corporate eWaste Solutions", "Need feedback", "PSD", "11/05/2026 9:23 AM CST", "Nathan repeated outbound calls, no answer (Nov 5 9:18–9:23a)"], ["Geiger", "Geiger", "Addie", "PSD", "Geiger", "No update found", "PSD", "11/01/2026 7:00 AM CST", "Addison note Oct 30 + task; prior no-answer/VM calls Oct 20–22"], ["Can Art Aluminum Extrusion", "Can Art Aluminum Extrusion", "Simran", "Owns BRT Extrusions (our NSA); gave us opp to quote", "Can Art Aluminum Extrusion", "Quote request 10/21; owns BRT", "PSD", "11/05/2026 8:00 AM CST", "Simran email to Leslie Glabb Nov 2: need help with shipments?; task due Nov 5"], ["Mendocino Redwood", "Mendocino Redwood", "Mia", "PSD; meeting held 10/21", "Mendocino Redwood", "Meeting held 10/21", "PSD", "11/04/2026 9:04 AM CST", "Mia email to Randy Gans & Steve Re: Circle Logistics (4 msgs) Nov 4"], ["MISA Metal Processing", "MISA Metal Processing", "Addie", "PSD; competitive on 12 lanes; ACH/bank setup in progress", "MISA Metal Processing", "Call 10/20; ACH setup", "PSD", "11/03/2026 7:00 AM CST", "Addison calls Oct 22–27 + Correct bank number email to Lee Daniel Oct 22"], ["Hoover Treated Wood", "Hoover Treated Wood Products", "Simran", "PSD; onboarding early November", "Hoover Treated Wood Products", "Onboarding set for early Nov", "PSD", "11/05/2026 8:00 AM CST", "Simran call Nov 4; task overdue Nov 5; email to Turner Gilliam Oct 28"], ["Saf-T-Cab", "Saf-T-Cab", "Mia", "PSD", "Saf-T-Cab", "Live call 10/15", "PSD", "10/15/2026 2:02 PM CDT", "Mia email Re: Circle Logistics – Saf-T-Cab to Chad Bree & Steve (11 msgs)"], ["Lodge Lumber", "Lodge Lumber", "Addie", "PSD; quoted well, award not confirmed", "Lodge Lumber", "Quoted; no update since 10/14", "PSD", "11/03/2026 9:42 AM CST", "Addison email to Caleb White Re: Freight Oakdale LA–Houston TX Nov 3"], ["Midland Foods", "MIDLAND FOODS DIST, INC", "Addie", "PSD; likely Closed Lost otherwise", "MIDLAND FOODS DIST, INC", "Internal note 10/19 only", "PSD", "11/03/2026 7:00 AM CST", "Oct 15 auto-reply; Addison call Oct 12 No Need at this Time; Midland lane rates email"], ["Plastics Engineering / Plenco", "Plastics Engineering", "Mia", "PSD", "Plastics Engineering", "No activity evidence", "PSD", "10/20/2026 7:00 AM CDT", "Incoming RE: Company Info from Tim Meyer to Mia & Steve (9 msgs) Oct 19"], ["Penn Pallet", "Penn Pallet", "Mia", "PSD", "Penn Pallet", "No activity evidence", "PSD", "10/13/2026 7:00 AM CDT", "Only overdue task Oct 12; thin feed"], ["Verdeco Plastics", "Verdeco Plastics", "Addie", "PSD as of 11/3 HubSpot status", "Verdeco Plastics", "New to list 11/3", "PSD", "11/03/2026 1:23 PM CST", "Addison email to Chris Han Any Lanes to Quote This Week? Nov 3; prior no-answer calls"], ["Rapala VMC", "Rapala VMC", "Addie", "PSD as of 11/3 HubSpot status", "Rapala VMC", "New to list 11/3", "PSD", "11/04/2026 10:28 AM CST", "Addison Connected call Nov 4; Quote requests thread w/ Wendy Willison"], ["Pyrotek", "Pyrotek", "Simran", "PSD as of 11/3 HubSpot status", "Pyrotek", "New to list 11/3", "PSD", "11/05/2026 8:00 AM CST", "Simran task overdue Nov 5; email to Tammy Poulin November shipments? Nov 3"], ["Lavazza", "LAVAZZA", "Nathan", "Discovery 10/20 (Steve and Tyler on call)", "LAVAZZA", "Discovery meeting 10/20", "QP", "10/30/2026 2:03 PM CDT", "Nathan note Oct 30; RFP Partnership emails to Scott Keener / Michael Brandt"], ["Wiese USA", "Wiese USA", "Nathan", "QP; added to Closest per Steve 11/5", "Wiese USA", "Added 11/5 per Steve", "QP", "11/03/2026 7:00 AM CST", "Last HubSpot activity 11/03/2026 7:00 AM CST (Qualified Prospect)"], ["Wayfair", "Wayfair", "Simran", "RFP Confirmed; HubSpot owner Tyler Van Kooten (stays Tyler for now); Simran working it — Steve 11/5", "Wayfair", "Simran working; owner remains Tyler", "RFP", "11/05/2026 9:04 AM CST", "Simran↔Alec Matson email Rekindling relations – Circle Logistics (5 msgs) Nov 5"], ["Kingdom Pipe & Steel", "kingdompipeandsteel.com", "Addie", "QP", "kingdompipeandsteel.com", "Live call 10/15; discovery form", "QP", "10/22/2026 7:00 AM CDT", "Addison↔Kaylee Roznovsky Re: Kingdom Pipe and Steel x Circle (3 msgs) Oct 15"], ["Grand River Dam Authority", "Grand River Dam Authority", "Nathan", "QP; vendor form pending", "Grand River Dam Authority", "Discovery form; vendor form sent 10/15", "QP", "10/23/2026 7:00 AM CDT", "Nathan Vendor Registration Pkt thread w/ Sarah Briley (5 msgs) Oct 19"], ["Alcoa", "Alcoa", "Steve", "QP; 1 meeting", "Alcoa", "1 meeting; last activity 10/20", "QP", "11/05/2026 8:11 AM CST", "Simran email thread PPG Empties 10.30.26 w/ Robbie Cox et al. (26 msgs) Nov 5"], ["Northland Power", "Northland Power", "Nathan", "QP (oversize/hot shot)", "Northland Power", "Discovery form (Oct)", "QP", "10/30/2026 2:15 PM CDT", "Nathan follow-up email to Lori Dyok & Steve (10 msgs); Connected call Oct 27"], ["CAM Industrial", "CAM Industrial Solutions", "Nathan", "QP", "CAM Industrial Solutions", "Discovery form (Oct)", "QP", "11/05/2026 9:04 AM CST", "Nathan outbound calls no answer Nov 5 9:04a (also Nov 3, Oct 21)"], ["Heartland Sheets", "heartlandsheets.com", "Nathan", "QP", "heartlandsheets.com", "Discovery form (Oct)", "QP", "11/03/2026 8:35 AM CST", "Nathan email Circle Logistics RFP Partnership to James Collins (4 msgs) Nov 3"], ["Hyve", "Hyve Solutions (TD SYNNEX)", "Addie", "QP; credit info sent", "Hyve Solutions (TD SYNNEX)", "Credit info sent; waiting", "QP", "11/05/2026 8:41 AM CST", "Last activity Nov 5 8:41a; activity feed thin (contacts listed, little eng.)"], ["Reliance", "Reliance Steel & Aluminum", "Mia", "QP; Tyler expects big wins", "Reliance Steel & Aluminum", "Still working (Tyler 10/16)", "QP", "11/02/2026 11:26 AM CST", "Mia email Reliance approved capacity to Travis Moraine / Ian Welsh Nov 2"], ["Wabtec", "Wabtec Corporation", "Mia", "QP", "Wabtec Corporation", "No update found", "QP", "10/29/2026 3:33 PM CDT", "Mia logged calls Oct 29 ~3:12–3:33p"], ["Clark Construction", "Clark Construction Group", "Simran", "QP", "Clark Construction Group", "No activity evidence", "QP", "10/02/2026 8:00 AM CDT", "No activities match current filters"], ["Canada Nickel", "Canada Nickel", "Simran", "QP", "Canada Nickel", "No activity evidence", "QP", "11/02/2026 4:12 PM CST", "Simran↔Mark Neis RE: Circle Checking In (3 msgs) Nov 2"], ["Lite Gauge", "Lite Gauge Metals,", "Simran", "QP", "Lite Gauge Metals,", "No activity evidence", "QP", "10/08/2026 8:00 AM CDT", "Only overdue task for Simran Oct 8"], ["MP Husky", "MP Husky", "Addie", "QP", "MP Husky", "No activity evidence", "QP", "10/22/2026 1:41 PM CDT", "Addison repeated no-answer calls Oct 22 1:37–1:41p"], ["Yerba Madre", "Yerba Madre", "Nathan", "QP", "Yerba Madre", "No activity evidence", "QP", "10/30/2026 2:36 PM CDT", "Auto-reply to Nathan Circle + Yerba Madre 2027 thread (5 msgs) Oct 30"], ["fcifloors", "fcifloors.com", "Steve", "QP", "fcifloors.com", "No activity evidence", "QP", "10/26/2026 7:08 PM CDT", "Only overdue task for Steve Oct 26"], ["Mid-South Food Bank", "Mid-South Food Bank", "Nathan", "DMC; docs sent, waiting on them", "Mid-South Food Bank", "Docs sent 10/29", "DMC", "11/03/2026 7:10 PM CST", "Nathan task + note Nov 3; RFP Partnership email w/ Herman Dickey (6 msgs)"], ["Apto Solutions", "Apto Solutions", "Steve", "DMC", "Apto Solutions", "Added 11/5 per Steve", "DMC", "11/03/2026 11:08 AM CST", "Inbound call Connor Hall + Steve call Nov 3; Apto Freight Contact email"], ["Lane Press", "Lane Press", "Addie", "DMC; Addie Closest per Steve 11/5", "Lane Press", "Last activity Nov 3 (HubSpot)", "DMC", "11/03/2026 10:27 AM CST", "Last HubSpot activity Nov 3 10:27a CT — feed not opened for full blurb"], ["Dave Steel", "Dave Steel", "Nathan", "DMC", "Dave Steel", "Added 11/5 per Steve", "DMC", "11/04/2026 9:20 AM CST", "Rusty Faulkner accepted meeting Nov 4; RFP Partnership thread (11 msgs)"], ["PJP", "PJP", "Steve", "DMC", "PJP", "No activity evidence", "DMC", "10/12/2026 9:49 AM CDT", "Steve email Re: PJP Carrier Selection to Gregory-Blake Broomer (2 msgs)"], ["AstenJohnson", "Astenjohnson", "Steve", "DMC", "Astenjohnson", "No activity evidence", "DMC", "10/06/2026 1:30 PM CDT", "No activity feed items; date only"], ["Daltile", "Daltile", "Steve", "DMC; 49 days quiet", "Daltile", "49 days quiet (last 9/2)", "DMC", "09/02/2026 2:01 PM CDT", "No activity feed items; stale since Sep 2"], ["Internationalmulch", "Internationalmulch", "Kili", "Only lead (Prospect); otherwise farming Arconic", null, "No activity evidence", "Prospect", "10/10/2026 7:02 PM CDT", "Only overdue task for Kahekili"], ["Whirlwind Steel Buildings", "Whirlwind Steel Buildings", "Nick", "PSD", "Whirlwind Steel Buildings", "No activity evidence", null, "10/26/2026 4:20 PM CDT", "Nick call no answer Oct 26 4:20p"], ["Wieland", "Wieland", "Mia", "QP", "Wieland", "In danger (CD2)", null, "07/27/2026 9:32 AM CDT", "Owner HubSpot Admin (not Team Steve); thin Created activity"], ["Maxon Lift", "Maxon Lift Corp", "Nick", "PSD (HubSpot Pitched/Solution Delivered as of 11/5)", "Maxon Lift Corp", "No activity evidence", null, "10/29/2026 7:00 AM CDT", "Nick logged calls no answer Oct 28 4:26–4:27p"], ["Alpine Power", "Alpine Power Systems", "Nick", "QP", "Alpine Power Systems", "No activity evidence", null, "09/30/2026 2:17 PM CDT", "No activity feed items; stale Sep 30"], ["MC Dean", "MC Dean", "Mia", "Closed Won in HubSpot as of 11/5 — added to Closest per Steve", "MC Dean", "Added 11/5 per Steve", "Closed Won", "11/03/2026 1:24 PM CST", "Steve email MC Dean New Vendor Onboarding to Mia & Hao Bui Nov 3; logged call"], ["WillScot", "WillScot", "Nick", "Closed Lost in HubSpot as of 11/5 scrape — added per Steve", "WillScot", "Added 11/5 per Steve", "Closed Lost", "11/01/2026 8:00 AM CST", "Task (Jessica Sheppard) Nov 1; Nick logged calls no answer Oct 28"]]};;;;
+s+=`<div class="fn">Data: calls/emails still Nov 1–3 (as of Nov 3, 2:30 PM CT); pipeline/Meetings/Discovery refreshed Nov 5 4 PM CT. Bill-Tos/GP last TPRO 11/5 (pre after-hours). Light tick = where pace should be today (2 of 21 November workdays done; 21 = Nov 2–30 weekdays, Thanksgiving 11/26 not excluded). Bar color is a gradient of % of pace: red 0%, yellow 50%, green 100%+.<br>Bill-Tos MTD and GP vs quota: TPRO Bill To export, Nov MTD as of 11/5 (23 bill-tos, 258 loads, $84,845 GP on $554,884 billed); rep = TPRO sales rep, plus Steve's 11/4 assignments (Silpro → Nathan; Bronco Industrial Services → Addie (HubSpot owner); United Alloys → Mia; Cass/True Mfg → Nick; Stoughton, MAI, Ulbrich → Mia). Team GP = all 23 bill-tos (incl. Addie's Bronco $2,225); Team Bill-Tos = sum of the 6 reps (23). Bill-To expectations: Kili 4, Simran 5, Mia 15, Nick 15, Addie 3, Nathan 1 (Team 43).<br>Team goals = sum of the 6 reps: $435K GP, 1,800 emails/day, 4,201 calls/month (Addie 1,200, Nathan 1,200, Mia 900, Simran 600, Nick 200, Kili 101). Avg emails/day = Nov outgoing emails / 2 workdays.<br>Meetings Booked = Steve Google Calendar customer meetings with an external invitee, Nov MTD (Addie 2 Nextera+LEONI, Mia 1 M.C. Dean, Nathan 1 Dave Steel; as of Nov 5 ~4 PM CT). HubSpot Meetings index still shows 0 created-in-Nov for Team Steve. Discovery Calls = Discovery Call Completed forms Nov 1–5 (Nathan 4 incl. Red-D-Arc today, Addie 1; cold Call-type tags not counted).<br>CQR % = share of calls under 1 min (HubSpot calls Nov 1–3); lower is better. Green &lt;50%, yellow 50–70%, red &gt;70%. Team totals include Steve (4 calls, 1 under 1 min, 1,030 emails).</div></div></div>`;document.getElementById("kpi").innerHTML=s;(function(){let FR="All";const run=()=>{document.querySelectorAll("#kpi .fc.krc").forEach(x=>x.classList.toggle("on",x.dataset.krp===FR));document.querySelectorAll("#kpi .kr[data-rep]").forEach(r=>{r.style.display=(FR==="All"||r.dataset.rep===FR)?"":"none"});document.querySelectorAll("#kpi .kg").forEach(g=>{let any=false,el=g.nextElementSibling;while(el&&!el.classList.contains("kg")&&!el.classList.contains("fn")){if(el.classList.contains("kr")&&el.style.display!=="none")any=true;el=el.nextElementSibling}g.style.display=any?"":"none"})};document.querySelectorAll("#kpi .fc.krc").forEach(b=>b.onclick=()=>{FR=b.dataset.krp;run()})})()}
+const AC={"n":[["Silpro","SilPro","Nathan","New ship Nov MTD (TPRO Silpro, LLC); Closed Won — credited to Nathan","SilPro","First load confirmed (Steve 11/5)","Closed Won","11/05/2026 8:19 AM CST","Nathan email thread \"quote intermodal and dry van\" w/ SilPro (23 msgs), latest Nov 5 8:19a"],["United Alloys & Metals","United Alloys & Metals","Mia","New ship Nov MTD; Closed Won — credited to Mia","United Alloys & Metals","First load confirmed (Steve 11/5)","Closed Won","—","No Team Steve HubSpot company matching that name in search"]],"r":[],"c":[["Pyxus / Alliance One","Pyxus International","Nathan","RFP; RFP releases in December","Pyxus International","Pricing review held 10/15; RFP in Dec","RFP","10/30/2026 2:35 PM CDT","Incoming email from Kevin Matthews re Circle Logistics RFP Partnership (19-msg thread)"],["Betafence","Betafence USA","Mia","RFP; stale (last reply 171 days ago)","Betafence USA","Last reply 171 days ago","RFP","10/23/2026 12:00 PM CDT","RFP Confirmed; last activity Oct 23 (empty activity feed)"],["Wayfair","Wayfair","Simran","RFP Confirmed; HubSpot owner Tyler Van Kooten (stays Tyler for now); Simran working it — Steve 11/5","Wayfair","Simran working; owner remains Tyler","RFP","11/05/2026 9:04 AM CST","Simran↔Alec Matson email Rekindling relations – Circle Logistics (5 msgs) Nov 5"],["Texas Liquidation","Texas Liquidation","Addie","PSD; quoted 11/4","Texas Liquidation","Quoted yesterday; status → PSD","PSD","11/05/2026 8:48 AM CST","Addison call Nov 5 8:48a; emailed Mayra Alia Nov 4 Plainfield IN→Arlington TX rate"],["Virnig Manufacturing","Virnig Manufacturing","Steve","PSD; upgraded from DMC 11/5","Virnig Manufacturing","Fresh status upgrade","PSD","11/03/2026 1:01 PM CST","Steve email to Jessica Durkee Re: Virnig Freight Contact (6 msgs)"],["Marglen Industries","Marglen Industries","Addie","PSD — upgraded from DMC on 11/5 4 PM scrub","Marglen Industries","Fresh PSD upgrade 4 PM","PSD","—","HubSpot Lead Status Pitched/Solution Delivered as of 4 PM scrub"],["Corporate eWaste Solutions","Corporate eWaste Solutions","Nathan","PSD; discovery 10/26, need feedback","Corporate eWaste Solutions","Need feedback","PSD","11/05/2026 9:23 AM CST","Nathan repeated outbound calls, no answer (Nov 5 9:18–9:23a)"],["Geiger","Geiger","Addie","PSD","Geiger","No update found","PSD","11/01/2026 7:00 AM CST","Addison note Oct 30 + task; prior no-answer/VM calls Oct 20–22"],["Can Art Aluminum Extrusion","Can Art Aluminum Extrusion","Simran","Owns BRT Extrusions (our NSA); gave us opp to quote","Can Art Aluminum Extrusion","Quote request 10/21; owns BRT","PSD","11/05/2026 8:00 AM CST","Simran email to Leslie Glabb Nov 2: need help with shipments?; task due Nov 5"],["Mendocino Redwood","Mendocino Redwood","Mia","PSD; meeting held 10/21","Mendocino Redwood","Meeting held 10/21","PSD","11/04/2026 9:04 AM CST","Mia email to Randy Gans & Steve Re: Circle Logistics (4 msgs) Nov 4"],["MISA Metal Processing","MISA Metal Processing","Addie","PSD; competitive on 12 lanes; ACH/bank setup in progress","MISA Metal Processing","Call 10/20; ACH setup","PSD","11/03/2026 7:00 AM CST","Addison calls Oct 22–27 + Correct bank number email to Lee Daniel Oct 22"],["Hoover Treated Wood","Hoover Treated Wood Products","Simran","PSD; onboarding early November","Hoover Treated Wood Products","Onboarding set for early Nov","PSD","11/05/2026 8:00 AM CST","Simran call Nov 4; task overdue Nov 5; email to Turner Gilliam Oct 28"],["Saf-T-Cab","Saf-T-Cab","Mia","PSD","Saf-T-Cab","Live call 10/15","PSD","10/15/2026 2:02 PM CDT","Mia email Re: Circle Logistics – Saf-T-Cab to Chad Bree & Steve (11 msgs)"],["Lodge Lumber","Lodge Lumber","Addie","PSD; quoted well, award not confirmed","Lodge Lumber","Quoted; no update since 10/14","PSD","11/03/2026 9:42 AM CST","Addison email to Caleb White Re: Freight Oakdale LA–Houston TX Nov 3"],["Midland Foods","MIDLAND FOODS DIST, INC","Addie","PSD; likely Closed Lost otherwise","MIDLAND FOODS DIST, INC","Internal note 10/19 only","PSD","11/03/2026 7:00 AM CST","Oct 15 auto-reply; Addison call Oct 12 No Need at this Time; Midland lane rates email"],["Plastics Engineering / Plenco","Plastics Engineering","Mia","PSD","Plastics Engineering","No activity evidence","PSD","10/20/2026 7:00 AM CDT","Incoming RE: Company Info from Tim Meyer to Mia & Steve (9 msgs) Oct 19"],["Penn Pallet","Penn Pallet","Mia","PSD","Penn Pallet","No activity evidence","PSD","10/13/2026 7:00 AM CDT","Only overdue task Oct 12; thin feed"],["Verdeco Plastics","Verdeco Plastics","Addie","PSD as of 11/3 HubSpot status","Verdeco Plastics","New to list 11/3","PSD","11/03/2026 1:23 PM CST","Addison email to Chris Han Any Lanes to Quote This Week? Nov 3; prior no-answer calls"],["Rapala VMC","Rapala VMC","Addie","PSD as of 11/3 HubSpot status","Rapala VMC","New to list 11/3","PSD","11/04/2026 10:28 AM CST","Addison Connected call Nov 4; Quote requests thread w/ Wendy Willison"],["Pyrotek","Pyrotek","Simran","PSD as of 11/3 HubSpot status","Pyrotek","New to list 11/3","PSD","11/05/2026 8:00 AM CST","Simran task overdue Nov 5; email to Tammy Poulin November shipments? Nov 3"],["Whirlwind Steel Buildings","Whirlwind Steel Buildings","Nick","PSD","Whirlwind Steel Buildings","No activity evidence","PSD","10/26/2026 4:20 PM CDT","Nick call no answer Oct 26 4:20p"],["Maxon Lift","Maxon Lift Corp","Nick","PSD (HubSpot Pitched/Solution Delivered as of 11/5)","Maxon Lift Corp","No activity evidence","PSD","10/29/2026 7:00 AM CDT","Nick logged calls no answer Oct 28 4:26–4:27p"],["Sunnyside Egg Co.","Sunnyside Egg Co.","Nathan","QP as of 11/5 4 PM HubSpot (was RFP this morning)","Sunnyside Egg Co.","Status eased RFP→QP on 4 PM scrub","QP","11/03/2026 7:53 PM CST","Nathan — now RFP Confirmed in HubSpot (was QP); last activity Nov 3"],["Lavazza","LAVAZZA","Nathan","Discovery 10/20 (Steve and Tyler on call)","LAVAZZA","Discovery meeting 10/20","QP","10/30/2026 2:03 PM CDT","Nathan note Oct 30; RFP Partnership emails to Scott Keener / Michael Brandt"],["Wiese USA","Wiese USA","Nathan","QP; added to Closest per Steve 11/5","Wiese USA","Added 11/5 per Steve","QP","11/03/2026 7:00 AM CST","Last HubSpot activity 11/03/2026 7:00 AM CST (Qualified Prospect)"],["Kingdom Pipe & Steel","kingdompipeandsteel.com","Addie","QP","kingdompipeandsteel.com","Live call 10/15; discovery form","QP","10/22/2026 7:00 AM CDT","Addison↔Kaylee Roznovsky Re: Kingdom Pipe and Steel x Circle (3 msgs) Oct 15"],["Grand River Dam Authority","Grand River Dam Authority","Nathan","QP; vendor form pending","Grand River Dam Authority","Discovery form; vendor form sent 10/15","QP","10/23/2026 7:00 AM CDT","Nathan Vendor Registration Pkt thread w/ Sarah Briley (5 msgs) Oct 19"],["Alcoa","Alcoa","Steve","QP; 1 meeting","Alcoa","1 meeting; last activity 10/20","QP","11/05/2026 8:11 AM CST","Simran email thread PPG Empties 10.30.26 w/ Robbie Cox et al. (26 msgs) Nov 5"],["Northland Power","Northland Power","Nathan","QP (oversize/hot shot)","Northland Power","Discovery form (Oct)","QP","10/30/2026 2:15 PM CDT","Nathan follow-up email to Lori Dyok & Steve (10 msgs); Connected call Oct 27"],["CAM Industrial","CAM Industrial Solutions","Nathan","QP","CAM Industrial Solutions","Discovery form (Oct)","QP","11/05/2026 9:04 AM CST","Nathan outbound calls no answer Nov 5 9:04a (also Nov 3, Oct 21)"],["Heartland Sheets","heartlandsheets.com","Nathan","QP","heartlandsheets.com","Discovery form (Oct)","QP","11/03/2026 8:35 AM CST","Nathan email Circle Logistics RFP Partnership to James Collins (4 msgs) Nov 3"],["Hyve","Hyve Solutions (TD SYNNEX)","Addie","QP; credit info sent","Hyve Solutions (TD SYNNEX)","Credit info sent; waiting","QP","11/05/2026 8:41 AM CST","Last activity Nov 5 8:41a; activity feed thin (contacts listed, little eng.)"],["Reliance","Reliance Steel & Aluminum","Mia","QP; Tyler expects big wins","Reliance Steel & Aluminum","Still working (Tyler 10/16)","QP","11/02/2026 11:26 AM CST","Mia email Reliance approved capacity to Travis Moraine / Ian Welsh Nov 2"],["Wabtec","Wabtec Corporation","Mia","QP","Wabtec Corporation","No update found","QP","10/29/2026 3:33 PM CDT","Mia logged calls Oct 29 ~3:12–3:33p"],["Clark Construction","Clark Construction Group","Simran","QP","Clark Construction Group","No activity evidence","QP","10/02/2026 8:00 AM CDT","No activities match current filters"],["Canada Nickel","Canada Nickel","Simran","QP","Canada Nickel","No activity evidence","QP","11/02/2026 4:12 PM CST","Simran↔Mark Neis RE: Circle Checking In (3 msgs) Nov 2"],["Lite Gauge","Lite Gauge Metals,","Simran","QP","Lite Gauge Metals,","No activity evidence","QP","10/08/2026 8:00 AM CDT","Only overdue task for Simran Oct 8"],["MP Husky","MP Husky","Addie","QP","MP Husky","No activity evidence","QP","10/22/2026 1:41 PM CDT","Addison repeated no-answer calls Oct 22 1:37–1:41p"],["Yerba Madre","Yerba Madre","Nathan","QP","Yerba Madre","No activity evidence","QP","10/30/2026 2:36 PM CDT","Auto-reply to Nathan Circle + Yerba Madre 2027 thread (5 msgs) Oct 30"],["fcifloors","fcifloors.com","Steve","QP","fcifloors.com","No activity evidence","QP","10/26/2026 7:08 PM CDT","Only overdue task for Steve Oct 26"],["Mid-South Food Bank","Mid-South Food Bank","Nathan","DMC; docs sent, waiting on them","Mid-South Food Bank","Docs sent 10/29","QP","11/03/2026 7:10 PM CST","Nathan task + note Nov 3; RFP Partnership email w/ Herman Dickey (6 msgs)"],["Alpine Power","Alpine Power Systems","Nick","QP","Alpine Power Systems","No activity evidence","QP","09/30/2026 2:17 PM CDT","No activity feed items; stale Sep 30"],["Apto Solutions","Apto Solutions","Steve","DMC","Apto Solutions","Added 11/5 per Steve","DMC","11/03/2026 11:08 AM CST","Inbound call Connor Hall + Steve call Nov 3; Apto Freight Contact email"],["Lane Press","Lane Press","Addie","DMC; Addie Closest per Steve 11/5","Lane Press","Last activity Nov 3 (HubSpot)","DMC","11/03/2026 10:27 AM CST","Last HubSpot activity Nov 3 10:27a CT — feed not opened for full blurb"],["Dave Steel","Dave Steel","Nathan","DMC","Dave Steel","Added 11/5 per Steve","DMC","11/04/2026 9:20 AM CST","Rusty Faulkner accepted meeting Nov 4; RFP Partnership thread (11 msgs)"],["PJP","PJP","Steve","DMC","PJP","No activity evidence","DMC","10/12/2026 9:49 AM CDT","Steve email Re: PJP Carrier Selection to Gregory-Blake Broomer (2 msgs)"],["AstenJohnson","Astenjohnson","Steve","DMC","Astenjohnson","No activity evidence","DMC","10/06/2026 1:30 PM CDT","No activity feed items; date only"],["Daltile","Daltile","Steve","DMC; 49 days quiet","Daltile","49 days quiet (last 9/2)","DMC","09/02/2026 2:01 PM CDT","No activity feed items; stale since Sep 2"],["Internationalmulch","Internationalmulch","Kili","Only lead (Prospect); otherwise farming Arconic",null,"No activity evidence","Prospect","10/10/2026 7:02 PM CDT","Only overdue task for Kahekili"],["MC Dean","MC Dean","Mia","Closed Won in HubSpot as of 11/5 — added to Closest per Steve","MC Dean","Added 11/5 per Steve","Closed Won","11/03/2026 1:24 PM CST","Steve email MC Dean New Vendor Onboarding to Mia & Hao Bui Nov 3; logged call"],["WillScot","WillScot","Nick","Closed Lost in HubSpot as of 11/5 scrape — added per Steve","WillScot","Added 11/5 per Steve","Closed Lost","11/01/2026 8:00 AM CST","Task (Jessica Sheppard) Nov 1; Nick logged calls no answer Oct 28"],["Wieland","Wieland","Mia","QP","Wieland","In danger (CD2)",null,"07/27/2026 9:32 AM CDT","Owner HubSpot Admin (not Team Steve); thin Created activity"]]};;;;
 const HSID={"Citi Trends":"2359373481","Alcoa":"2359254732","Daltile":"2435918837","Hanwha Materials":"59621408836"};
 const RC={Kili:"#d97706",Simran:"#db2777",Mia:"#7c3aed",Nick:"#0891b2",Addie:"#16a34a",Nathan:"#2563eb",Steve:"#64748b"};
 const PC={"Prospect":"#64748b","DMC":"#3b82f6","QP":"#6366f1","RFP":"#a855f7","PSD":"#0ea5e9","Contracting":"#f59e0b","Closed Won":"#22a05a","Closed Won / NSA":"#22a05a"};
@@ -591,7 +490,7 @@ const FS=["All","Closed Won","Contracting","PSD","RFP","QP","DMC","Prospect","Un
 const chips=`<div class="fch">${FS.map(s=>`<button class="fc${s==="All"?" on":""}" data-s="${s}" ${s!=="All"&&!fc(s)?"disabled":""}>${s} <b>${fc(s)}</b></button>`).join("")}</div>`;
 const REPS=["Kili","Simran","Mia","Nick","Addie","Nathan","Steve"],rf=(a,p)=>a.filter(r=>r[2].split(" ")[0]===p);
 const rchips=`<div class="lb rbar"><div class="lbh"><h3>Filter by rep</h3><div class="fch rch">${["All",...REPS].map(p=>`<button class="fc rc${p==="All"?" on":""}" data-rp="${p}">${p==="All"?"All reps":p} <b>${p==="All"?AC.n.length+AC.r.length+AC.c.length:rf(AC.n,p).length+rf(AC.r,p).length+rf(AC.c,p).length}</b></button>`).join("")}</div></div></div>`;
-document.getElementById("acc").innerHTML=rchips+board("New Shipping Accounts (Nov MTD)","New to Circle in November (first load ships in Nov). As of Nov 5: Silpro (Nathan) and United Alloys & Metals (Mia) confirmed. Cronimet still pending first-load confirmation from TPRO.",AC.n,true,true)+board("Reactivations (Nov MTD, not counted as new)","Shipped with Circle before. None confirmed yet for November; pending TPRO tonight.",AC.r,true)+`<div class="lb ed"><div class="lbh"><h3>Closest to Close</h3><span class="cnt">${AC.c.length}</span><div class="lt">Nick = Nicholas McNamara only (not Nick Shipe). As of Nov 5 HubSpot statuses (refreshed 11/5: Texas Liquidation + Virnig PSD; Wayfair (Simran working / Tyler owner, RFP) ~20th; Apto Solutions (Steve, DMC); Dave Steel (Nathan, DMC); MC Dean (Mia, Closed Won in HS); WillScot (Nick, Closed Lost in HS); Sunnyside Egg Co. Nathan RFP as of 11/5 scrub; Lane Press Addie DMC; Wiese USA Nathan QP). Last Activity + Recent Comms from HubSpot 11/5 ~9:30 AM CT. Fresh quotes / just-upgraded PSDs rank at the top of their tier. Potential new business only (no first load yet; October wins removed). Ranked by HubSpot status (RFP/Contracting → PSD → QP → DMC → Prospect), then two-way engagement, then recent activity; leads with a booked meeting can rank above their status tier. Company names open HubSpot (login required).</div>${chips}</div>${hdS}${cc}</div>`}
+document.getElementById("acc").innerHTML=rchips+board("New Shipping Accounts (Nov MTD)","New to Circle in November (first load ships in Nov). As of Nov 5: Silpro (Nathan) and United Alloys & Metals (Mia) confirmed. Cronimet still pending first-load confirmation from TPRO.",AC.n,true,true)+board("Reactivations (Nov MTD, not counted as new)","Shipped with Circle before. None confirmed yet for November; pending TPRO tonight.",AC.r,true)+`<div class="lb ed"><div class="lbh"><h3>Closest to Close</h3><span class="cnt">${AC.c.length}</span><div class="lt">Nick = Nicholas McNamara only (not Nick Shipe). As of Nov 5 HubSpot statuses (refreshed 11/5 4 PM CT: Texas Liquidation + Virnig PSD; Wayfair (Simran working / Tyler owner, RFP) ~20th; Apto Solutions (Steve, DMC); Dave Steel (Nathan, DMC); MC Dean (Mia, Closed Won in HS); WillScot (Nick, Closed Lost in HS); Sunnyside Egg Co. Nathan QP (was RFP AM); Marglen Industries Addie fresh PSD (DMC→PSD); Mid-South Food Bank Nathan QP; Lane Press Addie DMC; Wiese USA Nathan QP). Last Activity + Recent Comms from HubSpot 11/5 ~9:30 AM CT. Fresh quotes / just-upgraded PSDs rank at the top of their tier. Potential new business only (no first load yet; October wins removed). Ranked by HubSpot status (RFP/Contracting → PSD → QP → DMC → Prospect), then two-way engagement, then recent activity; leads with a booked meeting can rank above their status tier. Company names open HubSpot (login required).</div>${chips}</div>${hdS}${cc}</div>`}
 acc();kpi();
 (function(){const KEY="tsf_notes_v1";const ld=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}}};let N=ld();
 const A=document.getElementById("acc");A.insertAdjacentHTML("afterbegin",`<div class="ntbar"><span>Notes are editable: click a note to change it (saved in this browser only).</span><button id="ntx" class="fc nb">Export notes</button><button id="ntr" class="fc nb">Reset</button><span id="ntm" class="ntm"></span></div>`);
