@@ -157,7 +157,6 @@ Kahekili Barrozo|Closed won|Arconic
 Kahekili Barrozo|Closed won|Basic Metals Inc
 Kahekili Barrozo|Closed won|Howmet Aerospace
 Kahekili Barrozo|Closed won|Kawneer
-Kahekili Barrozo|Decision Maker Confirmed|Mario Camacho Foods
 Kahekili Barrozo|Closed won|Reliable
 Kahekili Barrozo|Closed won|Webstone
 Mia Medjedovic|Closed won|AgriGro
@@ -490,6 +489,7 @@ Steve O'Neill|Closed lost|Halstead
 Steve O'Neill|Decision Maker Confirmed|Inline Filling Systems
 Steve O'Neill|Decision Maker Confirmed|Intermodal Tank Transport
 Steve O'Neill|Decision Maker Confirmed|Invio Automation
+Steve O'Neill|Decision Maker Confirmed|Mario Camacho Foods
 Steve O'Neill|Closed lost|Market Basket Food Stores
 Steve O'Neill|Decision Maker Confirmed|Musco Family Olive
 Steve O'Neill|Verified Unqualified|National Amusements
@@ -518,12 +518,11 @@ const GROUPS = [["Account Managers", ["Kili"]], ["Account Executives", ["Simran"
 const PROSPECTS = { Kili: 1, Simran: 158, Mia: 154, Nick: 200, Addie: 170, Nathan: 205, Steve: 217 };
 const NSA = { Nathan: ["SilPro"], Mia: ["United Alloys & Metals"] };
 const MOVED = {
-  Kili: { DMC: 1 },
   Mia: { DMC: 7 },
   Nick: { DMC: 1 },
   Addie: { DMC: 2, PSD: 1 },
   Nathan: { DMC: 3 },
-  Steve: { DMC: 1, PSD: 1 },
+  Steve: { DMC: 2, PSD: 1 },
 };
 
 const NEW_OCT = new Set(["astrochemical.com","tylerironandmetal.com","signatureparty.com","heartlandsheets.com","channellumber.com","bonsuisse.com","laurand.net","siteprorentals.com","teamcertified.com","ennis.com","primematerials.com","kingdompipeandsteel.com","surplusmetalscorp.com","vedco.com","adfoods.com","precisionladders.com","Strait Regional Centre for Education","vantonecf.com","oceanautomotivegroup.com","sweetgrassltd.com","saladcosmo.com","hallcoindustries.com","henrytile.com","montalvans.com","parklandseedpotatoes.com","centurionibc.com","SnowWolf Plows","MP Husky","Lodge Lumber","BDK","ReNew Plastics","Trumbull Manufacturing","AUMOVIO","Saf-T-Cab","Port of Memphis","US Bag Manufacturing","Port Saint John","Voss Manufacturing","AVL Manufacturing","CAM Industrial Solutions","Grand River Dam Authority","Midwest Geothermal","Timberline Manufacturing","ErgonArmor","Bronco Industrial Services","Housley Communications Inc","Purilum","Fuller Brothers Inc","Always Available Wholesale & Supply Services Corp","Panavid","EGR","Imperial Tobacco Canada","English Construction Company","Traffic Management, Inc","Stacy and Witbeck, Inc.","Structure Tone","EXP","Borsheim Crane Service","Rapala VMC","Mendocino Redwood","Rimex","Future Transfer","Roberts Tire Sales","Killick Aerospace","Corley MFG","Caruthers Raisin Packing Co., Inc.","Nardone Brothers Baking Co","Doug Ashy Building Materials","TMP Technologies","Caldera Manufacturing Group","Pavion","Fiberon","PNY","BIOLASE Inc","Northland Power","Can Art Aluminum Extrusion","Woodman's Food Market","Panel Processing","Vox Printing","Canusa Wood","Silver Star Brands","Invio Automation","Hoover Treated Wood Products","Exotech","BRT Extrusions","Brady","LAVAZZA","Astenjohnson","eBay","Wabtec Corporation","Pyrotek","Maxim Crane Works","Hanwha Aerospace","Cummins-Allison","Pyxus International","MIDLAND FOODS DIST, INC","Quality Bicycle Products","PJP","E. C. Barton & Co.","Babcock & Wilcox","BRT Extrusions (1st load 10/14)","Citi Trends (4 loads on board, uncovered)","Electrical Power Products","Murdochs","Texas Liquidation","Mario Camacho Foods","Bailey International, LLC","Continental Cement","GLT","Manroland Goss","National Air Cargo","Seymour Midwest","Yankee Equipment Systems","Constellation Home","primarypackaging.com","The Walman Optical","Red Stag Fulfillment","GOMACO"]);
@@ -536,7 +535,7 @@ const revOf = (c) => REV[c] ?? REV[c.split(" (")[0]];
 const withRev = (c) => { const v = revOf(c); return v === undefined ? c : `${c} (${fmtRev(v)})`; };
 const data={};for(const line of RAW.split("\n")){const[o,s,c]=line.split("|");const r=OWNER[o],st=STATUS[s];if(!r||!st)continue;((data[r]=data[r]||{})[st]=data[r][st]||[]).push(c);}
 const names=(r,s)=>s==="New Ship MTD"?(NSA[r]||[]):((data[r]||{})[s]||[]);
-const TOTALS={Kili:192,Simran:241,Mia:225,Nick:248,Addie:276,Nathan:178,Steve:246};const count=(r,s)=>s==="Prospect"?(TOTALS[r]!=null?Math.max(0,TOTALS[r]-["DMC","QP","RFP","PSD","Contracting","Closed Won"].reduce((a,x)=>a+names(r,x).length,0)):(PROSPECTS[r]||0)):names(r,s).length;
+const TOTALS={Kili:191,Simran:241,Mia:225,Nick:248,Addie:276,Nathan:178,Steve:247};const count=(r,s)=>s==="Prospect"?(TOTALS[r]!=null?Math.max(0,TOTALS[r]-["DMC","QP","RFP","PSD","Contracting","Closed Won"].reduce((a,x)=>a+names(r,x).length,0)):(PROSPECTS[r]||0)):names(r,s).length;
 const op=[.45,.58,.68,.78,.88,1,1,1];const clip=i=>i===0?"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)":"polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%)";
 const revSpan=v=>{const t=fmtRev(v),u=t.slice(-1);return`<span class="rev rev-${u==="B"?"b":u==="M"?"m":u==="K"?"k":"x"}">${t}</span>`};
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
